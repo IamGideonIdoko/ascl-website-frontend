@@ -1,0 +1,15 @@
+.mainNav {
+    border: 1px solid green;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.mainNav ul {
+    display: flex;
+}
+
+.mainNav ul li {
+    list-style: none;
+    padding: 1rem;
+}
