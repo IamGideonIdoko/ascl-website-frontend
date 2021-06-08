@@ -7,8 +7,8 @@ function About() {
         <div>
         <Header />
         <Navbar />
+        this is the about
 
-        This is the About page.
 
         </div>
     )

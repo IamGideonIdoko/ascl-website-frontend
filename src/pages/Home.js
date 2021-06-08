@@ -7,6 +7,12 @@ function Home() {
         <div>
         <Header />
         <Navbar />
+
+        <div className="content-max-width">
+        This is the home page
+
+        </div>
+
         </div>
     )
 }

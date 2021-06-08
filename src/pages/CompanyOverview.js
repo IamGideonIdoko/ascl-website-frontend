@@ -8,7 +8,7 @@ function CompanyOverview() {
         <Header />
         <Navbar />
 
-        This is the FAQs page.
+        This is the Company Overview page.
 
         </div>
     )

@@ -14,8 +14,7 @@ import Products from './pages/Products';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -42,10 +41,10 @@ function App() {
           <Route path="/company-overview">
             <CompanyOverview />
           </Route>
-          <Route path="/consultancy-sevices">
+          <Route path="/consultancy-services">
             <ConsultancyServices />
           </Route>
-          <Route path="/contacts">
+          <Route path="/contact">
             <Contact />
           </Route>
           <Route path="/engineering-works-complex">
@@ -75,6 +74,12 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/">
+            <div>
+              404
+            </div>
+          </Route>
+
         </Switch>
       </div>
     </Router>

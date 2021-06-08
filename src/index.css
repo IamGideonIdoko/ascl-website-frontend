@@ -1,4 +1,13 @@
 :root {
+  --primary-color: #016867;
+  --secondary-color: #82C017;
+  --font-color-light: #fff;
+  --font-color-dark: #000;
+  --font-color-lighter: #e1e1ff;
+  --font-color-darker: #0d0d0d;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,9 +25,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
+  color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container-max-1280px {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.content-max-width {
+  max-width: 1280px;
+  margin: 0 auto;
 }
