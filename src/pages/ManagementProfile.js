@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
-const ManagementProfile = () => {
+
+function ManagementProfile() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Management Profile</h1>
 
-        This is the ManagementProfile page.
 
-        </div>
+        </MainLayout>
     )
 }
 

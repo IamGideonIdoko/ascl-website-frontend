@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
-const News = () => {
+
+function News() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>News</h1>
 
-        This is the News page.
 
-        </div>
+        </MainLayout>
     )
 }
 

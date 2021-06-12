@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
-const Contact = () => {
+
+function Contact() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Contact</h1>
 
-        This is the Contact page.
 
-        </div>
+        </MainLayout>
     )
 }
 

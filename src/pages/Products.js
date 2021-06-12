@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
-const Products = () => {
+
+function Products() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Products</h1>
 
-        This is the product page.
 
-        </div>
+        </MainLayout>
     )
 }
 

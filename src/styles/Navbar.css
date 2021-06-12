@@ -3,7 +3,7 @@
     background-color: var(--primary-color);
     color: white;
     margin-top: -0.25rem;
-    z-index: 4;
+    z-index: 4000;
 }
 
 .mainNav a {
@@ -16,7 +16,7 @@
 
 .mainNav ul li {
     list-style: none;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -55,6 +55,8 @@
     color: var(--font-color-light);
     border-bottom-left-radius: 0.6rem;
     border-bottom-right-radius: 0.6rem;
+    z-index: 999999;
+    overflow: hidden;
 }
 
 .nav-dropdown ul {

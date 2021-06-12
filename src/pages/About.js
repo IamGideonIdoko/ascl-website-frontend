@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
+
 
 function About() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
-        this is the about
+        <MainLayout>
+        
+        <h1>About</h1>
 
 
-        </div>
+        </MainLayout>
     )
 }
 

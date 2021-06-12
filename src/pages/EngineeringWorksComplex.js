@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
-const EngineeringWorksComplex = () => {
+
+function EngineeringWorksComplex() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Engineering Works Complex</h1>
 
-        This is the EngineeringWorksComplex page.
 
-        </div>
+        </MainLayout>
     )
 }
 

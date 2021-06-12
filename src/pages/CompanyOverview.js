@@ -1,16 +1,14 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
 function CompanyOverview() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Company Overview</h1>
 
-        This is the Company Overview page.
 
-        </div>
+        </MainLayout>
     )
 }
 

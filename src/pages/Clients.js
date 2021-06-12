@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
+
 
 function Clients() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Clients</h1>
 
-        This is the Clients page.
 
-        </div>
+        </MainLayout>
     )
 }
 

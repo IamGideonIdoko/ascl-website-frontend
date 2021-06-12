@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
-const PressReleases = () => {
+
+function PressReleases() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Press Releases</h1>
 
-        This is the PressReleases page.
 
-        </div>
+        </MainLayout>
     )
 }
 

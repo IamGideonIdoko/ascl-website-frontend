@@ -2,8 +2,10 @@
     background-image: url('../images/headerbar.jpg');
     background-position: top;
     text-align: left;
+    vertical-align: auto !important;
 }
 
 .header img {
     z-index: 1;
+    display: inline !important;
 }

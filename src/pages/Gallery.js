@@ -1,16 +1,15 @@
-import Header from '../components/Header'
-import Navbar from './../components/Navbar';
+import MainLayout from './../layouts/MainLayout';
 
-const Gallery = () => {
+
+function Gallery() {
 
     return (
-        <div>
-        <Header />
-        <Navbar />
+        <MainLayout>
+        
+        <h1>Gallery</h1>
 
-        This is the Gallery page.
 
-        </div>
+        </MainLayout>
     )
 }
 
