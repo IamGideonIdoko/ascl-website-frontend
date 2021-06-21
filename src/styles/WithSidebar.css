@@ -21,7 +21,7 @@
 
 .s-box-header {
     padding: 1rem 1rem 0;
-    background-color: #e6fffe;  
+    background-color: var(--primary-color-light);  
     color: var(--primary-color);
 }
 

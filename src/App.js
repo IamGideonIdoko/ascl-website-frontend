@@ -11,6 +11,8 @@ import ManagementProfile from './pages/ManagementProfile';
 import News from './pages/News';
 import PressReleases from './pages/PressReleases';
 import Products from './pages/Products';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
@@ -20,6 +22,12 @@ function App() {
                 {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
                 <Switch>
+                    <Route path="/register">
+                        <Register />
+                    </Route>
+                    <Route path="/adm">
+                        <Login />
+                    </Route>
                     <Route path="/clients">
                         <Clients/>
                     </Route>
