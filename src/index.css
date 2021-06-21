@@ -51,6 +51,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
   color: black;
+  background-color: var(--black-background);
 }
 
 ::-moz-selection {

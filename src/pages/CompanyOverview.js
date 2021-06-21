@@ -1,13 +1,13 @@
 import MainLayout from './../layouts/MainLayout';
+import WithSidebar from './../layouts/WithSidebar';
 
 function CompanyOverview() {
 
     return (
         <MainLayout>
-        
-        <h1>Company Overview</h1>
-
-
+            <WithSidebar>
+                <h1>Company Overview</h1>
+            </WithSidebar>
         </MainLayout>
     )
 }

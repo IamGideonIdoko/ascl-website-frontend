@@ -11,68 +11,64 @@ import ManagementProfile from './pages/ManagementProfile';
 import News from './pages/News';
 import PressReleases from './pages/PressReleases';
 import Products from './pages/Products';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
-  return (
-    <Router>
-      <div>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/clients">
-            <Clients />
-          </Route>
-          <Route path="/company-overview">
-            <CompanyOverview />
-          </Route>
-          <Route path="/consultancy-services">
-            <ConsultancyServices />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/engineering-works-complex">
-            <EngineeringWorksComplex />
-          </Route>
-          <Route path="/faqs">
-            <FAQs />
-          </Route>
-          <Route path="/gallery">
-            <Gallery />
-          </Route>
-          <Route path="/management-profile">
-            <ManagementProfile />
-          </Route>
-          <Route path="/news">
-            <News />
-          </Route>
-          <Route path="/press-releases">
-            <PressReleases />
-          </Route>
-          <Route path="/products">
-            <Products />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route>
+    return (
+        <Router>
             <div>
-              404
-            </div>
-          </Route>
+                {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+                <Switch>
+                    <Route path="/clients">
+                        <Clients/>
+                    </Route>
+                    <Route path="/company-overview">
+                        <CompanyOverview/>
+                    </Route>
+                    <Route path="/consultancy-services">
+                        <ConsultancyServices/>
+                    </Route>
+                    <Route path="/contact">
+                        <Contact/>
+                    </Route>
+                    <Route path="/engineering-works-complex">
+                        <EngineeringWorksComplex/>
+                    </Route>
+                    <Route path="/faqs">
+                        <FAQs/>
+                    </Route>
+                    <Route path="/gallery">
+                        <Gallery/>
+                    </Route>
+                    <Route path="/management-profile">
+                        <ManagementProfile/>
+                    </Route>
+                    <Route path="/news">
+                        <News/>
+                    </Route>
+                    <Route path="/press-releases">
+                        <PressReleases/>
+                    </Route>
+                    <Route path="/products">
+                        <Products/>
+                    </Route>
+                    <Route path="/about">
+                        <About/>
+                    </Route>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Route>
+                        <div>
+                            404
+                        </div>
+                    </Route>
 
-        </Switch>
-      </div>
-    </Router>
-  );
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

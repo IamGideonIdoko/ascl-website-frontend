@@ -1,14 +1,13 @@
 import MainLayout from './../layouts/MainLayout';
-
+import WithSidebar from './../layouts/WithSidebar';
 
 function Clients() {
 
     return (
         <MainLayout>
-        
-        <h1>Clients</h1>
-
-
+            <WithSidebar>
+                <h1>Clients</h1>
+            </WithSidebar>
         </MainLayout>
     )
 }
