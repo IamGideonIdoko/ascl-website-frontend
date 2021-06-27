@@ -14,68 +14,72 @@ import Products from './pages/Products';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {Provider} from 'react-redux';
+import store from './reduxstore/store';
 
 function App() {
     return (
-        <Router>
-            <div>
-                {/* A <Switch> looks through its children <Route>s and
+        <Provider store={store}>
+            <Router>
+                <div>
+                    {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-                <Switch>
-                    <Route path="/register">
-                        <Register />
-                    </Route>
-                    <Route path="/adm">
-                        <Login />
-                    </Route>
-                    <Route path="/clients">
-                        <Clients/>
-                    </Route>
-                    <Route path="/company-overview">
-                        <CompanyOverview/>
-                    </Route>
-                    <Route path="/consultancy-services">
-                        <ConsultancyServices/>
-                    </Route>
-                    <Route path="/contact">
-                        <Contact/>
-                    </Route>
-                    <Route path="/engineering-works-complex">
-                        <EngineeringWorksComplex/>
-                    </Route>
-                    <Route path="/faqs">
-                        <FAQs/>
-                    </Route>
-                    <Route path="/gallery">
-                        <Gallery/>
-                    </Route>
-                    <Route path="/management-profile">
-                        <ManagementProfile/>
-                    </Route>
-                    <Route path="/news">
-                        <News/>
-                    </Route>
-                    <Route path="/press-releases">
-                        <PressReleases/>
-                    </Route>
-                    <Route path="/products">
-                        <Products/>
-                    </Route>
-                    <Route path="/about">
-                        <About/>
-                    </Route>
-                    <Route exact path="/">
-                        <Home/>
-                    </Route>
-                    <Route>
-                        <div>
-                            404
-                        </div>
-                    </Route>
+                    <Switch>
+                        <Route path="/register-adm">
+                            <Register/>
+                        </Route>
+                        <Route path="/login-adm">
+                            <Login/>
+                        </Route>
+                        <Route path="/clients">
+                            <Clients/>
+                        </Route>
+                        <Route path="/company-overview">
+                            <CompanyOverview/>
+                        </Route>
+                        <Route path="/consultancy-services">
+                            <ConsultancyServices/>
+                        </Route>
+                        <Route path="/contact">
+                            <Contact/>
+                        </Route>
+                        <Route path="/engineering-works-complex">
+                            <EngineeringWorksComplex/>
+                        </Route>
+                        <Route path="/faqs">
+                            <FAQs/>
+                        </Route>
+                        <Route path="/gallery">
+                            <Gallery/>
+                        </Route>
+                        <Route path="/management-profile">
+                            <ManagementProfile/>
+                        </Route>
+                        <Route path="/news">
+                            <News/>
+                        </Route>
+                        <Route path="/press-releases">
+                            <PressReleases/>
+                        </Route>
+                        <Route path="/products">
+                            <Products/>
+                        </Route>
+                        <Route path="/about">
+                            <About/>
+                        </Route>
+                        <Route exact path="/">
+                            <Home/>
+                        </Route>
+                        <Route>
+                            <div>
+                                404
+                            </div>
+                        </Route>
 
-                </Switch>
-            </div>
-        </Router>
+                    </Switch>
+                </div>
+            </Router>
+        </Provider>
     );
 }
 
