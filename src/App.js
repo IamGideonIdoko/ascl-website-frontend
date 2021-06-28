@@ -25,46 +25,46 @@ function App() {
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
                     <Switch>
-                        <Route path="/register-adm">
+                        <Route exact path="/register-adm">
                             <Register/>
                         </Route>
-                        <Route path="/login-adm">
+                        <Route exact path="/login-adm">
                             <Login/>
                         </Route>
-                        <Route path="/clients">
+                        <Route exact path="/clients">
                             <Clients/>
                         </Route>
-                        <Route path="/company-overview">
+                        <Route exact path="/company-overview">
                             <CompanyOverview/>
                         </Route>
-                        <Route path="/consultancy-services">
+                        <Route exact path="/consultancy-services">
                             <ConsultancyServices/>
                         </Route>
-                        <Route path="/contact">
+                        <Route exact path="/contact">
                             <Contact/>
                         </Route>
-                        <Route path="/engineering-works-complex">
+                        <Route exact path="/engineering-works-complex">
                             <EngineeringWorksComplex/>
                         </Route>
-                        <Route path="/faqs">
+                        <Route exact path="/faqs">
                             <FAQs/>
                         </Route>
-                        <Route path="/gallery">
+                        <Route exact path="/gallery">
                             <Gallery/>
                         </Route>
-                        <Route path="/management-profile">
+                        <Route exact path="/management-profile">
                             <ManagementProfile/>
                         </Route>
-                        <Route path="/news">
+                        <Route exact path="/news">
                             <News/>
                         </Route>
-                        <Route path="/press-releases">
+                        <Route exact path="/press-releases">
                             <PressReleases/>
                         </Route>
-                        <Route path="/products">
+                        <Route exact path="/products">
                             <Products/>
                         </Route>
-                        <Route path="/about">
+                        <Route exact path="/about">
                             <About/>
                         </Route>
                         <Route exact path="/">
