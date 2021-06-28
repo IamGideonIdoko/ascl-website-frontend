@@ -25,6 +25,11 @@ function App() {
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
                     <Switch>
+                        <Route exact path="/admin-profile">
+                            <div>
+                                <h1>This is the admin profile.</h1>
+                            </div>
+                        </Route>
                         <Route exact path="/register-adm">
                             <Register/>
                         </Route>
