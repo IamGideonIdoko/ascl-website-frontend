@@ -5,6 +5,7 @@ import {login} from '../reduxstore/actions/authActions';
 import SimpleReactValidator from 'simple-react-validator';
 import {Link, useHistory} from 'react-router-dom';
 import {useState, useRef} from 'react';
+import Swal from 'sweetalert2';
 
 const Login = (props) => {
     const [username,
@@ -14,7 +15,11 @@ const Login = (props) => {
     const [,
         forceUpdate] = useState();
 
-    let history = useHistory(); 
+    let history = useHistory();
+
+    if (props.isLoginFailed) {
+        Swal.fire({icon: 'error', title: 'Login failed!', text: ''})
+    }
 
     //instantiate the validator as a singleton
     const simpleValidator = useRef(new SimpleReactValidator({
@@ -62,64 +67,78 @@ const Login = (props) => {
 
     return (
         <LoginLayout>
-            {!props.isUserLoaded ? null : props.isAuthenticated
-                ? <div style={{ textAlign: "center" }}>
-                <h3>You are logged in.</h3> <br/>
-                <small><i>Redirecting to profile page...</i></small>
-                <div>{history.push("/admin-profile")}</div>
+            {!props.isUserLoaded
+                ? null
+                : props.isAuthenticated
+                    ? <div
+                            style={{
+                            textAlign: "center"
+                        }}>
+                            <h3>You are logged in.</h3>
+                            <br/>
+                            <small>
+                                <i>Redirecting to profile page...</i>
+                            </small>
+                            <div>{history.push("/admin-profile")}</div>
 
-                </div>
+                        </div>
 
-                : <form
-                    method="post"
-                    id="loginForm"
-                    className="login-form"
-                    onSubmit={handleLoginFormSubmit}>
-                    <div className="login-form-header">
-                        <h1>Login</h1>
+                    : <form
+                        method="post"
+                        id="loginForm"
+                        className="login-form"
+                        onSubmit={handleLoginFormSubmit}>
+                        <div className="login-form-header">
+                            <h1>Login</h1>
+                            <div>
+                                <span>Do not have an account? &nbsp;&nbsp;<Link to="/register-adm">Register</Link>
+                                </span>
+                            </div>
+                        </div>
                         <div>
-                            <span>Do not have an account? &nbsp;&nbsp;<Link to="/register-adm">Register</Link>
-                            </span>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="form-group">
-                            <label htmlFor="">Username</label>
-                            <input
-                                type="text"
-                                name="username"
-                                id="username"
-                                className="form-control"
-                                placeholder="Enter Username"
-                                value={username}
-                                required={true}
-                                onChange={handleInputChange}/> {/* simple validation */
-                            simpleValidator
-                                .current
-                                .message('username', username, 'required|alpha_num|between:4,25')
+                            <div className="form-group">
+                                <label htmlFor="">Username</label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    className="form-control"
+                                    placeholder="Enter Username"
+                                    value={username}
+                                    required={true}
+                                    onChange={handleInputChange}/> {/* simple validation */
+                                simpleValidator
+                                    .current
+                                    .message('username', username, 'required|alpha_num|between:4,25')
 }
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                className="form-control"
-                                placeholder="Enter Password"
-                                value={password}
-                                required={true}
-                                onChange={handleInputChange}/> {/* simple validation */
-                            simpleValidator
-                                .current
-                                .message('password', password, 'required|between:4,25')
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    className="form-control"
+                                    placeholder="Enter Password"
+                                    value={password}
+                                    required={true}
+                                    onChange={handleInputChange}/> {/* simple validation */
+                                simpleValidator
+                                    .current
+                                    .message('password', password, 'required|between:4,25')
 }
+                            </div>
+                            <div className="submit-wrapper">
+                                <button
+                                    type={props.isAttemptingLogin
+                                    ? "button"
+                                    : "submit"}
+                                    className="login-form-submit">{props.isAttemptingLogin
+                                        ? "Attempting login..."
+                                        : "Login"}</button>
+                            </div>
                         </div>
-                        <div className="submit-wrapper">
-                            <button type="submit" className="login-form-submit">Login</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
 }
         </LoginLayout>
     )

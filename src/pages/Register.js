@@ -1,9 +1,11 @@
 import '../styles/Login.css';
 import LoginLayout from './../layouts/LoginLayout';
-import { Link, useHistory } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useState, useRef} from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import {connect} from 'react-redux';
+import {register} from './../reduxstore/actions/authActions';
+import Swal from 'sweetalert2';
 
 const Register = (props) => {
 
@@ -19,6 +21,12 @@ const Register = (props) => {
         setAccessKey] = useState('');
     const [,
         forceUpdate] = useState();
+
+    let history = useHistory();
+
+    if (props.isLoginFailed) {
+        Swal.fire({icon: 'error', title: 'Registration failed!', text: ''})
+    }
 
     //instantiate the validator as a singleton
     const simpleValidator = useRef(new SimpleReactValidator({
@@ -39,7 +47,19 @@ const Register = (props) => {
 
         if (simpleValidator.current.allValid()) {
             //all input is valid create admin user object
+
             console.log("all input is valid");
+
+            // create an attempted user
+            const attemptedUser = {
+                username,
+                password,
+                retypePassword,
+                accessName,
+                accessKey
+            }
+
+            props.register(attemptedUser);
 
         } else {
             //input not valid, so show error
@@ -88,7 +108,7 @@ const Register = (props) => {
                             <small>
                                 <i>Redirecting to profile page...</i>
                             </small>
-                            {/* <div>{history.push("/admin-profile")}</div> */}
+                            <div>{history.push("/admin-profile")}</div>
 
                         </div>
 
@@ -194,6 +214,6 @@ const Register = (props) => {
     )
 }
 
-const mapStateToProps = (state, ownProps) => ({isAuthenticated: state.auth.isAuthenticated, isUserLoaded: state.auth.isUserLoaded})
+const mapStateToProps = (state, ownProps) => ({isAuthenticated: state.auth.isAuthenticated, isUserLoaded: state.auth.isUserLoaded, isLoginFailed: state.auth.isLoginFailed})
 
-export default connect(mapStateToProps, null)(Register);
+export default connect(mapStateToProps, {register})(Register);

@@ -71,7 +71,7 @@ export const login = ({username, password}) => dispatch => {
 }
 
 // action function to register users
-export const register = (username, password, retypePassword, accessName, accessKey) => dispatch => {
+export const register = ({username, password, retypePassword, accessName, accessKey}) => dispatch => {
     //header (config)
     const headerConfig = {
         headers: {
@@ -80,16 +80,18 @@ export const register = (username, password, retypePassword, accessName, accessK
     }
 
     //Request body
-    const body = JSON.stringify({username, password});
+    const body = JSON.stringify({username, password, retype_password: retypePassword, access_name: accessName, access_key: accessKey});
+
+    console.log("body from register actions: ", body);
 
     dispatch({type: types.ATTEMPT_LOGIN})
 
     // make post requeest to server
     axios
-        .post(`${config.BEHOST}/api/auth/authenticateuser`, body, headerConfig)
+        .post(`${config.BEHOST}/api/users/reguser`, body, headerConfig)
         .then(res => dispatch({type: types.LOGIN_SUCCESS, payload: res.data}))
         .catch(err => {
-            err.response && dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'));
+            err.response && dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'));
             dispatch({type: types.LOGIN_FAIL})
             dispatch({type: types.ATTEMPT_LOGIN_FAILED})
             window.setTimeout(() => {

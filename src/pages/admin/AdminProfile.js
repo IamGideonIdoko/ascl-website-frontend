@@ -1,15 +1,26 @@
 import {connect} from 'react-redux';
 import {logout} from './../../reduxstore/actions/authActions';
 import {Fragment} from 'react';
+import { useHistory } from 'react-router-dom';
 
 const AdminProfile = (props) => {
+
+    let history = useHistory();
 
     return (
         <Fragment>
             {!props.isUserLoaded
                 ? <div>Loading...</div>
                 : !props.isAuthenticated
-                    ? <div>You are not logged in</div>
+                    ? <div>
+                            <h3>You are NOT logged in.</h3>
+                            <br/>
+                            <small>
+                                <i>Redirecting to login page...</i>
+                            </small>
+                            <div>{history.push("/login-adm")}</div>
+
+                        </div>
                     : <div>
                         <h1>This is the admin profile.</h1>
                         <button
