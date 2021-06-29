@@ -12,6 +12,7 @@ export const FETCH_TOKEN = 'FETCH_TOKEN';
 export const ATTEMPT_LOGIN = 'ATTEMPT_LOGIN';
 export const ATTEMPT_LOGIN_FAILED = 'ATTEMPT_LOGIN_FAILED';
 export const RESET_LOGIN_FAILED = 'RESET_LOGIN_FAILED';
+export const AFTER_USER_LOAD = 'AFTER_USER_LOAD';
 
 //for error actions
 export const GET_ERRORS = 'GET_ERRORS';

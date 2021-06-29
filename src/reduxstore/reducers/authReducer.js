@@ -11,7 +11,7 @@ const initialState = {
     isAttemptingLogin: false,
     isLoginFailed: false,
     isUserLoaded: false
-}
+} 
 
 const authReducer = (state = initialState, action) => { //exporting the reducer function
     switch (action.type) {

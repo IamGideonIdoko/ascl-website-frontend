@@ -1,6 +1,7 @@
 import '../styles/Login.css';
 import industryWorker from '../images/industry-worker.jpg';
-import asclLogo from '../images/ascl-logo.png'
+import asclLogo from '../images/ascl-logo.png';
+import { connect } from 'react-redux';
 
 const LoginLayout = (props) => {
     return (
@@ -9,9 +10,9 @@ const LoginLayout = (props) => {
                 <div className="ll-content">
                     <div>
                         <div>
-                            <h1 className="login-header"><img src={asclLogo} alt="ASCL Logo"/>
+                            {props.isUserLoaded && <h1 className="login-header"><img src={asclLogo} alt="ASCL Logo"/>
                                 <span>ASCL</span>
-                            </h1>
+                            </h1>}
                         </div>
                         { props.children }
                     </div>
@@ -34,4 +35,8 @@ const LoginLayout = (props) => {
     )
 }
 
-export default LoginLayout
+const mapStateToProps = state => ({
+    isUserLoaded: state.auth.isUserLoaded
+})
+
+export default connect(mapStateToProps, null)(LoginLayout);
