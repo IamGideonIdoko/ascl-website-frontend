@@ -43,12 +43,8 @@ const Register = (props) => {
     const handleRegistrationFormSubmit = e => {
         e.preventDefault();
 
-        console.log("REg form was submitted");
-
         if (simpleValidator.current.allValid()) {
             //all input is valid create admin user object
-
-            console.log("all input is valid");
 
             // create an attempted user
             const attemptedUser = {
@@ -63,7 +59,6 @@ const Register = (props) => {
 
         } else {
             //input not valid, so show error
-            console.log("input not valid");
             simpleValidator
                 .current
                 .showMessages(); //show all errors if exist
@@ -108,7 +103,7 @@ const Register = (props) => {
                             <small>
                                 <i>Redirecting to profile page...</i>
                             </small>
-                            <div>{history.push("/admin-profile")}</div>
+                            <div>{history.push("/admin/admin-profile")}</div>
 
                         </div>
 

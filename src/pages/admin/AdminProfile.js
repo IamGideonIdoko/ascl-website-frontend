@@ -1,41 +1,27 @@
 import {connect} from 'react-redux';
 import {logout} from './../../reduxstore/actions/authActions';
-import {Fragment} from 'react';
-import { useHistory } from 'react-router-dom';
+import WithAdminAuth from '../../layouts/WithAdminAuth';
 
 const AdminProfile = (props) => {
-
-    let history = useHistory();
-
     return (
-        <Fragment>
-            {!props.isUserLoaded
-                ? <div>Loading...</div>
-                : !props.isAuthenticated
-                    ? <div>
-                            <h3>You are NOT logged in.</h3>
-                            <br/>
-                            <small>
-                                <i>Redirecting to login page...</i>
-                            </small>
-                            <div>{history.push("/login-adm")}</div>
-
-                        </div>
-                    : <div>
-                        <h1>This is the admin profile.</h1>
-                        <button
-                            style={{
-                            borderRadius: "0.4rem",
-                            background: "green",
-                            color: 'white',
-                            padding: "1rem"
-                        }}
-                            onClick={() => props.logout()}>Logout</button>
-                    </div>}
-        </Fragment>
+        <WithAdminAuth>
+            {props.isAuthenticated && <div>
+                <h2>Welcome @{props.user.username && props.user.username}!</h2>
+                <p>Welcome to the administrative portal.</p>
+                <p>You are an admin of Ajaokuta Steel Company Ltd Website. You have access to manage its contents. Use the links provided in the sidebar to administer your account and this portal</p>
+                <button
+                    style={{
+                    borderRadius: "0.4rem",
+                    background: "var(--primary-color)",
+                    color: 'white',
+                    padding: "1rem"
+                }}
+                    onClick={() => props.logout()}>Logout</button>
+            </div>}
+        </WithAdminAuth>
     )
 }
 
-const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated, isUserLoaded: state.auth.isUserLoaded});
+const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated});
 
 export default connect(mapStateToProps, {logout})(AdminProfile);

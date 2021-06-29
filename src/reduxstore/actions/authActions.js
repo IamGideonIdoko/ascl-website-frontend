@@ -9,8 +9,6 @@ export const loadUser = () => (dispatch, getState) => { //getState fetches the c
 
     const token = getState().auth.token;
 
-    console.log("token", token);
-
     // Headers
     const headerConfig = {
         headers: {
@@ -26,11 +24,9 @@ export const loadUser = () => (dispatch, getState) => { //getState fetches the c
         axios
             .get(`${config.BEHOST}/api/auth/fetchauthenticateduser`, headerConfig)
             .then(res => {
-                console.log("tokenConfig passing", tokenConfig(getState));
                 dispatch({type: types.USER_LOADED, payload: res.data})
             })
             .catch(err => {
-                console.log("tokenConfig failing", tokenConfig(getState));
                 err.response && dispatch(returnErrors(err.response.data, err.response.status));
                 dispatch({type: types.AUTH_ERROR});
             })
@@ -81,8 +77,6 @@ export const register = ({username, password, retypePassword, accessName, access
 
     //Request body
     const body = JSON.stringify({username, password, retype_password: retypePassword, access_name: accessName, access_key: accessKey});
-
-    console.log("body from register actions: ", body);
 
     dispatch({type: types.ATTEMPT_LOGIN})
 

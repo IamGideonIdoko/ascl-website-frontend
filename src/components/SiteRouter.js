@@ -13,11 +13,15 @@ import PressReleases from '../pages/PressReleases';
 import Products from '../pages/Products';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import AdminProfile from './../pages/admin/AdminProfile';
+import ManageAccess from '../pages/admin/ManageAccess';
+import ManageFileUpload from '../pages/admin/ManageFileUpload';
+import ManageGallery from '../pages/admin/ManageGallery';
+import ManagePage from '../pages/admin/ManagePage';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { loadUser } from './../reduxstore/actions/authActions';
 import { connect } from 'react-redux';
 import {useEffect} from 'react';
-import AdminProfile from './../pages/admin/AdminProfile';
 
 const SiteRouter = (props) => {
 
@@ -33,8 +37,20 @@ const SiteRouter = (props) => {
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
                     <Switch>
-                        <Route exact path="/admin-profile">
+                        <Route exact path="/admin/profile">
                             <AdminProfile />
+                        </Route>
+                        <Route exact path="/admin/manage-access">
+                            <ManageAccess />
+                        </Route>
+                        <Route exact path="/admin/manage-file-upload">
+                            <ManageFileUpload />
+                        </Route>
+                        <Route exact path="/admin/manage-gallery">
+                            <ManageGallery />
+                        </Route>
+                        <Route exact path="/admin/manage-page">
+                            <ManagePage />
                         </Route>
                         <Route exact path="/register-adm">
                             <Register/>

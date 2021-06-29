@@ -29,11 +29,8 @@ const Login = (props) => {
     const handleLoginFormSubmit = e => {
         e.preventDefault();
 
-        console.log("login form was submitted");
-
         if (simpleValidator.current.allValid()) {
             //all input is valid create admin user object
-            console.log("all input is valid");
 
             // create a user object
             const attemptedUser = {
@@ -45,7 +42,6 @@ const Login = (props) => {
 
         } else {
             //input not valid, so show error
-            console.log("input not valid");
             simpleValidator
                 .current
                 .showMessages(); //show all errors if exist
@@ -79,7 +75,7 @@ const Login = (props) => {
                             <small>
                                 <i>Redirecting to profile page...</i>
                             </small>
-                            <div>{history.push("/admin-profile")}</div>
+                            <div>{history.push("/admin/profile")}</div>
 
                         </div>
 
