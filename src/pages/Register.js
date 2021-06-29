@@ -22,7 +22,14 @@ const Register = (props) => {
 
     //instantiate the validator as a singleton
     const simpleValidator = useRef(new SimpleReactValidator({
-        element: (message, className) => <div className={'formErrorMsg'}>{message}</div>
+        element: (message, className) => <div className={'formErrorMsg'}>{message}</div>,
+        validators: {
+            samePassword: {
+                message: 'Both passwords must be equal.',
+                rule: (val, params, validator) => val === params[0],
+                required: true
+            }
+        }
     }));
 
     const handleRegistrationFormSubmit = e => {
@@ -142,7 +149,7 @@ const Register = (props) => {
                                     onChange={handleInputChange}/> {/* simple validation */
                                 simpleValidator
                                     .current
-                                    .message('password', retypePassword, 'required|between:4,25')
+                                    .message('password', retypePassword, `required|between:4,25|samePassword:${password}`)
 }
                             </div>
                             <div className="form-group">
