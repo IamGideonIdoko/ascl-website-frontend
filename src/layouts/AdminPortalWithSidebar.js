@@ -21,11 +21,11 @@ const AdminPortalWithSidebar = (props) => {
                         </div> */}
                         <div className='aps-box-body'>
                             <ul className="aps-facilities-list">
-                                <li><Link to="/admin/profile">Admin Profile</Link></li>
-                                <li><Link to="/admin/manage-page">Manage Page</Link></li>
-                                <li><Link to="/admin/manage-file-upload">Manage File Upload</Link></li>
-                                <li><Link to="/admin/manage-gallery">Manage Gallery</Link></li>
-                                <li><Link to="/admin/manage-access">Manage Access</Link></li>
+                                <li><Link to="/adm/profile">Admin Profile</Link></li>
+                                <li><Link to="/adm/manage-page">Manage Page</Link></li>
+                                <li><Link to="/adm/manage-file-upload">Manage File Upload</Link></li>
+                                <li><Link to="/adm/manage-gallery">Manage Gallery</Link></li>
+                                <li><Link to="/adm/manage-access">Manage Access</Link></li>
                                 <li><Link to="#">Log out</Link></li>
                             </ul>
                         </div>

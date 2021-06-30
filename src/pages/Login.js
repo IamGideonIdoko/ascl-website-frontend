@@ -75,7 +75,7 @@ const Login = (props) => {
                             <small>
                                 <i>Redirecting to profile page...</i>
                             </small>
-                            <div>{history.push("/admin/profile")}</div>
+                            <div>{history.push("/adm/profile")}</div>
 
                         </div>
 
