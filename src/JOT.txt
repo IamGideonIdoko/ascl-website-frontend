@@ -3,3 +3,29 @@
 COLORS
 PRIMARY: #016867
 SECONDARY: #82C017
+
+
+// FIREBASE CONFIGURATIONS
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyA5ZahaOZzFr6AcQqSGVF75TcDunCfh0XM",
+    authDomain: "ascl-website-assets.firebaseapp.com",
+    projectId: "ascl-website-assets",
+    storageBucket: "ascl-website-assets.appspot.com",
+    messagingSenderId: "124729397003",
+    appId: "1:124729397003:web:b67bfa2095b41e01179c0e",
+    measurementId: "G-MF4Y1Q28GB"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
