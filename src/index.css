@@ -143,6 +143,20 @@ a {
 }
 
 
+/* --------------  file input and drag n drop styling -------------- */
+[type="file"] {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* ------------ ----------- -------------- */
+
 
 abbr[title] {
   border-bottom: none; /* 1 */

@@ -1,0 +1,67 @@
+.ap-main-section {
+    padding: 1rem;
+    background-color: #F7F7F7;
+    /* height: 100%; */
+}
+
+.ap-box {
+    background-color: white;
+    padding: 0.5rem;
+    box-shadow: var(--shadow);
+    border-radius: 0.4rem;
+    margin: 0 0 1rem;
+}
+
+.ap-main-section-header {
+    margin-bottom: 1rem;
+}
+
+.ap-main-section-header h2 {
+    font-size: 2.2rem;    opacity: 0.85;
+}
+
+.ap-main-section h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    /* margin-bottom: 1rem; */
+}
+
+.file-input-container {
+    padding: 0 0 0.5rem;
+}
+
+.photo-upload-select,
+.document-upload-select {
+    border: 1px dashed rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 0.5rem;
+    /* color: var(--secondary-color); */
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.photo-upload-btn,
+.document-upload-btn {
+    padding: 0.5em 1rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+}
+
+.photo-upload-btn:hover,
+.document-upload-btn:hover {
+    opacity: 0.7;
+}
+
+.photo-upload-btn:focus,
+.document-upload-btn:focus {
+    outline: none;
+}

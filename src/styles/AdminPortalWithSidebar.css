@@ -6,12 +6,12 @@
 
 .admin-portal-ws-content {
     min-height: 40rem;
-    margin-right: var(--home-padding);
-    padding: 0 1.5rem;
+    /* margin-right: var(--home-padding); */
+    padding: 0 1rem;
 }
 
 .admin-portal-sidebar {
-    min-height: 40rem;
+    /* min-height: 40rem; */
 }
 
 .aps-box {
