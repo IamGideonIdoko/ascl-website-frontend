@@ -17,3 +17,6 @@ export const AFTER_USER_LOAD = 'AFTER_USER_LOAD';
 //for error actions
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+//firebase
+export const LOAD_FIREBASE = "LOAD_FIREBASE";

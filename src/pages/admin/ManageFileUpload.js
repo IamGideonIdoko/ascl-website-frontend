@@ -3,6 +3,9 @@ import {logout} from './../../reduxstore/actions/authActions';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
 
 const ManageFileUpload = (props) => {
+    console.log("From manage file upload");
+    /* console.log("Firebase core", window.firebase);
+    console.log("Firebase storage", window.firebase.storage()); */
 
     return (
         <WithAdminAuth>
