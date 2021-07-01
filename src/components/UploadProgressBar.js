@@ -35,7 +35,7 @@ const UploadProgressBar = props => {
 
     return (
         <div className="file-upload-progress-bar">
-            <span>({progress}%) {progress === 100 ? "Uploaded" : "Uploading..."}</span>
+            <span>({progress.toFixed(0)}%) {progress === 100 ? "Uploaded" : "Uploading..."}</span>
             <div style={{
                 width: progress + '%'
             }}></div>
