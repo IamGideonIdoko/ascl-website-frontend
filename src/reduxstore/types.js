@@ -1,5 +1,4 @@
-
-//for login and logout
+// for login and logout
 export const USER_LOADING = 'USER_LOADING';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
@@ -14,9 +13,15 @@ export const ATTEMPT_LOGIN_FAILED = 'ATTEMPT_LOGIN_FAILED';
 export const RESET_LOGIN_FAILED = 'RESET_LOGIN_FAILED';
 export const AFTER_USER_LOAD = 'AFTER_USER_LOAD';
 
-//for error actions
+// for error actions
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-//firebase
+// firebase
 export const LOAD_FIREBASE = "LOAD_FIREBASE";
+
+// assets
+export const GET_ASSETS = "GET_ASSETS";
+export const ADD_ASSET = "ADD_ASSET";
+export const DELETE_ASSET = "DELETE_ASSET";
+export const ASSETS_LOADING = "ASSETS_LOADING";
