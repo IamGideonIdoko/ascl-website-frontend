@@ -1,10 +1,11 @@
-import {useState} from 'react';
+import {useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import {logout} from './../../reduxstore/actions/authActions';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
 import UploadProgressBar from './../../components/UploadProgressBar';
 import {getAcceptValue, getFileExtension, renameFileWithPrefix, convertByteInString} from '../../helper';
 import '../../styles/AdminPortalGlobal.css';
+import SimpleReactValidator from 'simple-react-validator';
 
 const ManageFileUpload = (props) => {
 
@@ -20,6 +21,28 @@ const ManageFileUpload = (props) => {
         setStartVideoUpload] = useState(false);
     const [startDocumentUpload,
         setStartDocumentUpload] = useState(false);
+    const [,
+        forceUpdate] = useState();
+
+    //instantiate the validator as a singleton
+    const simpleValidator = useRef(new SimpleReactValidator({
+        element: (message, className) => <div className={'formErrorMsg'}>{message}</div>,
+        validators: {
+            validFileType: {
+                message: 'Selected file is not a valid :attribute type. It must have a MIME type of either :val' +
+                        'idTypes',
+                rule: (val, params, validator) => params.includes(val.type),
+                messageReplace: (message, params) => message.replace(":validTypes", `(${params.join(' OR ')}).`),
+                required: true
+            },
+            belowMaxSize: {
+                message: 'Selected file should not be more that :maxFileSize',
+                rule: (val, params, validator) => val.size <= params,
+                messageReplace: (message, params) => message.replace(":maxFileSize", `${convertByteInString(params)}.`),
+                required: true
+            }
+        }
+    }));
 
     const ONE_MB = 1048576;
 
@@ -28,7 +51,7 @@ const ManageFileUpload = (props) => {
             'image/png', 'image/jpeg', 'image/gif'
         ], //.png, .jpg, .gif
         ext: [
-            '.png', '.jpg', '.gf'
+            '.png', '.jpg', '.gif'
         ],
         maxSize: 5 * ONE_MB, //5mb
     }
@@ -85,18 +108,26 @@ const ManageFileUpload = (props) => {
     }
 
     const initiateUpload = e => {
-
-        switch (e.target.id) {
-            case 'photo-upload-btn':
-                setStartPhotoUpload(true);
-                break
-            case 'video-upload-btn':
-                setStartVideoUpload(true);
-                break;
-            case 'document-upload-btn':
-                setStartDocumentUpload(true);
-                break;
-            default:
+        if (simpleValidator.current.allValid()) {
+            // all validation is passing
+            switch (e.target.id) {
+                case 'photo-upload-btn':
+                    setStartPhotoUpload(true);
+                    break
+                case 'video-upload-btn':
+                    setStartVideoUpload(true);
+                    break;
+                case 'document-upload-btn':
+                    setStartDocumentUpload(true);
+                    break;
+                default:
+            }
+        } else {
+            // validation not passing
+            simpleValidator
+                .current
+                .showMessages();
+            forceUpdate(1);
         }
     }
 
@@ -106,6 +137,7 @@ const ManageFileUpload = (props) => {
                 <div className="ap-main-section-header ap-box">
                     <h2>Manage File Upload</h2>
                 </div>
+                <div className="ap-box">All conditions on this page must be met before upload is initiated.</div>
 
                 <div className="ap-box">
                     <h3>Upload Photos</h3>
@@ -170,6 +202,11 @@ const ManageFileUpload = (props) => {
                             </div>
 
                             <div>
+                                {/* simple validation */
+                                simpleValidator
+                                    .current
+                                    .message('photo', photo, `required|validFileType:${allowedPhoto.types}|belowMaxSize:${allowedDocument.maxSize}`)
+}
                                 <button
                                     id="photo-upload-btn"
                                     className="photo-upload-btn"
@@ -249,6 +286,11 @@ const ManageFileUpload = (props) => {
                                 </ul>
                             </div>
                             <div>
+                                {/* simple validation */
+                                simpleValidator
+                                    .current
+                                    .message('video', video, `required|validFileType:${allowedVideo.types}|belowMaxSize:${allowedDocument.maxSize}`)
+}
                                 <button
                                     id="video-upload-btn"
                                     className="video-upload-btn"
@@ -327,6 +369,11 @@ const ManageFileUpload = (props) => {
                                 </ul>
                             </div>
                             <div>
+                            {/* simple validation */
+                                simpleValidator
+                                    .current
+                                    .message('document', document, `required|validFileType:${allowedDocument.types}|belowMaxSize:${allowedDocument.maxSize}`)
+}
                                 <button
                                     id="document-upload-btn"
                                     className="document-upload-btn"
