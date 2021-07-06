@@ -157,6 +157,10 @@ a {
 
 /* ------------ ----------- -------------- */
 
+input:focus {
+  outline: 1px solid var(--secondary-color);
+  outline-offset: 1px;
+}
 
 abbr[title] {
   border-bottom: none; /* 1 */
