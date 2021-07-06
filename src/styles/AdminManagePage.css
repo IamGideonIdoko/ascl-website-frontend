@@ -1,0 +1,15 @@
+.page-type-select {
+    /* border: 1px solid black; */
+    padding: 0.8rem;
+    background-color: var(--primary-color-light);
+    box-shadow: var(--shadow);
+    margin: 1rem 0;
+}
+
+.page-type-select:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.create-page-container {
+    margin: 2rem 0;
+}

@@ -103,7 +103,7 @@ const Register = (props) => {
                             <small>
                                 <i>Redirecting to profile page...</i>
                             </small>
-                            <div>{history.push("/adm/admin-profile")}</div>
+                            <div>{history.push("/adm/profile")}</div>
 
                         </div>
 

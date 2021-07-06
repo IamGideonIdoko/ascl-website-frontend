@@ -388,6 +388,9 @@ const ManageFileUpload = (props) => {
                     <h3>View or Delete Photos</h3>
                 </div>
                 <div className="ap-box">
+                    <h3>Delete Videos</h3>
+                </div>
+                <div className="ap-box">
                     <h3>Delete Documents</h3>
                 </div>
 
