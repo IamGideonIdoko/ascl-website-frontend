@@ -26,8 +26,6 @@ const AssetView = (props) => {
     const [selectedAssetFile,
         setSelectedAssetFile] = useState(null);
 
-    console.log("required assets", requiredAssets);
-
     const handleAssetViewTypeSelectChange = e => {
         setAssetViewType(e.target.value);
         setSelectedAssetFile(null);
@@ -67,7 +65,7 @@ const AssetView = (props) => {
                         </select>
                     </div>
                     <h4>{assetViewType}&nbsp;Assets&nbsp;
-                        <small>(Select {lowerAssetViewType}&nbsp;and click on copy button to copy {lowerAssetViewType}&nbsp;link)</small>
+                        <small>(Select {lowerAssetViewType}&nbsp;and click on copy button to copy {lowerAssetViewType}'s&nbsp;link)</small>
                     </h4>
                     <div className="asset-form-select-wrap">
                         <Select

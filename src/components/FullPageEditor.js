@@ -1,9 +1,28 @@
 import {useState} from 'react';
 import {Editor} from 'react-draft-wysiwyg';
-import {EditorState, convertToRaw} from 'draft-js';
+import {EditorState, convertToRaw, Modifier} from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import {strToSlug} from './../helper';
 import '../styles/FullPageEditor.css';
+
+const CustomOption = props => {
+
+    const addASCL = () => {
+        const { editorState, onChange } = props;
+        console.log(Modifier);
+        const contentState = Modifier.replaceText(
+            editorState.getCurrentContent(),
+            editorState.getSelection(),
+            'ASCL',
+            editorState.getCurrentInlineStyle()
+        );
+        onChange(EditorState.push(editorState, contentState, 'insert-characters'));
+
+    }
+
+
+    return (<div onClick={addASCL}>ASCL</div>)
+}
 
 const FullPageEditor = (props) => {
     const {selectedType, setSelectedType} = props;
@@ -85,7 +104,9 @@ const FullPageEditor = (props) => {
                     editorState={editorState}
                     wrapperClassName="body-editor-wrapper"
                     editorClassName="body-editor-input"
-                    onEditorStateChange={handleBodyEditorChange}/>
+                    onEditorStateChange={handleBodyEditorChange}
+                    toolbarCustomButtons={[<CustomOption />]}
+                    />
             </div>
 
             <div className="full-page-editor-buttons">
