@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Select from 'react-select';
 import '../styles/AssetView.css';
 import {connect} from 'react-redux';
@@ -9,10 +9,10 @@ import copy from 'copy-to-clipboard';
 const AssetView = (props) => {
 
     const [assetViewType,
-        setAssetViewType] = useState('photos');
+        setAssetViewType] = useState('photo');
 
     const {assets} = props;
-
+    
     const lowerAssetViewType = assetViewType.toLowerCase();
 
     const requiredAssets = lowerAssetViewType === 'photo'
