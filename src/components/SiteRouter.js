@@ -39,7 +39,9 @@ const SiteRouter = (props) => {
         props.getAssets();
 
         // load firebase after 3s of component mount
-        setTimeout(() => !props.firebaseApp && props.loadFirebase(), 3000);
+        setTimeout(() => props.firebaseApp === null ? props.loadFirebase() : null, 3000);
+        // setTimeout(() => props.firebaseApp && console.log(props.firebaseApp), 3000);
+        console.log("fire below", props.firebaseApp);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

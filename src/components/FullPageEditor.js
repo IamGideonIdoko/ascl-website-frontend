@@ -9,7 +9,6 @@ const CustomOption = props => {
 
     const addASCL = () => {
         const { editorState, onChange } = props;
-        console.log(Modifier);
         const contentState = Modifier.replaceText(
             editorState.getCurrentContent(),
             editorState.getSelection(),
