@@ -25,3 +25,13 @@ export const GET_ASSETS = "GET_ASSETS";
 export const ADD_ASSET = "ADD_ASSET";
 export const DELETE_ASSET = "DELETE_ASSET";
 export const ASSETS_LOADING = "ASSETS_LOADING";
+
+// pages
+export const  GET_PAGES = 'GET_PAGES';
+export const  ADD_PAGE = 'ADD_PAGE';
+export const  DELETE_PAGE = 'DELETE_PAGE';
+export const  UPDATE_PAGE = 'UPDATE_PAGE';
+export const PAGES_LOADING = 'PAGES_LOADING';
+export const RESET_PAGE_CREATED = 'RESET_PAGE_CREATED';
+export const RESET_PAGE_UPDATED = 'RESET_PAGE_UPDATED';
+export const RESET_PAGE_DELETED = 'RESET_PAGE_DELETED';
