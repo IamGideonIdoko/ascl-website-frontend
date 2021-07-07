@@ -162,6 +162,12 @@ input:focus {
   outline-offset: 1px;
 }
 
+button:focus {
+  outline: none !important;
+  /* outline: 1px solid var(--secondary-color) !important; */
+  /* outline-offset: 1px !important; */
+}
+
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */

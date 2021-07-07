@@ -13,6 +13,7 @@ const ManagePage = (props) => {
         setCreatePageType] = useState('');
     const [editPageType,
         setEditPageType] = useState('');
+    
 
     const handleCreatePageTypeSelectChange = e => {
         setCreatePageType(e.target.value);

@@ -6,7 +6,7 @@ import { returnErrors } from './errorActions';
 
 export const getAssets = () => dispatch => {
 	dispatch(setAssetsLoading());
-	axios.get(`${config.BEHOST}/api/assets`)
+	axios.get(`${config.BEHOST}/api/assets/getallassets`)
 		.then(res => dispatch({
 			type: types.GET_ASSETS,
 			payload: res.data
