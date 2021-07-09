@@ -24,6 +24,7 @@ import {connect} from 'react-redux';
 import {useEffect, Fragment} from 'react';
 import {loadFirebase} from './../reduxstore/actions/firebaseActions';
 import { getAssets } from './../reduxstore/actions/assetActions';
+import ScrollToTop from './ScrollToTop';
 
 export const AdmRedirect = () => {
     useHistory().push("/adm/profile");
@@ -46,6 +47,8 @@ const SiteRouter = (props) => {
 
     return (
         <Router>
+            {/* cause page to scroll to top on route change */}
+            <ScrollToTop />
             <div>
                 {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
