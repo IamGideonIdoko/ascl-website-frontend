@@ -48,18 +48,25 @@ const FullPageEditor = (props) => {
     const [editorState,
         setEditorState] = useState(EditorState.createEmpty());
 
+    const [isCreating, setIsCreating] = useState(false);
+
     if (purpose === "page-create") {
         if (isPageCreated) {
             Swal
                 .fire({title: "", text: `Post successfully created.`, icon: "success"})
                 .then(res => {
                     setSelectedType('');
+                    setIsCreating(false);
                 });
             resetPageCreated();
         }
 
         if (errorMsg.errorType && errorMsg.errorType === "TITLE_ALREADY_EXISTS") {
-            Swal.fire({title: "Page already exists.", text: `A page with the same title "${editorTitle}" already exists."`, icon: "error"});
+            Swal
+                .fire({title: "Page already exists.", text: `A page with the same title "${editorTitle}" already exists."`, icon: "error"})
+                .then(res => {
+                    setIsCreating(false);
+                });
             clearErrors();
         }
 
@@ -91,7 +98,9 @@ const FullPageEditor = (props) => {
     const handleEditorBtnClick = e => {
         if (purpose === 'page-create') {
             console.log('handle page creation');
+            setIsCreating(true);
             if (!editorTitle || !editorSlug || !editorCoverImg || !editorBody) {
+                setIsCreating(false);
                 Swal.fire({title: "", text: `The "Title", "Slug", "Cover Image", and "Body" fields must be provided.`, icon: "error"});
             } else {
                 Swal
@@ -108,10 +117,10 @@ const FullPageEditor = (props) => {
                                 author_username: currentUsername,
                                 category: selectedType
                             };
-                            console.log(newPage);
                             addPage(newPage);
                         } else if (result.isDenied) {
-                            // Swal.fire('Page Not Created', '', 'info')
+                            setSelectedType('');
+                            Swal.fire('Page Not Created', '', 'info')
                         }
                     })
             }
@@ -168,11 +177,18 @@ const FullPageEditor = (props) => {
             </div>
 
             <div className="full-page-editor-buttons">
-                <button className="full-page-editor-btn-1" onClick={handleEditorBtnClick}>{purpose === 'page-create'
+                <button
+                    className="full-page-editor-btn-1"
+                    disabled={purpose === 'page-create'
+                    ? isCreating
+                    : false}
+                    onClick={handleEditorBtnClick}>{((purpose === 'page-create') && !isCreating)
                         ? 'Create'
-                        : purpose === 'page-edit'
-                            ? 'Edit'
-                            : ''} {selectedType
+                        : ((purpose === 'page-create') && isCreating)
+                            ? 'Attempting to Create...'
+                            : purpose === 'page-edit'
+                                ? 'Edit'
+                                : ''} {selectedType
                         .replace('-', ' ')
                         .toUpperCase()}</button>
                 <button className="full-page-editor-btn-2" onClick={() => setSelectedType('')}>Cancel</button>
