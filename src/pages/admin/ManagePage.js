@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {logout} from './../../reduxstore/actions/authActions';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
 import FullPageEditor from '../../components/FullPageEditor';
+import Select from 'react-select';
+import AssetView from '../../components/AssetView';
+import moment from 'moment';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import '../../styles/AdminManagePage.css'
-import AssetView from '../../components/AssetView';
 
 const ManagePage = (props) => {
 
@@ -14,8 +16,8 @@ const ManagePage = (props) => {
     const [editPageType,
         setEditPageType] = useState('');
 
-    console.log(editPageType);
-    
+    const [selectedPage,
+        setSelectedPage] = useState(null);
 
     const handleCreatePageTypeSelectChange = e => {
         setCreatePageType(e.target.value);
@@ -25,6 +27,22 @@ const ManagePage = (props) => {
         setEditPageType(e.target.value);
     }
 
+    const handlePageSelectInputChange = option => {
+        console.log("page select change");
+        setSelectedPage(option ? option : null);
+    }
+
+    console.log("selected Page: ", selectedPage);
+
+    console.log("pages", props.pages);
+    const requiredPages = props
+        .pages
+        .filter(page => page.category === editPageType);
+    console.log("requiredPages: ", requiredPages);
+    console.log(requiredPages
+        ? true
+        : false)
+
     return (
         <WithAdminAuth>
             {props.isAuthenticated && <div className="ap-main-section">
@@ -33,7 +51,7 @@ const ManagePage = (props) => {
                 </div>
 
                 <div className="ap-box">
-                    <AssetView />
+                    <AssetView/>
                 </div>
 
                 <div className="ap-box">
@@ -59,7 +77,10 @@ const ManagePage = (props) => {
                         <h4>Create a new {createPageType
                                 .replace('-', ' ')
                                 .toUpperCase()}&nbsp;page</h4>
-                        <FullPageEditor setSelectedType={setCreatePageType} selectedType={createPageType} purpose={"page-create"}  />
+                        <FullPageEditor
+                            setSelectedType={setCreatePageType}
+                            selectedType={createPageType}
+                            purpose={"page-create"}/>
                     </div>}
 
                 </div>
@@ -84,10 +105,45 @@ const ManagePage = (props) => {
                     </div>
 
                     {editPageType && <div className="edit-page-container">
-                        <h4>Edit {editPageType
+                        {/* <h4>Edit {editPageType
                                 .replace('-', ' ')
-                                .toUpperCase()}&nbsp;page</h4>
-                        <FullPageEditor setSelectedType={setEditPageType} selectedType={editPageType} purpose={"page-edit"}  />
+                                .toUpperCase()}&nbsp;page</h4> */}
+
+                        {props.isLoaded && <div className="edit-page-container">
+                            <h4>Select the {editPageType.replace('-', ' ')}&nbsp;page.</h4>
+                            <div className="page-select-wrapper">
+                                <Select
+                                    className="asset-form-select"
+                                    defaultValue={selectedPage}
+                                    value={selectedPage}
+                                    options={requiredPages.map(({title, _id, created_at}) => ({
+                                    value: _id,
+                                    label: `${title} (${moment(created_at).format('MMM DD, YYYY')})`, title
+                                }))}
+                                    onChange={handlePageSelectInputChange}
+                                    isClearable={true}
+                                    isSearchable={true}
+                                    placeholder={`Select a ${editPageType} page...`}
+                                    styles={{
+                                    menu: (provided, state) => ({backgroundColor: "var(--primary-color-light)", border: "1px solid var(--primary-color"}),
+                                    option: (styles, {isSelected}) => {
+                                        return {
+                                            ...styles,
+                                            backgroundColor: isSelected
+                                                ? 'var(--secondary-color) !important'
+                                                : null
+                                        }
+                                    }
+                                }}/>
+                            </div>
+                            <div className="edit-page-action-btns">
+                                <button className="page-edit-btn page-btn">Edit</button>
+                                <button className="page-delete-btn page-btn">Delete</button>
+                                <button className="page-cancel-btn page-btn" onClick={() => setEditPageType('')}>Cancel</button>
+                            </div>
+                        </div>
+}
+                        {/* <FullPageEditor setSelectedType={setEditPageType} selectedType={editPageType} purpose={"page-edit"}  /> */}
                     </div>}
 
                 </div>
@@ -97,6 +153,6 @@ const ManagePage = (props) => {
     )
 }
 
-const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated});
+const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated, pages: state.page.pages, isLoaded: state.page.isLoaded});
 
 export default connect(mapStateToProps, {logout})(ManagePage);

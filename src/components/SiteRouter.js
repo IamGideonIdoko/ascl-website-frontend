@@ -24,6 +24,7 @@ import {connect} from 'react-redux';
 import {useEffect, Fragment} from 'react';
 import {loadFirebase} from './../reduxstore/actions/firebaseActions';
 import { getAssets } from './../reduxstore/actions/assetActions';
+import { getPages } from './../reduxstore/actions/pageActions';
 import ScrollToTop from './ScrollToTop';
 
 export const AdmRedirect = () => {
@@ -38,6 +39,7 @@ const SiteRouter = (props) => {
     useEffect(() => {
         props.loadUser();
         props.getAssets();
+        props.getPages();
 
         // load firebase after 3s of component mount
         setTimeout(() => props.firebaseApp === null ? props.loadFirebase() : null, 3000);
@@ -130,4 +132,4 @@ const SiteRouter = (props) => {
 
 const mapStateToProps = (state, ownProps) => ({firebaseApp: state.fire.firebaseApp})
 
-export default connect(mapStateToProps, {loadUser, loadFirebase, getAssets})(SiteRouter);
+export default connect(mapStateToProps, {loadUser, loadFirebase, getAssets, getPages})(SiteRouter);
