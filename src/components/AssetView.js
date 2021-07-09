@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import Select from 'react-select';
 import '../styles/AssetView.css';
 import {connect} from 'react-redux';

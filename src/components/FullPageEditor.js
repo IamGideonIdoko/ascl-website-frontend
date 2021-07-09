@@ -35,6 +35,8 @@ const FullPageEditor = (props) => {
     const [editorBody,
         setEditorBody] = useState('');
 
+    console.log(editorBody);
+
     const [editorState,
         setEditorState] = useState(EditorState.createEmpty());
 
