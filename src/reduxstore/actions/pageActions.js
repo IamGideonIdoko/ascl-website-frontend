@@ -7,7 +7,7 @@ import { returnErrors } from './errorActions';
 
 export const getPages = () => dispatch => {
 	dispatch(setPagesLoading());
-	axios.get(`${config.BEHOST}/api/blogpages`)
+	axios.get(`${config.BEHOST}/api/pages/fetchallpages`)
 		.then(res => dispatch({
 			type: types.GET_PAGES,
 			payload: res.data
@@ -17,7 +17,7 @@ export const getPages = () => dispatch => {
 
 export const addPage = (newPage) => (dispatch, getState) => {
 	const requestBody = JSON.stringify(newPage);
-	axios.page(`${config.BEHOST}/api/blogpages`, requestBody, tokenConfig(getState))
+	axios.post(`${config.BEHOST}/api/pages/createnewpage`, requestBody, tokenConfig(getState))
 		.then(res => {
 			dispatch({
 				type: types.ADD_PAGE,
@@ -29,7 +29,7 @@ export const addPage = (newPage) => (dispatch, getState) => {
 
 export const updatePage = (pageId, updatedPage) => (dispatch, getState) => {
 	const requestBody = JSON.stringify(updatedPage);
-	axios.put(`${config.BEHOST}/api/blogpages/${pageId}`, requestBody, tokenConfig(getState))
+	axios.put(`${config.BEHOST}/api/pages/updateonepage/${pageId}`, requestBody, tokenConfig(getState))
 		.then(res => {
 			dispatch({
 				type: types.UPDATE_PAGE,
@@ -42,7 +42,7 @@ export const updatePage = (pageId, updatedPage) => (dispatch, getState) => {
 
 export const deletePage = (pageId) => (dispatch, getState) => {
 
-	axios.delete(`${config.BEHOST}/api/blogpages/${pageId}`, tokenConfig(getState))
+	axios.delete(`${config.BEHOST}/api/pages/deleteonepage/${pageId}`, tokenConfig(getState))
 		.then(res => {
 			dispatch({
 				type: types.DELETE_PAGE,

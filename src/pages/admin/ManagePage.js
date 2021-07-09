@@ -59,25 +59,36 @@ const ManagePage = (props) => {
                         <h4>Create a new {createPageType
                                 .replace('-', ' ')
                                 .toUpperCase()}&nbsp;page</h4>
-                        <FullPageEditor setSelectedType={setCreatePageType} selectedType={createPageType}  />
+                        <FullPageEditor setSelectedType={setCreatePageType} selectedType={createPageType} purpose={"page-create"}  />
                     </div>}
 
                 </div>
 
                 <div className="ap-box">
                     <h3>Edit or Delete Page</h3>
-                    <p>
+                    <div>
                         <select
                             name="edit-page-type-select"
                             id="edit-page-type-select"
                             onChange={handleEditPageTypeSelectChange}
-                            className="page-type-select">
+                            className="page-type-select"
+                            value={editPageType}
+                            disabled={editPageType
+                            ? true
+                            : false}>
                             <option value="">--select page type--</option>
                             <option value="news">News</option>
                             <option value="press-release">Press Release</option>
                         </select>
 
-                    </p>
+                    </div>
+
+                    {editPageType && <div className="edit-page-container">
+                        <h4>Edit {editPageType
+                                .replace('-', ' ')
+                                .toUpperCase()}&nbsp;page</h4>
+                        <FullPageEditor setSelectedType={setEditPageType} selectedType={editPageType} purpose={"page-edit"}  />
+                    </div>}
 
                 </div>
 
