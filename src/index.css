@@ -16,6 +16,8 @@
 :root {
   --primary-color: #016867;
   --secondary-color: #82C017;
+  --tertiary-color: #36ACF6;
+  --teriary-color-2: #FD5400;
   --font-color-light: #fff;
   --font-color-dark: #000;
   --font-color-lighter: #e1e1ff;
@@ -57,12 +59,12 @@ body {
 }
 
 ::-moz-selection {
-  background-color: #FD5400;
+  background-color: var(--tertiary-color);
   color: white;
 }
 
 ::selection {
-  background-color: #FD5400;
+  background-color: var(--tertiary-color);
   color: white;
 }
 

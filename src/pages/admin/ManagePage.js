@@ -66,7 +66,8 @@ const ManagePage = (props) => {
         setIsDeleting(true);
         if (!selectedPage) {
             // no page is selected
-            Swal.fire({title: "No page selected.", text: `Please select a page.`, icon: "error"})
+            setIsDeleting(false);
+            Swal.fire({title: "No page selected.", text: `Please select a page.`, icon: "error"});
         } else {
             // page is selected
             Swal

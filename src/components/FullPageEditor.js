@@ -153,6 +153,7 @@ const FullPageEditor = (props) => {
                             addPage(newPage);
                         } else if (result.isDenied) {
                             setSelectedType('');
+                            setIsCreating(false);
                             Swal.fire('Page Not Created', '', 'info')
                         }
                     })
@@ -199,6 +200,7 @@ const FullPageEditor = (props) => {
             setShouldEditPage(false);
             setSelectedType('');
             setSelectedPage(null);
+            setIsUpdating(false);
         }
     }
 
