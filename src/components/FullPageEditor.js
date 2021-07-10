@@ -254,7 +254,9 @@ const FullPageEditor = (props) => {
                     className="full-page-editor-btn-1"
                     disabled={purpose === 'page-create'
                     ? isCreating
-                    : false}
+                    : purpose === 'page-edit'
+                        ? isUpdating
+                        : false}
                     onClick={handleEditorBtnClick}>{((purpose === 'page-create') && !isCreating)
                         ? 'Create'
                         : ((purpose === 'page-create') && isCreating)

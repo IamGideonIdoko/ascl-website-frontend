@@ -25,6 +25,8 @@ const ManagePage = (props) => {
     const [shouldEditPage,
         setShouldEditPage] = useState(false);
 
+    const [isDeleting, setIsDeleting] = useState(false);
+
     const handleCreatePageTypeSelectChange = e => {
         setCreatePageType(e.target.value);
     }
@@ -44,7 +46,6 @@ const ManagePage = (props) => {
         setSelectedPage(null);
     }
 
-
     const requiredPages = props
         .pages
         .filter(page => page.category === editPageType);
@@ -62,13 +63,35 @@ const ManagePage = (props) => {
     }
 
     const handlePageDelete = () => {
+        setIsDeleting(true);
         if (!selectedPage) {
             // no page is selected
             Swal.fire({title: "No page selected.", text: `Please select a page.`, icon: "error"})
         } else {
             // page is selected
+            Swal
+                .fire({title: 'Do you want to delete?', showDenyButton: true, showCancelButton: true, confirmButtonText: `Delete`, denyButtonText: `Don't delete`})
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        props.deletePage(selectedPage.value);
+                    } else if (result.isDenied) {
+                        setSelectedPage(null);
+                        Swal.fire('Page Not Deleted', '', 'info')
+                    }
+                })
         }
 
+    }
+
+    if (props.isPageDeleted) {
+        Swal
+            .fire({title: "", text: `Post successfully updated.`, icon: "success"})
+            .then(res => {;
+                setSelectedPage(null);
+                setEditPageType('');
+                setIsDeleting(false);
+            });
+        props.resetPageDeleted();
     }
 
     return (
@@ -164,7 +187,7 @@ const ManagePage = (props) => {
                             </div>
                             <div className="edit-page-action-btns">
                                 <button className="page-edit-btn page-btn" onClick={handlePageEdit}>Edit</button>
-                                <button className="page-delete-btn page-btn" onClick={handlePageDelete}>Delete</button>
+                                <button className="page-delete-btn page-btn" disabled={isDeleting} onClick={handlePageDelete}>{isDeleting ? 'Deleting...' : 'Delete'}</button>
                                 <button className="page-cancel-btn page-btn" onClick={handlePageCancelBtn}>Cancel</button>
                             </div>
                         </div>
@@ -180,8 +203,7 @@ const ManagePage = (props) => {
                             setSelectedPageInfo={setSelectedPageInfo}
                             setShouldEditPage={setShouldEditPage}
                             setSelectedPage={setSelectedPage}
-                            selectedPage={selectedPage}
-                            />}
+                            selectedPage={selectedPage}/>}
                     </div>}
 
                 </div>
