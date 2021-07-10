@@ -9,6 +9,7 @@ import FAQs from '../pages/FAQs';
 import Gallery from '../pages/Gallery';
 import ManagementProfile from '../pages/ManagementProfile';
 import News from '../pages/News';
+import NewsPage from '../pages/NewsPage';
 import PressReleases from '../pages/PressReleases';
 import Products from '../pages/Products';
 import Login from '../pages/Login';
@@ -105,6 +106,9 @@ const SiteRouter = (props) => {
                     </Route>
                     <Route exact path="/news">
                         <News/>
+                    </Route>
+                    <Route exact path="/news/page/:pageno">
+                        <NewsPage />
                     </Route>
                     <Route exact path="/press-releases">
                         <PressReleases/>
