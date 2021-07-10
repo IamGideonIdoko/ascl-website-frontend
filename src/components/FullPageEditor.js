@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import {Editor} from 'react-draft-wysiwyg';
-import {EditorState, convertToRaw, Modifier} from 'draft-js';
+import {EditorState, ContentState, convertToRaw, Modifier} from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 import {strToSlug} from './../helper';
-import {addPage, resetPageCreated} from './../reduxstore/actions/pageActions';
+import {addPage, updatePage, resetPageCreated, resetPageUpdated} from './../reduxstore/actions/pageActions';
 import {clearErrors} from '../reduxstore/actions/errorActions';
 import {connect} from 'react-redux';
 import Swal from 'sweetalert2';
@@ -33,22 +34,43 @@ const FullPageEditor = (props) => {
         isPageCreated,
         resetPageCreated,
         clearErrors,
-        errorMsg
+        errorMsg,
+        selectedPageInfo,
+        setSelectedPageInfo,
+        setShouldEditPage,
+        setSelectedPage,
+        updatePage,
+        selectedPage,
+        resetPageUpdated,
+        isPageUpdated
     } = props;
 
     const [editorTitle,
-        setEditorTitle] = useState('');
+        setEditorTitle] = useState(selectedPageInfo
+        ? selectedPageInfo.title
+        : '');
     const [editorSlug,
-        setEditorSlug] = useState('');
+        setEditorSlug] = useState(selectedPageInfo
+        ? selectedPageInfo.slug
+        : '');
     const [editorCoverImg,
-        setEditorCoverImg] = useState('');
+        setEditorCoverImg] = useState(selectedPageInfo
+        ? selectedPageInfo.cover_img
+        : '');
     const [editorBody,
-        setEditorBody] = useState('');
+        setEditorBody] = useState(selectedPageInfo
+        ? selectedPageInfo.body
+        : '');
 
     const [editorState,
-        setEditorState] = useState(EditorState.createEmpty());
+        setEditorState] = useState(selectedPageInfo
+        ? EditorState.createWithContent(ContentState.createFromBlockArray(htmlToDraft(selectedPageInfo.body).contentBlocks))
+        : EditorState.createEmpty());
 
-    const [isCreating, setIsCreating] = useState(false);
+    const [isCreating,
+        setIsCreating] = useState(false);
+    const [isUpdating,
+        setIsUpdating] = useState(false);
 
     if (purpose === "page-create") {
         if (isPageCreated) {
@@ -70,6 +92,20 @@ const FullPageEditor = (props) => {
             clearErrors();
         }
 
+    }
+
+    if (purpose === "page-edit") {
+        if (isPageUpdated) {
+            Swal
+                .fire({title: "", text: `Post successfully updated.`, icon: "success"})
+                .then(res => {;
+                    setShouldEditPage(false);
+                    setSelectedType('');
+                    setSelectedPage(null);
+                    setIsUpdating(false);
+                });
+            resetPageUpdated();
+        }
     }
 
     const handleInputChange = e => {
@@ -97,7 +133,6 @@ const FullPageEditor = (props) => {
 
     const handleEditorBtnClick = e => {
         if (purpose === 'page-create') {
-            console.log('handle page creation');
             setIsCreating(true);
             if (!editorTitle || !editorSlug || !editorCoverImg || !editorBody) {
                 setIsCreating(false);
@@ -106,9 +141,7 @@ const FullPageEditor = (props) => {
                 Swal
                     .fire({title: 'Do you want to create?', showDenyButton: true, showCancelButton: true, confirmButtonText: `Create`, denyButtonText: `Don't create`})
                     .then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
-                            // Swal.fire('Created!', '', 'success')
                             const newPage = {
                                 title: editorTitle,
                                 slug: editorSlug,
@@ -126,7 +159,46 @@ const FullPageEditor = (props) => {
             }
 
         } else if (purpose === 'page-edit') {
-            console.log('handle page edit');
+            setIsUpdating(true);
+            if (!editorTitle || !editorSlug || !editorCoverImg || !editorBody) {
+                setIsUpdating(false);
+                Swal.fire({title: "", text: `The "Title", "Slug", "Cover Image", and "Body" fields must be provided.`, icon: "error"});
+            } else {
+                Swal
+                    .fire({title: 'Do you really want to edit?', showDenyButton: true, showCancelButton: true, confirmButtonText: `Edit`, denyButtonText: `Don't edit`})
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            const updatedPage = {
+                                title: editorTitle,
+                                slug: editorSlug,
+                                cover_img: editorCoverImg,
+                                body: editorBody,
+                                author_username: currentUsername,
+                                category: selectedType
+                            };
+
+                            updatePage(selectedPage.value, updatedPage);
+
+                        } else if (result.isDenied) {
+                            setSelectedType('');
+                            setSelectedPageInfo({});
+                            setShouldEditPage(false);
+                            setSelectedPage(null);
+                            Swal.fire('Page Not Edited', '', 'info')
+                        }
+                    })
+            }
+        }
+    }
+
+    const handleEditorCancelBtnClick = () => {
+        if (purpose === 'page-create') {
+            setSelectedType('');
+        } else if (purpose === 'page-edit') {
+            setSelectedPageInfo({});
+            setShouldEditPage(false);
+            setSelectedType('');
+            setSelectedPage(null);
         }
     }
 
@@ -173,6 +245,7 @@ const FullPageEditor = (props) => {
                     wrapperClassName="body-editor-wrapper"
                     editorClassName="body-editor-input"
                     onEditorStateChange={handleBodyEditorChange}
+                    placeholder={"Start typing..."}
                     toolbarCustomButtons={[< CustomOption />]}/>
             </div>
 
@@ -185,19 +258,21 @@ const FullPageEditor = (props) => {
                     onClick={handleEditorBtnClick}>{((purpose === 'page-create') && !isCreating)
                         ? 'Create'
                         : ((purpose === 'page-create') && isCreating)
-                            ? 'Attempting to Create...'
-                            : purpose === 'page-edit'
+                            ? 'Creating...'
+                            : ((purpose === 'page-edit') && !isUpdating)
                                 ? 'Edit'
-                                : ''} {selectedType
-                        .replace('-', ' ')
-                        .toUpperCase()}</button>
-                <button className="full-page-editor-btn-2" onClick={() => setSelectedType('')}>Cancel</button>
+                                : ((purpose === 'page-edit') && isUpdating)
+                                    ? 'Editing...'
+                                    : ''} {selectedType.replace('-', ' ')}</button>
+                <button
+                    className="page-cancel-btn page-btn"
+                    onClick={handleEditorCancelBtnClick}>Cancel</button>
             </div>
 
         </div>
     );
 }
 
-const mapStateToProps = (state, ownProps) => ({currentUsername: state.auth.user.username, isPageCreated: state.page.isPageCreated, errorMsg: state.error.message});
+const mapStateToProps = (state, ownProps) => ({currentUsername: state.auth.user.username, isPageCreated: state.page.isPageCreated, errorMsg: state.error.message, isPageUpdated: state.page.isPageUpdated});
 
-export default connect(mapStateToProps, {addPage, resetPageCreated, clearErrors})(FullPageEditor);
+export default connect(mapStateToProps, {addPage, updatePage, resetPageCreated, resetPageUpdated, clearErrors})(FullPageEditor);

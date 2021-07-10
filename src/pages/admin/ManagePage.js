@@ -1,11 +1,12 @@
 import {useState} from 'react';
 import {connect} from 'react-redux';
-import {logout} from './../../reduxstore/actions/authActions';
+import {deletePage, resetPageDeleted} from './../../reduxstore/actions/pageActions';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
 import FullPageEditor from '../../components/FullPageEditor';
 import Select from 'react-select';
 import AssetView from '../../components/AssetView';
 import moment from 'moment';
+import Swal from 'sweetalert2';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import '../../styles/AdminManagePage.css'
 
@@ -19,6 +20,11 @@ const ManagePage = (props) => {
     const [selectedPage,
         setSelectedPage] = useState(null);
 
+    const [selectedPageInfo,
+        setSelectedPageInfo] = useState({});
+    const [shouldEditPage,
+        setShouldEditPage] = useState(false);
+
     const handleCreatePageTypeSelectChange = e => {
         setCreatePageType(e.target.value);
     }
@@ -28,20 +34,42 @@ const ManagePage = (props) => {
     }
 
     const handlePageSelectInputChange = option => {
-        console.log("page select change");
-        setSelectedPage(option ? option : null);
+        setSelectedPage(option
+            ? option
+            : null);
     }
 
-    console.log("selected Page: ", selectedPage);
+    const handlePageCancelBtn = e => {
+        setEditPageType('');
+        setSelectedPage(null);
+    }
 
-    console.log("pages", props.pages);
+
     const requiredPages = props
         .pages
         .filter(page => page.category === editPageType);
-    console.log("requiredPages: ", requiredPages);
-    console.log(requiredPages
-        ? true
-        : false)
+
+    const handlePageEdit = e => {
+        if (!selectedPage) {
+            // no page is selected
+            Swal.fire({title: "No page selected.", text: `Please select a page.`, icon: "error"})
+        } else {
+            // page is selected
+            const fullSelectedPage = requiredPages.filter(x => x._id === selectedPage.value)[0];
+            setSelectedPageInfo(fullSelectedPage);
+            setShouldEditPage(true);
+        }
+    }
+
+    const handlePageDelete = () => {
+        if (!selectedPage) {
+            // no page is selected
+            Swal.fire({title: "No page selected.", text: `Please select a page.`, icon: "error"})
+        } else {
+            // page is selected
+        }
+
+    }
 
     return (
         <WithAdminAuth>
@@ -105,11 +133,8 @@ const ManagePage = (props) => {
                     </div>
 
                     {editPageType && <div className="edit-page-container">
-                        {/* <h4>Edit {editPageType
-                                .replace('-', ' ')
-                                .toUpperCase()}&nbsp;page</h4> */}
 
-                        {props.isLoaded && <div className="edit-page-container">
+                        {(props.isLoaded && !shouldEditPage) && <div className="edit-page-container">
                             <h4>Select the {editPageType.replace('-', ' ')}&nbsp;page.</h4>
                             <div className="page-select-wrapper">
                                 <Select
@@ -118,7 +143,8 @@ const ManagePage = (props) => {
                                     value={selectedPage}
                                     options={requiredPages.map(({title, _id, created_at}) => ({
                                     value: _id,
-                                    label: `${title} (${moment(created_at).format('MMM DD, YYYY')})`, title
+                                    label: `${title} (${moment(created_at).format('MMM DD, YYYY')})`,
+                                    title
                                 }))}
                                     onChange={handlePageSelectInputChange}
                                     isClearable={true}
@@ -137,13 +163,25 @@ const ManagePage = (props) => {
                                 }}/>
                             </div>
                             <div className="edit-page-action-btns">
-                                <button className="page-edit-btn page-btn">Edit</button>
-                                <button className="page-delete-btn page-btn">Delete</button>
-                                <button className="page-cancel-btn page-btn" onClick={() => setEditPageType('')}>Cancel</button>
+                                <button className="page-edit-btn page-btn" onClick={handlePageEdit}>Edit</button>
+                                <button className="page-delete-btn page-btn" onClick={handlePageDelete}>Delete</button>
+                                <button className="page-cancel-btn page-btn" onClick={handlePageCancelBtn}>Cancel</button>
                             </div>
                         </div>
 }
-                        {/* <FullPageEditor setSelectedType={setEditPageType} selectedType={editPageType} purpose={"page-edit"}  /> */}
+
+                        {shouldEditPage && <h4>Edit "{selectedPageInfo.title}".</h4>}
+
+                        {shouldEditPage && <FullPageEditor
+                            setSelectedType={setEditPageType}
+                            selectedType={editPageType}
+                            purpose={"page-edit"}
+                            selectedPageInfo={selectedPageInfo}
+                            setSelectedPageInfo={setSelectedPageInfo}
+                            setShouldEditPage={setShouldEditPage}
+                            setSelectedPage={setSelectedPage}
+                            selectedPage={selectedPage}
+                            />}
                     </div>}
 
                 </div>
@@ -153,6 +191,6 @@ const ManagePage = (props) => {
     )
 }
 
-const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated, pages: state.page.pages, isLoaded: state.page.isLoaded});
+const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated, pages: state.page.pages, isLoaded: state.page.isLoaded, isPageDeleted: state.page.isPageDeleted});
 
-export default connect(mapStateToProps, {logout})(ManagePage);
+export default connect(mapStateToProps, {deletePage, resetPageDeleted})(ManagePage);
