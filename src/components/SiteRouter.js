@@ -10,7 +10,10 @@ import Gallery from '../pages/Gallery';
 import ManagementProfile from '../pages/ManagementProfile';
 import News from '../pages/News';
 import NewsPage from '../pages/NewsPage';
+import NewsSingle from '../pages/NewsSingle';
 import PressReleases from '../pages/PressReleases';
+import PressReleasesSingle from './../pages/PressReleasesSingle';
+import PressReleasesPage from './../pages/PressReleasesPage';
 import Products from '../pages/Products';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
@@ -107,11 +110,20 @@ const SiteRouter = (props) => {
                     <Route exact path="/news">
                         <News/>
                     </Route>
+                    <Route exact path="/news/:slug">
+                        <NewsSingle />
+                    </Route>
                     <Route exact path="/news/page/:pageno">
                         <NewsPage />
                     </Route>
                     <Route exact path="/press-releases">
-                        <PressReleases/>
+                        <PressReleases />
+                    </Route>
+                    <Route exact path="/press-releases/:slug">
+                        <PressReleasesSingle />
+                    </Route>
+                    <Route exact path="/press-releases/page/:pageno">
+                        <PressReleasesPage />
                     </Route>
                     <Route exact path="/products">
                         <Products/>

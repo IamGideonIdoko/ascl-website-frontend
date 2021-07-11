@@ -33,57 +33,59 @@ function NewsPage(props) {
                 <p>Find below News from Ajaokuta Steel Company:</p>
                 {!props.isLoaded
                     ? <div>Loading</div>
-                    : <div>
-                        <AllPageRender
-                            pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)}/>
-                        <div>Page {`${currentPageNumber} of ${numberOfPages}`}</div>
-                        {(allNewsPages.length > config.numberOfNewsPerPage)
-                            ? <div className="pagination-wrapper">
+                    : (!currentPageNumber || currentPageNumber > numberOfPages)
+                        ? <div>PAGE DOES NOT EXIST</div>
+                        : <div>
+                            <AllPageRender
+                                pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)} category="news"/>
+                            <div>Page {`${currentPageNumber} of ${numberOfPages}`}</div>
+                            {(allNewsPages.length > config.numberOfNewsPerPage)
+                                ? <div className="pagination-wrapper">
 
-                                    {(currentPageNumber === 2 && numberOfPages !== 2)
-                                        ? <div className="pagination">
-                                                <span>
-                                                    <Link to={`/news`}>← Previous Page</Link>
-                                                </span>
-                                                <span>
-                                                    <Link to={`/blog/page/${currentPageNumber + 1}`}>Next Page →</Link>
-                                                </span>
-                                            </div>
-                                        : (currentPageNumber === 2 && numberOfPages === 2)
+                                        {(currentPageNumber === 2 && numberOfPages !== 2)
                                             ? <div className="pagination">
                                                     <span>
                                                         <Link to={`/news`}>← Previous Page</Link>
                                                     </span>
+                                                    <span>
+                                                        <Link to={`/news/page/${currentPageNumber + 1}`}>Next Page →</Link>
+                                                    </span>
                                                 </div>
-
-                                            : (currentPageNumber === 1)
-                                                ? <div className={`pagination pgn-flex-end`}>
+                                            : (currentPageNumber === 2 && numberOfPages === 2)
+                                                ? <div className="pagination">
                                                         <span>
-                                                            <Link to={`/news/page/${currentPageNumber + 1}`}>Next Page →</Link>
+                                                            <Link to={`/news`}>← Previous Page</Link>
                                                         </span>
                                                     </div>
 
-                                                : (currentPageNumber === numberOfPages)
-                                                    ? <div className="pagination">
+                                                : (currentPageNumber === 1)
+                                                    ? <div className={`pagination pgn-flex-end`}>
                                                             <span>
-                                                                <Link to={`/news/page/${currentPageNumber - 1}`}>← Previous Page</Link>
+                                                                <Link to={`/news/page/${currentPageNumber + 1}`}>Next Page →</Link>
                                                             </span>
                                                         </div>
 
-                                                    : <div className="pagination">
-                                                        <span>
-                                                            <Link to={`/news/page/${currentPageNumber - 1}`}>← Previous Page</Link>
-                                                        </span>
-                                                        <span>
-                                                            <Link to={`/blog/page/${currentPageNumber + 1}`}>Next Page →</Link>
-                                                        </span>
-                                                    </div>
+                                                    : (currentPageNumber === numberOfPages)
+                                                        ? <div className="pagination">
+                                                                <span>
+                                                                    <Link to={`/news/page/${currentPageNumber - 1}`}>← Previous Page</Link>
+                                                                </span>
+                                                            </div>
+
+                                                        : <div className="pagination">
+                                                            <span>
+                                                                <Link to={`/news/page/${currentPageNumber - 1}`}>← Previous Page</Link>
+                                                            </span>
+                                                            <span>
+                                                                <Link to={`/news/page/${currentPageNumber + 1}`}>Next Page →</Link>
+                                                            </span>
+                                                        </div>
 }
-                                </div>
-                            : null
+                                    </div>
+                                : null
 }
 
-                    </div>}
+                        </div>}
             </WithSidebar>
         </MainLayout>
     )

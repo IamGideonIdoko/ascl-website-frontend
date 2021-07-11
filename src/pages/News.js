@@ -30,7 +30,7 @@ function News(props) {
                     ? <div>Loading</div>
                     : <div>
                         <AllPageRender
-                            pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)}/>
+                            pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)} category="news" />
                         <div>Page {`${currentPageNumber} of ${numberOfPages}`}</div>
                         {(allNewsPages.length > config.numberOfNewsPerPage)
                             ? <div className="pagination-wrapper">
