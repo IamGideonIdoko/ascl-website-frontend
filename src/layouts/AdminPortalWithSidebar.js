@@ -25,8 +25,8 @@ const AdminPortalWithSidebar = (props) => {
                                 <li><Link to="/adm/manage-page">Manage Page</Link></li>
                                 <li><Link to="/adm/manage-file-upload">Manage File Upload</Link></li>
                                 <li><Link to="/adm/manage-gallery">Manage Gallery</Link></li>
-                                <li><Link to="#">Manage Mgnt. Profile</Link></li>
-                                <li><Link to="#">Manage FAQs</Link></li>
+                                <li><Link to="/adm/manage-mgmt-profile">Manage Mgmt. Profile</Link></li>
+                                <li><Link to="/adm/manage-faq">Manage FAQ</Link></li>
                                 <li><Link to="/adm/manage-access">Manage Access</Link></li>
                                 <li><Link to="#">Log out</Link></li>
                             </ul>

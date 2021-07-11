@@ -27,14 +27,16 @@ import {loadUser} from './../reduxstore/actions/authActions';
 import {connect} from 'react-redux';
 import {useEffect, Fragment} from 'react';
 import {loadFirebase} from './../reduxstore/actions/firebaseActions';
-import { getAssets } from './../reduxstore/actions/assetActions';
-import { getPages } from './../reduxstore/actions/pageActions';
+import {getAssets} from './../reduxstore/actions/assetActions';
+import {getPages} from './../reduxstore/actions/pageActions';
 import ScrollToTop from './ScrollToTop';
 import EquipmentRepairShop from './../pages/EngineeringWorks/EquipmentRepairShop';
 import ForgeAndFabricationShop from './../pages/EngineeringWorks/ForgeAndFabricationShop';
 import FoundaryAndPatternMakingShop from './../pages/EngineeringWorks/FoundaryAndPatternMakingShop';
 import MachineAndToolsShop from './../pages/EngineeringWorks/MachineAndToolsShop';
 import RubberizingAndVulcanizingShop from './../pages/EngineeringWorks/RubberizingAndVulcanizingShop';
+import ManageFaq from './../pages/admin/ManageFaq';
+import ManageMgmtProfile from './../pages/admin/ManageMgmtProfile';
 
 export const AdmRedirect = () => {
     useHistory().push("/adm/profile");
@@ -51,7 +53,9 @@ const SiteRouter = (props) => {
         props.getPages();
 
         // load firebase after 3s of component mount
-        setTimeout(() => props.firebaseApp === null ? props.loadFirebase() : null, 3000);
+        setTimeout(() => props.firebaseApp === null
+            ? props.loadFirebase()
+            : null, 3000);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -59,7 +63,7 @@ const SiteRouter = (props) => {
     return (
         <Router>
             {/* cause page to scroll to top on route change */}
-            <ScrollToTop />
+            <ScrollToTop/>
             <div>
                 {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -81,6 +85,12 @@ const SiteRouter = (props) => {
                     </Route>
                     <Route exact path="/adm/manage-page">
                         <ManagePage/>
+                    </Route>
+                    <Route exact path="/adm/manage-mgmt-profile">
+                        <ManageMgmtProfile/>
+                    </Route>
+                    <Route exact path="/adm/manage-faq">
+                        <ManageFaq/>
                     </Route>
                     <Route exact path="/register-adm">
                         <Register/>
@@ -104,19 +114,19 @@ const SiteRouter = (props) => {
                         <EngineeringWorksComplex/>
                     </Route>
                     <Route exact path="/engineering-works-complex/equipment-repair-shop">
-                        <EquipmentRepairShop />
+                        <EquipmentRepairShop/>
                     </Route>
                     <Route exact path="/engineering-works-complex/forge-and-fabrication-shop">
-                        <ForgeAndFabricationShop />
+                        <ForgeAndFabricationShop/>
                     </Route>
                     <Route exact path="/engineering-works-complex/foundary-and-pattern-making-shop">
-                        <FoundaryAndPatternMakingShop />
+                        <FoundaryAndPatternMakingShop/>
                     </Route>
                     <Route exact path="/engineering-works-complex/machine-and-tools-shop">
-                        <MachineAndToolsShop />
+                        <MachineAndToolsShop/>
                     </Route>
                     <Route exact path="/engineering-works-complex/rubberizing-and-vulcanizing-shop">
-                        <RubberizingAndVulcanizingShop />
+                        <RubberizingAndVulcanizingShop/>
                     </Route>
                     <Route exact path="/faqs">
                         <FAQs/>
@@ -131,19 +141,19 @@ const SiteRouter = (props) => {
                         <News/>
                     </Route>
                     <Route exact path="/news/:slug">
-                        <NewsSingle />
+                        <NewsSingle/>
                     </Route>
                     <Route exact path="/news/page/:pageno">
-                        <NewsPage />
+                        <NewsPage/>
                     </Route>
                     <Route exact path="/press-releases">
-                        <PressReleases />
+                        <PressReleases/>
                     </Route>
                     <Route exact path="/press-releases/:slug">
-                        <PressReleasesSingle />
+                        <PressReleasesSingle/>
                     </Route>
                     <Route exact path="/press-releases/page/:pageno">
-                        <PressReleasesPage />
+                        <PressReleasesPage/>
                     </Route>
                     <Route exact path="/products">
                         <Products/>

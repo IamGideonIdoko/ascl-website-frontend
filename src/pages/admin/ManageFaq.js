@@ -3,58 +3,57 @@ import {connect} from 'react-redux';
 import {logout} from './../../reduxstore/actions/authActions';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
 import AssetView from './../../components/AssetView';
-import '../../styles/AdminManageGallery.css';
 
-const ManageGallery = (props) => {
-    const [galleryCaption,
-        setGalleryCaption] = useState('');
-    const [galleryImage,
-        setGalleryImage] = useState('');
+const ManageFaq = (props) => {
+    const [question,
+        setQuestion] = useState('');
+    const [answer,
+        setAnswer] = useState('');
 
-    const handleAddGalleryInput = () => {}
+    const handleAddFaqInput = () => {}
 
     return (
         <WithAdminAuth>
             {props.isAuthenticated && <div className="ap-main-section">
                 <div className="ap-box">
-                    <h2>Manage Gallery</h2>
+                    <h2>Manage FAQ</h2>
                 </div>
                 <div className="ap-box">
                     <AssetView/>
                 </div>
                 <div className="ap-box">
-                    <h3>Add to Gallery</h3>
+                    <h3>Add new FAQ</h3>
 
                     <div className="add-to-gallery-form">
                         <div>
-                            <label htmlFor="gallery-caption">Caption</label>
+                            <label htmlFor="question">Question</label>
                             <input
                                 type="text"
-                                name="gallery-caption"
-                                id="gallery-caption"
-                                value={galleryCaption}
-                                onChange={handleAddGalleryInput}/>
+                                name="question"
+                                id="question"
+                                value={question}
+                                onChange={handleAddFaqInput}/>
                         </div>
 
                         <div>
-                            <label htmlFor="gallery-image">Image&nbsp;<small>(Link)</small></label>
+                            <label htmlFor="answer">Answer</label>
                             <input
                                 type="text"
-                                name="gallery-image"
-                                id="gallery-image"
-                                value={galleryImage}
-                                onChange={handleAddGalleryInput}/>
+                                name="answer"
+                                id="answer"
+                                value={answer}
+                                onChange={handleAddFaqInput}/>
                         </div>
                         <div style={{ marginTop: "1.5rem" }}>
-                            <button className="primary-btn">Add to Gallery</button>
+                            <button className="primary-btn">Add Faq</button>
                         </div>
                     </div>
 
                 </div>
 
                 <div className="ap-box">
-                    <h3>Update or Remove from Gallery</h3>
-                    <p>Select the gallery who want to update or remove.</p>
+                    <h3>Update or Remove FAQ</h3>
+                    <p>Select the FAQ who want to update or remove.</p>
                 </div>
 
             </div>}
@@ -64,4 +63,4 @@ const ManageGallery = (props) => {
 
 const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated});
 
-export default connect(mapStateToProps, {logout})(ManageGallery);
+export default connect(mapStateToProps, {logout})(ManageFaq);
