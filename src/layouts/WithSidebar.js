@@ -19,11 +19,11 @@ const WithSidebar = (props) => {
                         <div className='s-box-body'>
                             <h5>Engineering Works Complex</h5>
                             <ul className="s-facilities-list">
-                                <li><Link to="#">Enquipment Repair Shop</Link></li>
-                                <li><Link to="#">Forge and Fabriaction Shop</Link></li>
-                                <li><Link to="#">Foundary and Pattern Making Shop</Link></li>
-                                <li><Link to="#">Machine and Tools Shop</Link></li>
-                                <li><Link to="#">Rubberizing and Vulcanizing Shop</Link></li>
+                                <li><Link to="/engineering-works-complex/equipment-repair-shop">Enquipment Repair Shop</Link></li>
+                                <li><Link to="/engineering-works-complex/forge-and-fabrication-shop">Forge and Fabrication Shop</Link></li>
+                                <li><Link to="/engineering-works-complex/foundary-and-pattern-making-shop">Foundary and Pattern Making Shop</Link></li>
+                                <li><Link to="/engineering-works-complex/machine-and-tools-shop">Machine and Tools Shop</Link></li>
+                                <li><Link to="/engineering-works-complex/rubberizing-and-vulcanizing-shop">Rubberizing and Vulcanizing Shop</Link></li>
                             </ul>
                         </div>
                     </div>

@@ -30,6 +30,11 @@ import {loadFirebase} from './../reduxstore/actions/firebaseActions';
 import { getAssets } from './../reduxstore/actions/assetActions';
 import { getPages } from './../reduxstore/actions/pageActions';
 import ScrollToTop from './ScrollToTop';
+import EquipmentRepairShop from './../pages/EngineeringWorks/EquipmentRepairShop';
+import ForgeAndFabricationShop from './../pages/EngineeringWorks/ForgeAndFabricationShop';
+import FoundaryAndPatternMakingShop from './../pages/EngineeringWorks/FoundaryAndPatternMakingShop';
+import MachineAndToolsShop from './../pages/EngineeringWorks/MachineAndToolsShop';
+import RubberizingAndVulcanizingShop from './../pages/EngineeringWorks/RubberizingAndVulcanizingShop';
 
 export const AdmRedirect = () => {
     useHistory().push("/adm/profile");
@@ -97,6 +102,21 @@ const SiteRouter = (props) => {
                     </Route>
                     <Route exact path="/engineering-works-complex">
                         <EngineeringWorksComplex/>
+                    </Route>
+                    <Route exact path="/engineering-works-complex/equipment-repair-shop">
+                        <EquipmentRepairShop />
+                    </Route>
+                    <Route exact path="/engineering-works-complex/forge-and-fabrication-shop">
+                        <ForgeAndFabricationShop />
+                    </Route>
+                    <Route exact path="/engineering-works-complex/foundary-and-pattern-making-shop">
+                        <FoundaryAndPatternMakingShop />
+                    </Route>
+                    <Route exact path="/engineering-works-complex/machine-and-tools-shop">
+                        <MachineAndToolsShop />
+                    </Route>
+                    <Route exact path="/engineering-works-complex/rubberizing-and-vulcanizing-shop">
+                        <RubberizingAndVulcanizingShop />
                     </Route>
                     <Route exact path="/faqs">
                         <FAQs/>
