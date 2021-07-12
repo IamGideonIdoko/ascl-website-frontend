@@ -9,7 +9,7 @@ const initialState = {
     isGalleryDeleted: false
 }
 
-// export gallery reducet
+// export gallery reducer
 const galleryReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.GET_GALLERIES:
