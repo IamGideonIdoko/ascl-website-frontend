@@ -9,7 +9,6 @@ import {
     resetFaqDeleted
 } from './../../reduxstore/actions/faqActions';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
-import AssetView from './../../components/AssetView';
 import Swal from 'sweetalert2';
 import Select from 'react-select';
 import moment from 'moment';
@@ -186,9 +185,6 @@ const ManageFaq = (props) => {
             {props.isAuthenticated && <div className="ap-main-section">
                 <div className="ap-box">
                     <h2>Manage Faq</h2>
-                </div>
-                <div className="ap-box">
-                    <AssetView/>
                 </div>
                 {!shouldEditFaq && <div className="ap-box">
                     <h3>Add to Faq</h3>
