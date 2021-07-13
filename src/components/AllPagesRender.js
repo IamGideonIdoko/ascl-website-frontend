@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import moment from 'moment';
+// import moment from 'moment';
 
 const AllPagesRender = ({pages, category}) => {
     const pgCatLinkHead = category === "news"
