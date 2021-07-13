@@ -157,9 +157,9 @@ const ManageFileUpload = (props) => {
                         }}>
                             &nbsp;{convertByteInString(allowedPhoto.maxSize)}</i>.</p>
                     <div className="file-input-container">
-                        <label htmlFor="photo-upload-input" className="photo-upload-select">
+                        <label htmlFor="photo-upload-input" className="video-upload-select">
                             <i className="neu-attachment"></i>
-                            Select Photo</label>
+                            {photo ? photo.name : "Select Photo"}</label>
                         <input
                             type="file"
                             name="photo-upload-input"
