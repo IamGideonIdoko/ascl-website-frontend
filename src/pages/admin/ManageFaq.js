@@ -156,7 +156,7 @@ const ManageFaq = (props) => {
         if (!selectedFaq) {
             // no page is selected
             setIsDeleting(false);
-            Swal.fire({title: "No faq selected.", text: `Please select a faq.`, icon: "error"});
+            Swal.fire({title: "No FAQ selected.", text: `Please select a FAQ.`, icon: "error"});
         } else {
             // page is selected
             Swal
@@ -184,7 +184,7 @@ const ManageFaq = (props) => {
         <WithAdminAuth>
             {props.isAuthenticated && <div className="ap-main-section">
                 <div className="ap-box">
-                    <h2>Manage Faq</h2>
+                    <h2>Manage FAQ</h2>
                 </div>
                 {!shouldEditFaq && <div className="ap-box">
                     <h3>Add to Faq</h3>
@@ -222,7 +222,7 @@ const ManageFaq = (props) => {
                 </div>}
 
                 <div className="ap-box">
-                    <h3>Edit or Delete from Faq</h3>
+                    <h3>Edit or Delete from FAQ</h3>
                     <p>Select the faq you want to edit or delete.</p>
                     {(props.isLoaded && !shouldEditFaq) && <div className="edit-page-container">
                         <div className="page-select-wrapper">
@@ -240,7 +240,7 @@ const ManageFaq = (props) => {
                                 onChange={handleFaqSelectInputChange}
                                 isClearable={true}
                                 isSearchable={true}
-                                placeholder={`Select a faq...`}
+                                placeholder={`Select a FAQ...`}
                                 styles={{
                                 menu: (provided, state) => ({backgroundColor: "var(--primary-color-light)", border: "1px solid var(--primary-color"}),
                                 option: (styles, {isSelected}) => {
