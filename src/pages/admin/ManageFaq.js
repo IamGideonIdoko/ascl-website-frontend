@@ -2,7 +2,6 @@ import {useState} from 'react';
 import {connect} from 'react-redux';
 import {logout} from './../../reduxstore/actions/authActions';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
-import AssetView from './../../components/AssetView';
 
 const ManageFaq = (props) => {
     const [question,
@@ -17,9 +16,6 @@ const ManageFaq = (props) => {
             {props.isAuthenticated && <div className="ap-main-section">
                 <div className="ap-box">
                     <h2>Manage FAQ</h2>
-                </div>
-                <div className="ap-box">
-                    <AssetView/>
                 </div>
                 <div className="ap-box">
                     <h3>Add new FAQ</h3>
@@ -53,7 +49,7 @@ const ManageFaq = (props) => {
 
                 <div className="ap-box">
                     <h3>Update or Remove FAQ</h3>
-                    <p>Select the FAQ who want to update or remove.</p>
+                    <p>Select the FAQ you want to update or remove.</p>
                 </div>
 
             </div>}

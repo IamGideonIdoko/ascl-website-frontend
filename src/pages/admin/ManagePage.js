@@ -86,7 +86,7 @@ const ManagePage = (props) => {
 
     if (props.isPageDeleted) {
         Swal
-            .fire({title: "", text: `Post successfully updated.`, icon: "success"})
+            .fire({title: "", text: `Page successfully updated.`, icon: "success"})
             .then(res => {;
                 setSelectedPage(null);
                 setEditPageType('');
