@@ -37,6 +37,10 @@ import MachineAndToolsShop from './../pages/EngineeringWorks/MachineAndToolsShop
 import RubberizingAndVulcanizingShop from './../pages/EngineeringWorks/RubberizingAndVulcanizingShop';
 import ManageFaq from './../pages/admin/ManageFaq';
 import ManageMgmtProfile from './../pages/admin/ManageMgmtProfile';
+import { getGalleries } from './../reduxstore/actions/galleryActions';
+import { getMgmtProfiles } from './../reduxstore/actions/mgmtProfileActions';
+import { getAccesses } from './../reduxstore/actions/accessActions';
+import { getFaqs } from './../reduxstore/actions/faqActions';
 
 export const AdmRedirect = () => {
     useHistory().push("/adm/profile");
@@ -51,6 +55,10 @@ const SiteRouter = (props) => {
         props.loadUser();
         props.getAssets();
         props.getPages();
+        props.getGalleries();
+        props.getMgmtProfiles();
+        props.getFaqs();
+        props.getAccesses();
 
         // load firebase after 3s of component mount
         setTimeout(() => props.firebaseApp === null
@@ -178,4 +186,4 @@ const SiteRouter = (props) => {
 
 const mapStateToProps = (state, ownProps) => ({firebaseApp: state.fire.firebaseApp})
 
-export default connect(mapStateToProps, {loadUser, loadFirebase, getAssets, getPages})(SiteRouter);
+export default connect(mapStateToProps, {loadUser, loadFirebase, getAssets, getPages, getGalleries, getMgmtProfiles, getAccesses, getFaqs})(SiteRouter);
