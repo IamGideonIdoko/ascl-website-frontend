@@ -176,7 +176,7 @@ a {
 
 /* ------------ ----------- -------------- */
 
-input:focus {
+input:focus, textarea:focus {
   outline: 1px solid var(--secondary-color);
   outline-offset: 1px;
 }
