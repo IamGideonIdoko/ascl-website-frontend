@@ -53,7 +53,11 @@ const ManageMgmtProfile = (props) => {
                             <label htmlFor="profileabout">About</label>
                             <textarea name="profileabout"></textarea>
                         </div>
+                    <div>
+                    <button className="page-edit-btn page-btn">Create</button>
                     </div>
+                    </div>
+
 
                 </div>
 
