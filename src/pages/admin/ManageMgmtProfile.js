@@ -31,11 +31,7 @@ const ManageMgmtProfile = (props) => {
                         </div>
                         <div className="">
                             <label htmlFor="fullname">Full Name</label>
-                            <input
-                                type="text"
-                                name="fullname"
-                                id="fullname"
-                                onChange={handleInputChange}/>
+                            <input type="text" name="fullname" id="fullname" onChange={handleInputChange}/>
                         </div>
                     </div>
                     <div>
@@ -53,11 +49,10 @@ const ManageMgmtProfile = (props) => {
                             <label htmlFor="profileabout">About</label>
                             <textarea name="profileabout"></textarea>
                         </div>
-                    <div>
-                    <button className="page-edit-btn page-btn">Create</button>
+                        <div>
+                            <button className="page-edit-btn page-btn">Create</button>
+                        </div>
                     </div>
-                    </div>
-
 
                 </div>
 
