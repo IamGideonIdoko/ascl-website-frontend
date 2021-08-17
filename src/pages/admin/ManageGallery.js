@@ -28,7 +28,7 @@ const ManageGallery = (props) => {
 
     if (props.isGalleryCreated) {
         Swal
-            .fire({title: "", text: `Post successfully created.`, icon: "success"})
+            .fire({title: "", text: `Gallery successfully created.`, icon: "success"})
             .then(res => {
                 setGalleryCaption('');
                 setGalleryImage('');

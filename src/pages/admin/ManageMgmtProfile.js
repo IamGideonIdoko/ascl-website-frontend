@@ -1,20 +1,30 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import WithAdminAuth from '../../layouts/WithAdminAuth';
 import AssetView from './../../components/AssetView';
 import '../../styles/AdminManageProfile.css';
 import Select from 'react-select';
 import moment from 'moment';
+import Swal from 'sweetalert2';
+import {strToSlug} from '../../helper';
+import {addMgmtProfile, resetMgmtProfileCreated} from '../../reduxstore/actions/mgmtProfileActions';
 
 const ManageMgmtProfile = (props) => {
 
     const [profileInputs,
-        setProfileInputs] = useState({position: '', fullname: '', profileimg: ''})
+        setProfileInputs] = useState({position: '', fullname: '', profileimg: '', about: '', level: 0})
     const [selectedProfile, setSelectedProfile] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
+    const [shouldEditProfile, setShouldEditProfile] = useState(false);
+    const [isCreating, setIsCreating] = useState(false);
     
-    const handleInputChange = () => {
-        console.log('change');
+    const handleInputChange = e => {
+        const {name, value} = e.target;
+
+        setProfileInputs(prev => ({
+            ...prev,
+            [name]: value
+        }));
     }
 
     const handleProfileSelectInputChange = option => {
@@ -23,12 +33,96 @@ const ManageMgmtProfile = (props) => {
             : null);
     }
 
-    const handleProfileDelete = () => {
-
+    const handleProfileEdit = e => {
+        if (!selectedProfile) {
+            // no gallery is selected
+            Swal.fire({title: "No profile selected.", text: `Please select a profile.`, icon: "error"});
+        } else {
+            // gallery is selected
+            const fullSelectedProfile = props
+                .mgmtProfiles
+                .filter(x => x._id === selectedProfile.value)[0];
+            console.log(fullSelectedProfile);
+        }
     }
 
-    const handleProfileEdit = () => {
-        
+    const handleProfileDelete = () => {
+        // setIsDeleting(true);
+        if (!selectedProfile) {
+            // no page is selected
+            setIsDeleting(false);
+            Swal.fire({title: "No profile selected.", text: `Please select a profile.`, icon: "error"});
+        } else {
+            // page is selected
+            Swal
+                .fire({title: 'Do you want to delete?', showDenyButton: true, showCancelButton: true, confirmButtonText: `Delete`, denyButtonText: `Don't delete`})
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        // props.deleteProfile(selectedProfile.value);
+                    } else if (result.isDenied) {
+                        setIsDeleting(false);
+                        setSelectedProfile(null);
+                        Swal.fire('Profile Not Deleted', '', 'info')
+                    }
+                })
+        }
+    }
+
+    useEffect(() => {
+        if (props.isProfileCreated) {
+            Swal
+            .fire({title: "", text: `Profile successfully created.`, icon: "success"})
+            .then(res => {
+                setProfileInputs({
+                    position: '',
+                    fullname: '',
+                    profileimg: '',
+                    about: '',
+                    level: 0
+                })
+                setIsCreating(false);
+            });
+        props.resetMgmtProfileCreated();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.isProfileCreated])
+
+
+    const handleCreateProfileBtn = () => {
+        setIsCreating(true);
+        const {position, fullname, profileimg, about, level} = profileInputs;
+        if (!position || !fullname || !profileimg || !about || !level) {
+            setIsCreating(false);
+            Swal.fire({title: "", text: `All fields are required.`, icon: "error"});
+        } else {
+            Swal
+                .fire({title: 'Do you want to create?', showDenyButton: true, showCancelButton: true, confirmButtonText: `Create`, denyButtonText: `Don't Create`})
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        const newProfile = {
+                            position,
+                            name: fullname,
+                            slug: strToSlug(position),
+                            photo: profileimg,
+                            about,
+                            position_level: level
+                        };
+                        props.addMgmtProfile(newProfile);
+                    } else if (result.isDenied) {
+                        setIsCreating(false);
+                        setProfileInputs(prev => ({
+                            ...prev,
+                            position: '',
+                            fullname: '',
+                            profileimg: '',
+                            about: ''
+                        }))
+                        Swal.fire('Profile not created', '', 'info')
+                    } else {
+                        setIsCreating(false);
+                    }
+                })
+        }
     }
 
     return (
@@ -45,11 +139,11 @@ const ManageMgmtProfile = (props) => {
                     <div>
                         <div className="">
                             <label htmlFor="position">Position</label>
-                            <input type="text" name="position" id="position" onChange={handleInputChange}/>
+                            <input type="text" name="position" id="position" value={profileInputs.position} onChange={handleInputChange}/>
                         </div>
                         <div className="">
                             <label htmlFor="fullname">Full Name</label>
-                            <input type="text" name="fullname" id="fullname" onChange={handleInputChange}/>
+                            <input type="text" name="fullname" id="fullname" value={profileInputs.fullname} onChange={handleInputChange}/>
                         </div>
                     </div>
                     <div>
@@ -60,15 +154,21 @@ const ManageMgmtProfile = (props) => {
                                 type="text"
                                 name="profileimg"
                                 id="profileimg"
+                                value={profileInputs.profileimg}
                                 onChange={handleInputChange}/>
+                        </div>
+
+                        <div>
+                            <label>Profile Level</label>
+                            <input type="number" name="level" id="level" onChange={handleInputChange} value={profileInputs.level} />
                         </div>
 
                         <div className="">
                             <label htmlFor="profileabout">About</label>
-                            <textarea name="profileabout"></textarea>
+                            <textarea name="about" id="about" value={profileInputs.about} onChange={handleInputChange}></textarea>
                         </div>
                         <div>
-                            <button className="page-edit-btn page-btn">Create</button>
+                            <button className="page-edit-btn page-btn" disabled={isCreating}  onClick={handleCreateProfileBtn}>{isCreating ? 'Creating...' : 'Create'}</button>
                         </div>
                     </div>
 
@@ -131,6 +231,6 @@ const ManageMgmtProfile = (props) => {
     )
 }
 
-const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated, mgmtProfiles: state.mgmtProfile.mgmtProfiles, isLoaded: state.mgmtProfile.isLoaded});
+const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated, mgmtProfiles: state.mgmtProfile.mgmtProfiles, isLoaded: state.mgmtProfile.isLoaded, isProfileCreated: state.mgmtProfile. isMgmtProfileCreated, isProfileUpdated: state.mgmtProfile.isMgmtProfileCreated, isProfileDeleted: state.mgmtProfile.isMgmtProfileDeleted});
 
-export default connect(mapStateToProps, null)(ManageMgmtProfile);
+export default connect(mapStateToProps, {addMgmtProfile, resetMgmtProfileCreated})(ManageMgmtProfile);
