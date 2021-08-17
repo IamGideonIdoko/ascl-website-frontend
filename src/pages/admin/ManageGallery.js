@@ -101,11 +101,11 @@ const ManageGallery = (props) => {
     }
 
     const handleEditGalleryBtn = () => {
-        setIsEditing(true);
         if (!galleryCaption || !galleryImage) {
             setIsCreating(false);
             Swal.fire({title: "", text: `The "Caption" and "Image" fields must be provided.`, icon: "error"});
         } else {
+            setIsEditing(true);
             Swal
                 .fire({title: 'Do you want to edit?', showDenyButton: true, showCancelButton: true, confirmButtonText: `Edit`, denyButtonText: `Don't edit`})
                 .then((result) => {
