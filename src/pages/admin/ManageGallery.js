@@ -93,6 +93,8 @@ const ManageGallery = (props) => {
                         setGalleryCaption('');
                         setGalleryImage('');
                         Swal.fire('Gallery not added', '', 'info')
+                    } else {
+                        setIsCreating(false);
                     }
                 })
         }
@@ -118,6 +120,8 @@ const ManageGallery = (props) => {
                         setGalleryCaption('');
                         setGalleryImage('');
                         Swal.fire('Gallery not edited', '', 'info')
+                    } else {
+                        setIsEditing(false);
                     }
                 })
         }
