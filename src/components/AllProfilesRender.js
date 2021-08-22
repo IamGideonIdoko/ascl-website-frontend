@@ -10,16 +10,6 @@ const AllProfilesRender = ({profiles, category}) => {
     } else {
         return (
             <div className="profiles-container">
-                {/* <div className="proc-left">
-                    <ul>
-                        {profiles.map(profile => (
-                            <li key={profile._id} className="">
-                                <Link to={`/management-profile/${profile.slug}`}>{profile.position}</Link>
-                            </li>
-                        ))
-}
-                    </ul>
-                </div> */}
                 <ul>
                     {profiles.map(profile => (
                         <li key={profile._id} className="profiles-box">

@@ -3,9 +3,9 @@ import MainLayout from './../layouts/MainLayout';
 import {connect} from 'react-redux';
 import AllProfilesRender from '../components/AllProfilesRender';
 
-function News(props) {
+function MangementProfile(props) {
 
-    const allProfilesPages = props.mgmtProfiles;
+    const allProfiless = props.mgmtProfiles;
 
     return (
         <MainLayout>
@@ -15,7 +15,7 @@ function News(props) {
                 {!props.isLoaded
                     ? <div>Loading</div>
                     : <div>
-                        <AllProfilesRender profiles={allProfilesPages}/>
+                        <AllProfilesRender profiles={allProfiless}/>
                     </div>}
             </WithSidebar>
         </MainLayout>
@@ -24,4 +24,4 @@ function News(props) {
 
 const mapStateToProps = (state, ownProps) => ({mgmtProfiles: state.mgmtProfile.mgmtProfiles, isLoaded: state.page.isLoaded});
 
-export default connect(mapStateToProps, null)(News);
+export default connect(mapStateToProps, null)(MangementProfile);
