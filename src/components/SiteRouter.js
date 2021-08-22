@@ -9,6 +9,7 @@ import FAQs from '../pages/FAQs';
 import Gallery from '../pages/Gallery';
 import GalleryPage from '../pages/GalleryPage';
 import ManagementProfile from '../pages/ManagementProfile';
+import ManagementProfileSingle from './../pages/ManagementProfileSingle';
 import News from '../pages/News';
 import NewsPage from '../pages/NewsPage';
 import NewsSingle from '../pages/NewsSingle';
@@ -38,10 +39,10 @@ import MachineAndToolsShop from './../pages/EngineeringWorks/MachineAndToolsShop
 import RubberizingAndVulcanizingShop from './../pages/EngineeringWorks/RubberizingAndVulcanizingShop';
 import ManageFaq from './../pages/admin/ManageFaq';
 import ManageMgmtProfile from './../pages/admin/ManageMgmtProfile';
-import { getGalleries } from './../reduxstore/actions/galleryActions';
-import { getMgmtProfiles } from './../reduxstore/actions/mgmtProfileActions';
-import { getAccesses } from './../reduxstore/actions/accessActions';
-import { getFaqs } from './../reduxstore/actions/faqActions';
+import {getGalleries} from './../reduxstore/actions/galleryActions';
+import {getMgmtProfiles} from './../reduxstore/actions/mgmtProfileActions';
+import {getAccesses} from './../reduxstore/actions/accessActions';
+import {getFaqs} from './../reduxstore/actions/faqActions';
 
 export const AdmRedirect = () => {
     useHistory().push("/adm/profile");
@@ -149,6 +150,9 @@ const SiteRouter = (props) => {
                     <Route exact path="/management-profile">
                         <ManagementProfile/>
                     </Route>
+                    <Route exact path="/management-profile/:slug">
+                        <ManagementProfileSingle/>
+                    </Route>
                     <Route exact path="/news">
                         <News/>
                     </Route>
@@ -190,4 +194,13 @@ const SiteRouter = (props) => {
 
 const mapStateToProps = (state, ownProps) => ({firebaseApp: state.fire.firebaseApp})
 
-export default connect(mapStateToProps, {loadUser, loadFirebase, getAssets, getPages, getGalleries, getMgmtProfiles, getAccesses, getFaqs})(SiteRouter);
+export default connect(mapStateToProps, {
+    loadUser,
+    loadFirebase,
+    getAssets,
+    getPages,
+    getGalleries,
+    getMgmtProfiles,
+    getAccesses,
+    getFaqs
+})(SiteRouter);

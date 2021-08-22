@@ -22,7 +22,7 @@ const AllProfilesRender = ({profiles, category}) => {
                 </div> */}
                 <ul>
                     {profiles.map(profile => (
-                        <li key={profile._id} className="profile-box">
+                        <li key={profile._id} className="profiles-box">
                             <div>
                                 <img src={profile.photo} alt={profile.name}/>
                             </div>
