@@ -7,6 +7,7 @@ import Contact from '../pages/Contact';
 import EngineeringWorksComplex from '../pages/EngineeringWorksComplex';
 import FAQs from '../pages/FAQs';
 import Gallery from '../pages/Gallery';
+import GalleryPage from '../pages/GalleryPage';
 import ManagementProfile from '../pages/ManagementProfile';
 import News from '../pages/News';
 import NewsPage from '../pages/NewsPage';
@@ -141,6 +142,9 @@ const SiteRouter = (props) => {
                     </Route>
                     <Route exact path="/gallery">
                         <Gallery/>
+                    </Route>
+                    <Route exact path="/gallery/page/:pageno">
+                        <GalleryPage/>
                     </Route>
                     <Route exact path="/management-profile">
                         <ManagementProfile/>
