@@ -4,6 +4,7 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 import {convertByteInString} from '../helper';
 import Swal from 'sweetalert2';
+import {deleteAsset} from '../reduxstore/actions/assetActions';
 
 const DeletePhoto = (props) => {
     const [selectedPhoto,
@@ -11,11 +12,11 @@ const DeletePhoto = (props) => {
     const [isDeleting,
         setIsDeleting] = useState(false);
 
-        const handlePhotoSelectInputChange = option => {
-            setSelectedPhoto(option
-                ? option
-                : null);
-        }
+    const handlePhotoSelectInputChange = option => {
+        setSelectedPhoto(option
+            ? option
+            : null);
+    }
 
     const handlePhotoDelete = () => {
         // setIsDeleting(true);
@@ -30,6 +31,21 @@ const DeletePhoto = (props) => {
                 .then((result) => {
                     if (result.isConfirmed) {
                         // props.deleteFaq(selectedFaq.value);
+                        const storageRef = props
+                            .firebaseStorage
+                            .ref(selectedPhoto.value);
+                        storageRef
+                            .delete()
+                            .then(() => {
+                                props.deleteAsset(selectedPhoto.fileInfo._id);
+                                Swal.fire({title: "", text: `"${selectedPhoto.value}" has been uploaded successfully.`, icon: "success", buttons: false});
+                                setSelectedPhoto(null);
+                            })
+                            .catch(error => {
+                                Swal.fire({title: "Opps", text: `"Something went wrong. Try again.`, icon: "error", buttons: false});
+                                console.log('ASSET DELETE ERROR: ', error);
+                                setSelectedPhoto(null);
+                            })
                     } else if (result.isDenied) {
                         setIsDeleting(false);
                         setSelectedPhoto(null);
@@ -50,9 +66,26 @@ const DeletePhoto = (props) => {
                         options={props
                         .assets
                         .filter(x => x.category === 'photo')
-                        .map(({_id, name, url, file_type, size, category, created_at}) => ({
-                            value: _id,
-                            label: `${name} ${convertByteInString(size)} [${category}] (${moment(created_at).format('MMM DD, YYYY')})`
+                        .map(({
+                            _id,
+                            name,
+                            url,
+                            file_type,
+                            size,
+                            category,
+                            created_at
+                        }) => ({
+                            value: name,
+                            label: `${name} ${convertByteInString(size)} [${category}] (${moment(created_at).format('MMM DD, YYYY')})`,
+                            fileInfo: {
+                                _id,
+                                name,
+                                url,
+                                file_type,
+                                size,
+                                category,
+                                created_at
+                            }
                         }))}
                         onChange={handlePhotoSelectInputChange}
                         isClearable={true}
@@ -84,6 +117,6 @@ const DeletePhoto = (props) => {
     )
 }
 
-const mapStateToProps = (state, ownProps) => ({assets: state.asset.assets, isLoaded: state.asset.isLoaded});
+const mapStateToProps = (state, ownProps) => ({assets: state.asset.assets, isLoaded: state.asset.isLoaded, firebaseStorage: state.fire.firebaseStorage});
 
-export default connect(mapStateToProps, null)(DeletePhoto);
+export default connect(mapStateToProps, {deleteAsset})(DeletePhoto);

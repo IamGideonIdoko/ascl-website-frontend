@@ -29,7 +29,7 @@ export const addAsset = (newAsset) => (dispatch, getState) => {
 }
 
 export const deleteAsset = (id) => (dispatch, getState) => {
-	axios.delete(`${config.BEHOST}/api/assets/${id}`, tokenConfig(getState))
+	axios.delete(`${config.BEHOST}/api/assets/deleteoneasset/${id}`, tokenConfig(getState))
 		.then(res => dispatch({
 			type: types.DELETE_ASSET,
 			payload: id
