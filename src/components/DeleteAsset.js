@@ -32,6 +32,7 @@ const DeleteAsset = (props) => {
                 .fire({title: 'Do you want to delete?', showDenyButton: true, showCancelButton: true, confirmButtonText: `Delete`, denyButtonText: `Don't delete`})
                 .then((result) => {
                     if (result.isConfirmed) {
+                        setIsDeleting(true);
                         // props.deleteFaq(selectedFaq.value);
                         const storageRef = props
                             .firebaseStorage
@@ -42,11 +43,13 @@ const DeleteAsset = (props) => {
                                 props.deleteAsset(selectedAsset.fileInfo._id);
                                 Swal.fire({title: "", text: `"${selectedAsset.value}" has been uploaded successfully.`, icon: "success", buttons: false});
                                 setSelectedAsset(null);
+                                setIsDeleting(false);
                             })
                             .catch(error => {
                                 Swal.fire({title: "Opps", text: `"Something went wrong. Try again.`, icon: "error", buttons: false});
                                 console.log('ASSET DELETE ERROR: ', error);
                                 setSelectedAsset(null);
+                                setIsDeleting(false);
                             })
                     } else if (result.isDenied) {
                         setIsDeleting(false);
