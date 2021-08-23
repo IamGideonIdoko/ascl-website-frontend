@@ -6,6 +6,9 @@ import UploadProgressBar from './../../components/UploadProgressBar';
 import {getAcceptValue, getFileExtension, renameFileWithPrefix, convertByteInString} from '../../helper';
 import '../../styles/AdminPortalGlobal.css';
 import SimpleReactValidator from 'simple-react-validator';
+import DeletePhoto from '../../components/DeletePhoto';
+import DeleteDocument from '../../components/DeleteDocument';
+import DeleteVideo from '../../components/DeleteVideo';
 
 const ManageFileUpload = (props) => {
 
@@ -385,13 +388,16 @@ const ManageFileUpload = (props) => {
                     </div>
                 </div>
                 <div className="ap-box">
-                    <h3>View or Delete Photos</h3>
+                    <h3>Delete Photos</h3>
+                    <DeletePhoto/>
                 </div>
                 <div className="ap-box">
                     <h3>Delete Videos</h3>
+                    <DeleteVideo/>
                 </div>
                 <div className="ap-box">
                     <h3>Delete Documents</h3>
+                    <DeleteDocument/>
                 </div>
 
             </div>}

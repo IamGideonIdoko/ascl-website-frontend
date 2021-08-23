@@ -2,8 +2,6 @@ import WithSidebar from '../layouts/WithSidebar';
 import MainLayout from './../layouts/MainLayout';
 import {useParams, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import moment from 'moment';
-import {getReadTime} from '../helper';
 
 function ManagementProfileSingle(props) {
 
@@ -12,22 +10,6 @@ function ManagementProfileSingle(props) {
     const allProfiles = props.mgmtProfiles;
 
     const exactProfile = allProfiles.filter(page => page.slug === slug)[0];
-
-    const exactProfileIndex = allProfiles.indexOf(exactProfile);
-
-    const nextProfile = allProfiles[exactProfileIndex - 1]
-        ? allProfiles[exactProfileIndex - 1]
-        : null;
-    const previousProfile = allProfiles[exactProfileIndex + 1]
-        ? allProfiles[exactProfileIndex + 1]
-        : null;
-
-    /*
-	function to return dangerous markup
-	*/
-    const createMarkup = (markup) => {
-        return {__html: markup};
-    }
 
     return (
         <MainLayout>
@@ -65,8 +47,7 @@ function ManagementProfileSingle(props) {
 
                                 <div className="page-body-container">
                                     <div
-                                        className={`page-body true-page-body`}
-                                        dangerouslySetInnerHTML={createMarkup(exactProfile.about)}/>
+                                        className={`page-body true-page-body`}>{exactProfile.about}</div>
                                 </div>
 
                             </div>
