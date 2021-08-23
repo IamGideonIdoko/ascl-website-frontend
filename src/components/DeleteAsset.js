@@ -6,24 +6,26 @@ import {convertByteInString} from '../helper';
 import Swal from 'sweetalert2';
 import {deleteAsset} from '../reduxstore/actions/assetActions';
 
-const DeletePhoto = (props) => {
-    const [selectedPhoto,
-        setSelectedPhoto] = useState(null);
+const DeleteAsset = (props) => {
+    const [selectedAsset,
+        setSelectedAsset] = useState(null);
     const [isDeleting,
         setIsDeleting] = useState(false);
 
-    const handlePhotoSelectInputChange = option => {
-        setSelectedPhoto(option
+    const {assetType} = props;
+
+    const handleAssetSelectInputChange = option => {
+        setSelectedAsset(option
             ? option
             : null);
     }
 
-    const handlePhotoDelete = () => {
+    const handleAssetDelete = () => {
         // setIsDeleting(true);
-        if (!selectedPhoto) {
+        if (!selectedAsset) {
             // no page is selected
             setIsDeleting(false);
-            Swal.fire({title: "No photo selected.", text: `Please select a photo.`, icon: "error"});
+            Swal.fire({title: `No ${assetType.toLowerCase()} selected.`, text: `Please select a ${assetType.toLowerCase()}.`, icon: "error"});
         } else {
             // page is selected
             Swal
@@ -33,23 +35,23 @@ const DeletePhoto = (props) => {
                         // props.deleteFaq(selectedFaq.value);
                         const storageRef = props
                             .firebaseStorage
-                            .ref(selectedPhoto.value);
+                            .ref(selectedAsset.value);
                         storageRef
                             .delete()
                             .then(() => {
-                                props.deleteAsset(selectedPhoto.fileInfo._id);
-                                Swal.fire({title: "", text: `"${selectedPhoto.value}" has been uploaded successfully.`, icon: "success", buttons: false});
-                                setSelectedPhoto(null);
+                                props.deleteAsset(selectedAsset.fileInfo._id);
+                                Swal.fire({title: "", text: `"${selectedAsset.value}" has been uploaded successfully.`, icon: "success", buttons: false});
+                                setSelectedAsset(null);
                             })
                             .catch(error => {
                                 Swal.fire({title: "Opps", text: `"Something went wrong. Try again.`, icon: "error", buttons: false});
                                 console.log('ASSET DELETE ERROR: ', error);
-                                setSelectedPhoto(null);
+                                setSelectedAsset(null);
                             })
                     } else if (result.isDenied) {
                         setIsDeleting(false);
-                        setSelectedPhoto(null);
-                        Swal.fire('Photo Not Deleted', '', 'info')
+                        setSelectedAsset(null);
+                        Swal.fire('Asset Not Deleted', '', 'info')
                     }
                 })
         }
@@ -61,36 +63,36 @@ const DeletePhoto = (props) => {
                 <div className="page-select-wrapper">
                     <Select
                         className="asset-form-select"
-                        defaultValue={selectedPhoto}
-                        value={selectedPhoto}
+                        defaultValue={selectedAsset}
+                        value={selectedAsset}
                         options={props
                         .assets
-                        .filter(x => x.category === 'photo')
+                        .filter(x => x.category === assetType.toLowerCase())
                         .map(({
                             _id,
                             name,
                             url,
-                            file_type,
+                            file_assetType,
                             size,
                             category,
                             created_at
                         }) => ({
                             value: name,
-                            label: `${name} ${convertByteInString(size)} [${category}] (${moment(created_at).format('MMM DD, YYYY')})`,
+                            label: `${name} [Size: ${convertByteInString(size)}] (${moment(created_at).format('MMM DD, YYYY')})`,
                             fileInfo: {
                                 _id,
                                 name,
                                 url,
-                                file_type,
+                                file_assetType,
                                 size,
                                 category,
                                 created_at
                             }
                         }))}
-                        onChange={handlePhotoSelectInputChange}
+                        onChange={handleAssetSelectInputChange}
                         isClearable={true}
                         isSearchable={true}
-                        placeholder={`Select a Photo...`}
+                        placeholder={`Select a ${assetType}...`}
                         styles={{
                         menu: (provided, state) => ({backgroundColor: "var(--primary-color-light)", border: "1px solid var(--primary-color"}),
                         option: (styles, {isSelected}) => {
@@ -107,7 +109,7 @@ const DeletePhoto = (props) => {
                     <button
                         className="page-delete-btn page-btn"
                         disabled={isDeleting}
-                        onClick={handlePhotoDelete}>{isDeleting
+                        onClick={handleAssetDelete}>{isDeleting
                             ? 'Deleting...'
                             : 'Delete'}</button>
                 </div>
@@ -119,4 +121,4 @@ const DeletePhoto = (props) => {
 
 const mapStateToProps = (state, ownProps) => ({assets: state.asset.assets, isLoaded: state.asset.isLoaded, firebaseStorage: state.fire.firebaseStorage});
 
-export default connect(mapStateToProps, {deleteAsset})(DeletePhoto);
+export default connect(mapStateToProps, {deleteAsset})(DeleteAsset);
