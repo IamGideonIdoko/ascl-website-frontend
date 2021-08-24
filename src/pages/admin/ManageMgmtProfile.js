@@ -7,18 +7,30 @@ import Select from 'react-select';
 import moment from 'moment';
 import Swal from 'sweetalert2';
 import {strToSlug} from '../../helper';
-import {addMgmtProfile, resetMgmtProfileCreated, updateMgmtProfile, deleteMgmtProfile, resetMgmtProfileDeleted, resetMgmtProfileUpdated} from '../../reduxstore/actions/mgmtProfileActions';
+import {
+    addMgmtProfile,
+    resetMgmtProfileCreated,
+    updateMgmtProfile,
+    deleteMgmtProfile,
+    resetMgmtProfileDeleted,
+    resetMgmtProfileUpdated
+} from '../../reduxstore/actions/mgmtProfileActions';
 
 const ManageMgmtProfile = (props) => {
 
     const [profileInputs,
         setProfileInputs] = useState({position: '', fullname: '', profileimg: '', about: '', level: 0})
-    const [selectedProfile, setSelectedProfile] = useState(false);
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [shouldEditProfile, setShouldEditProfile] = useState(false);
-    const [isCreating, setIsCreating] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
-    
+    const [selectedProfile,
+        setSelectedProfile] = useState(false);
+    const [isDeleting,
+        setIsDeleting] = useState(false);
+    const [shouldEditProfile,
+        setShouldEditProfile] = useState(false);
+    const [isCreating,
+        setIsCreating] = useState(false);
+    const [isEditing,
+        setIsEditing] = useState(false);
+
     const handleInputChange = e => {
         const {name, value} = e.target;
 
@@ -94,44 +106,30 @@ const ManageMgmtProfile = (props) => {
     useEffect(() => {
         if (props.isProfileCreated) {
             Swal
-            .fire({title: "", text: `Profile successfully created.`, icon: "success"})
-            .then(res => {
-                setProfileInputs({
-                    position: '',
-                    fullname: '',
-                    profileimg: '',
-                    about: '',
-                    level: 0
-                })
-                setIsCreating(false);
-            });
-        props.resetMgmtProfileCreated();
+                .fire({title: "", text: `Profile successfully created.`, icon: "success"})
+                .then(res => {
+                    setProfileInputs({position: '', fullname: '', profileimg: '', about: '', level: 0})
+                    setIsCreating(false);
+                });
+            props.resetMgmtProfileCreated();
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.isProfileCreated])
-
 
     useEffect(() => {
         if (props.isProfileUpdated) {
             Swal
-            .fire({title: "", text: `Profile successfully updated.`, icon: "success"})
-            .then(res => {;
-                setShouldEditProfile(false);
-                setProfileInputs({
-                    position: '',
-                    fullname: '',
-                    profileimg: '',
-                    about: '',
-                    level: 0
+                .fire({title: "", text: `Profile successfully updated.`, icon: "success"})
+                .then(res => {;
+                    setShouldEditProfile(false);
+                    setProfileInputs({position: '', fullname: '', profileimg: '', about: '', level: 0});
+                    setSelectedProfile(null);
+                    setIsEditing(false);
                 });
-                setSelectedProfile(null);
-                setIsEditing(false);
-            });
             props.resetMgmtProfileUpdated();
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.isProfileUpdated]);
-
 
     useEffect(() => {
         if (props.isProfileDeleted) {
@@ -143,9 +141,8 @@ const ManageMgmtProfile = (props) => {
                 });
             props.resetMgmtProfileDeleted();
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.isProfileDeleted]);
-
 
     const handleCreateProfileBtn = () => {
         const {position, fullname, profileimg, about, level} = profileInputs;
@@ -237,11 +234,21 @@ const ManageMgmtProfile = (props) => {
                     <div>
                         <div className="">
                             <label htmlFor="position">Position</label>
-                            <input type="text" name="position" id="position" value={profileInputs.position} onChange={handleInputChange}/>
+                            <input
+                                type="text"
+                                name="position"
+                                id="position"
+                                value={profileInputs.position}
+                                onChange={handleInputChange}/>
                         </div>
                         <div className="">
                             <label htmlFor="fullname">Full Name</label>
-                            <input type="text" name="fullname" id="fullname" value={profileInputs.fullname} onChange={handleInputChange}/>
+                            <input
+                                type="text"
+                                name="fullname"
+                                id="fullname"
+                                value={profileInputs.fullname}
+                                onChange={handleInputChange}/>
                         </div>
                     </div>
                     <div>
@@ -257,16 +264,32 @@ const ManageMgmtProfile = (props) => {
                         </div>
 
                         <div>
-                            <label>Profile Level <small>(Lesser comes first)</small></label>
-                            <input type="number" name="level" id="level" onChange={handleInputChange} value={profileInputs.level} />
+                            <label>Profile Level
+                                <small>(Lesser comes first)</small>
+                            </label>
+                            <input
+                                type="number"
+                                name="level"
+                                id="level"
+                                onChange={handleInputChange}
+                                value={profileInputs.level}/>
                         </div>
 
                         <div className="">
                             <label htmlFor="profileabout">About</label>
-                            <textarea name="about" id="about" value={profileInputs.about} onChange={handleInputChange}></textarea>
+                            <textarea
+                                name="about"
+                                id="about"
+                                value={profileInputs.about}
+                                onChange={handleInputChange}></textarea>
                         </div>
                         <div>
-                            <button className="page-edit-btn page-btn" disabled={isCreating}  onClick={handleCreateProfileBtn}>{isCreating ? 'Creating...' : 'Create'}</button>
+                            <button
+                                className="page-edit-btn page-btn"
+                                disabled={isCreating}
+                                onClick={handleCreateProfileBtn}>{isCreating
+                                    ? 'Creating...'
+                                    : 'Create'}</button>
                         </div>
                     </div>
 
@@ -274,56 +297,69 @@ const ManageMgmtProfile = (props) => {
 
                 <div className="ap-box">
                     <h3>Edit or Delete Profile</h3>
-                    <p>Select the profile who want to edit or delete.</p>
+                    {!shouldEditProfile && <p>Select the profile who want to edit or delete.</p>}
                     {props.isLoaded && <div className="edit-page-container">
-                        <div className="page-select-wrapper">
-                            <Select
-                                className="asset-form-select"
-                                defaultValue={selectedProfile}
-                                value={selectedProfile}
-                                options={props
-                                .mgmtProfiles
-                                .map(({_id, position, name, created_at}) => ({
-                                    value: _id,
-                                    label: `${position} [${name}] (${moment(created_at).format('MMM DD, YYYY')})`,
-                                    name,
-                                    position
-                                }))}
-                                onChange={handleProfileSelectInputChange}
-                                isClearable={true}
-                                isSearchable={true}
-                                placeholder={`Select a profile...`}
-                                styles={{
-                                menu: (provided, state) => ({backgroundColor: "var(--primary-color-light)", border: "1px solid var(--primary-color"}),
-                                option: (styles, {isSelected}) => {
-                                    return {
-                                        ...styles,
-                                        backgroundColor: isSelected
-                                            ? 'var(--secondary-color) !important'
-                                            : null
+                        {!shouldEditProfile && <div>
+                            <div className="page-select-wrapper">
+                                <Select
+                                    className="asset-form-select"
+                                    defaultValue={selectedProfile}
+                                    value={selectedProfile}
+                                    options={props
+                                    .mgmtProfiles
+                                    .map(({_id, position, name, created_at}) => ({
+                                        value: _id,
+                                        label: `${position} [${name}] (${moment(created_at).format('MMM DD, YYYY')})`,
+                                        name,
+                                        position
+                                    }))}
+                                    onChange={handleProfileSelectInputChange}
+                                    isClearable={true}
+                                    isSearchable={true}
+                                    placeholder={`Select a profile...`}
+                                    styles={{
+                                    menu: (provided, state) => ({backgroundColor: "var(--primary-color-light)", border: "1px solid var(--primary-color"}),
+                                    option: (styles, {isSelected}) => {
+                                        return {
+                                            ...styles,
+                                            backgroundColor: isSelected
+                                                ? 'var(--secondary-color) !important'
+                                                : null
+                                        }
                                     }
-                                }
-                            }}/>
-                        </div>
-                        <div className="edit-page-action-btns">
-                            <button className="page-edit-btn page-btn" onClick={handleProfileEdit}>Edit</button>
-                            <button
-                                className="page-delete-btn page-btn"
-                                disabled={isDeleting}
-                                onClick={handleProfileDelete}>{isDeleting
-                                    ? 'Deleting...'
-                                    : 'Delete'}</button>
-                        </div>
+                                }}/>
+                            </div>
+                            <div className="edit-page-action-btns">
+                                <button className="page-edit-btn page-btn" onClick={handleProfileEdit}>Edit</button>
+                                <button
+                                    className="page-delete-btn page-btn"
+                                    disabled={isDeleting}
+                                    onClick={handleProfileDelete}>{isDeleting
+                                        ? 'Deleting...'
+                                        : 'Delete'}</button>
+                            </div>
+                        </div>}
                         {shouldEditProfile && <div className="ap-box createprofile-box">
-                            <h3>Edit {selectedProfile.position} ({selectedProfile.name})</h3>
+                            <h3>Edit {selectedProfile.position}
+                                ({selectedProfile.name})</h3>
                             <div>
                                 <div className="">
                                     <label htmlFor="position">Position</label>
-                                    <input type="text" name="position" id="position" value={profileInputs.position} onChange={handleInputChange}/>
+                                    <input
+                                        type="text"
+                                        name="position"
+                                        id="position"
+                                        value={profileInputs.position}
+                                        onChange={handleInputChange}/>
                                 </div>
                                 <div className="">
                                     <label htmlFor="fullname">Full Name</label>
-                                    <input type="text" name="fullname" id="fullname" value={profileInputs.fullname} onChange={handleInputChange}/>
+                                    <input
+                                        type="text"
+                                        name="fullname"
+                                        id="fullname"
+                                        value={profileInputs.fullname}
+                                        onChange={handleInputChange}/>
                                 </div>
                             </div>
                             <div>
@@ -340,15 +376,29 @@ const ManageMgmtProfile = (props) => {
 
                                 <div>
                                     <label>Profile Level</label>
-                                    <input type="number" name="level" id="level" onChange={handleInputChange} value={profileInputs.level} />
+                                    <input
+                                        type="number"
+                                        name="level"
+                                        id="level"
+                                        onChange={handleInputChange}
+                                        value={profileInputs.level}/>
                                 </div>
 
                                 <div className="">
                                     <label htmlFor="profileabout">About</label>
-                                    <textarea name="about" id="about" value={profileInputs.about} onChange={handleInputChange}></textarea>
+                                    <textarea
+                                        name="about"
+                                        id="about"
+                                        value={profileInputs.about}
+                                        onChange={handleInputChange}></textarea>
                                 </div>
                                 <div>
-                                    <button className="page-edit-btn page-btn" disabled={isEditing}  onClick={handleEditProfileBtn}>{isEditing ? 'Editing...' : 'Edit'}</button>
+                                    <button
+                                        className="page-edit-btn page-btn"
+                                        disabled={isEditing}
+                                        onClick={handleEditProfileBtn}>{isEditing
+                                            ? 'Editing...'
+                                            : 'Edit'}</button>
                                     <button className="page-cancel-btn page-btn" onClick={handleProfileCancelBtn}>Cancel</button>
                                 </div>
                             </div>
@@ -363,6 +413,21 @@ const ManageMgmtProfile = (props) => {
     )
 }
 
-const mapStateToProps = state => ({user: state.auth.user, isAuthenticated: state.auth.isAuthenticated, mgmtProfiles: state.mgmtProfile.mgmtProfiles, isLoaded: state.mgmtProfile.isLoaded, isProfileCreated: state.mgmtProfile.isMgmtProfileCreated, isProfileUpdated: state.mgmtProfile.isMgmtProfileUpdated, isProfileDeleted: state.mgmtProfile.isMgmtProfileDeleted});
+const mapStateToProps = state => ({
+    user: state.auth.user,
+    isAuthenticated: state.auth.isAuthenticated,
+    mgmtProfiles: state.mgmtProfile.mgmtProfiles,
+    isLoaded: state.mgmtProfile.isLoaded,
+    isProfileCreated: state.mgmtProfile.isMgmtProfileCreated,
+    isProfileUpdated: state.mgmtProfile.isMgmtProfileUpdated,
+    isProfileDeleted: state.mgmtProfile.isMgmtProfileDeleted
+});
 
-export default connect(mapStateToProps, {addMgmtProfile, resetMgmtProfileCreated, updateMgmtProfile, resetMgmtProfileUpdated, deleteMgmtProfile, resetMgmtProfileDeleted})(ManageMgmtProfile);
+export default connect(mapStateToProps, {
+    addMgmtProfile,
+    resetMgmtProfileCreated,
+    updateMgmtProfile,
+    resetMgmtProfileUpdated,
+    deleteMgmtProfile,
+    resetMgmtProfileDeleted
+})(ManageMgmtProfile);
