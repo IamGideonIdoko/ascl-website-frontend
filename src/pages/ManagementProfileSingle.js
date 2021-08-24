@@ -9,7 +9,7 @@ function ManagementProfileSingle(props) {
 
     const allProfiles = props.mgmtProfiles;
 
-    const exactProfile = allProfiles.filter(page => page.slug === slug)[0];
+    const exactProfile = allProfiles.filter(profile => profile.slug === slug)[0];
 
     return (
         <MainLayout>
@@ -27,17 +27,20 @@ function ManagementProfileSingle(props) {
                                             </Link>&nbsp; &gt;&gt; {exactProfile.position}</small>
                                     </h5>
 
-                                    <div className="profile-container">
+                                    <div className="proc">
                                         <div className="proc-left">
-                                            <h3>Top Management</h3>
+                                            <h3>Positions</h3>
                                             <ul>
-                                                {allProfiles.map(profile => <li key={profile._id}><Link to={`/management-profile/${profile.slug}`}>{profile.position}</Link></li>)}
+                                                {allProfiles.map(profile => <li key={profile._id} className={`${exactProfile.slug === profile.slug && 'active-list'}`}><Link to={`/management-profile/${profile.slug}`}>{exactProfile.slug === profile.slug && <i className="neu neu-chevron-right"></i>}{profile.position}</Link></li>)}
                                             </ul>
                                         </div>
                                         <div className="proc-right">
-                                            <h2>{exactProfile.position}</h2>
-                                            <div className="page-cover-wrap">
-                                                <img className="page-cover" src={exactProfile.photo} alt={exactProfile.name}/>
+                                            <h3>{exactProfile.position}</h3>
+                                            <div className="">
+                                                <img className="" src={exactProfile.photo} alt={exactProfile.name}/>
+                                            </div>
+                                            <div className="proc-about">
+                                                <div>{exactProfile.about}</div>
                                             </div>
 
                                         </div>
@@ -45,10 +48,7 @@ function ManagementProfileSingle(props) {
 
                                 </div>
 
-                                <div className="page-body-container">
-                                    <div
-                                        className={`page-body true-page-body`}>{exactProfile.about}</div>
-                                </div>
+                                
 
                             </div>
                         : <div>404 - Page not found</div>}
