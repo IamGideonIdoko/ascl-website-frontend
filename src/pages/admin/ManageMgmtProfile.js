@@ -257,7 +257,7 @@ const ManageMgmtProfile = (props) => {
                         </div>
 
                         <div>
-                            <label>Profile Level</label>
+                            <label>Profile Level <small>(Lesser comes first)</small></label>
                             <input type="number" name="level" id="level" onChange={handleInputChange} value={profileInputs.level} />
                         </div>
 

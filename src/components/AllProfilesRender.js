@@ -11,7 +11,7 @@ const AllProfilesRender = ({profiles, category}) => {
         return (
             <div className="profiles-container">
                 <ul>
-                    {profiles.map(profile => (
+                    {profiles.sort((a, b) => Number(a.position_level) - Number(b.position_level)).map(profile => (
                         <li key={profile._id} className="profiles-box">
                             <div>
                                 <img src={profile.photo} alt={profile.name}/>
