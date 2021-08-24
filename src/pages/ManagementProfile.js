@@ -2,6 +2,7 @@ import WithSidebar from '../layouts/WithSidebar';
 import MainLayout from './../layouts/MainLayout';
 import {connect} from 'react-redux';
 import AllProfilesRender from '../components/AllProfilesRender';
+import '../styles/ManagementProfile.css';
 
 function MangementProfile(props) {
 
