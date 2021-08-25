@@ -35,8 +35,11 @@
 }
 
 .profile-photo-wrapper {
-    max-height: 20rem;
+    height: 20rem;
     max-width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-photo-wrapper img {

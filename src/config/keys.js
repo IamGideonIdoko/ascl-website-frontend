@@ -9,6 +9,7 @@ export const config = {
 	firebaseAppId: process.env.REACT_APP_FIREBASE_APP_ID,
 	commentsUpdateAccessKey: process.env.REACT_APP_COMMENTS_UPDATE_ACCESS_KEY,
 	contactPostAccessKey: process.env.REACT_APP_CONTACT_POST_ACCESS_KEY,
-	numberOfNewsPerPage: 2,
-	numberOfPressReleasesPerPage: 2
+	numberOfNewsPerPage: 20,
+	numberOfPressReleasesPerPage: 20,
+	numberOfGalleryPerPage: 20
 }

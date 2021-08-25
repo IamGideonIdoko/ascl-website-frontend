@@ -1,5 +1,6 @@
 import {SRLWrapper} from 'simple-react-lightbox';
 import NoImage from '../images/image-not-found.png';
+import '../styles/Gallery.css';
 // import moment from 'moment';
 
 const AllGalleriesRender = ({galleries}) => {
@@ -8,11 +9,11 @@ const AllGalleriesRender = ({galleries}) => {
         settings: {
             overlayColor: "rgba(1, 104, 103, 0.5)",
             autoplaySpeed: 3000,
-            transitionSpeed: 1200,
-          },
-          buttons: {
-              showDownloadButton: false
-          }
+            transitionSpeed: 1200
+        },
+        buttons: {
+            showDownloadButton: false
+        }
     }
 
     const handleImgError = e => {
@@ -21,7 +22,7 @@ const AllGalleriesRender = ({galleries}) => {
     }
 
     if (galleries.length === 0) {
-        return ( 
+        return (
             <b>No Gallery.</b>
         )
     } else {
@@ -29,7 +30,10 @@ const AllGalleriesRender = ({galleries}) => {
             <SRLWrapper options={galleryOptions}>
                 <ul className="gallery-wrapper">{galleries.map((gallery, idx) => (
                         <li key={gallery._id} className="gallery-box">
-                            <img src={gallery.cover_img} alt={gallery.caption || 'Not Available'} onError={handleImgError} />
+                            <img
+                                src={gallery.cover_img}
+                                alt={gallery.caption || 'Not Available'}
+                                onError={handleImgError}/>
                         </li>
                     ))
 }

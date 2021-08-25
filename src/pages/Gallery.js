@@ -9,13 +9,13 @@ function Gallery(props) {
 
     const allGalleries = props.galleries;
 
-    const numberOfPages = Math.ceil(allGalleries.length / config.numberOfNewsPerPage);
+    const numberOfPages = Math.ceil(allGalleries.length / config.numberOfGalleryPerPage);
 
     const currentPageNumber = 1;
 
-    const limitStartingNumber = (currentPageNumber - 1) * config.numberOfNewsPerPage;
+    const limitStartingNumber = (currentPageNumber - 1) * config.numberOfGalleryPerPage;
 
-    const limitEndingNumber = limitStartingNumber + config.numberOfNewsPerPage;
+    const limitEndingNumber = limitStartingNumber + config.numberOfGalleryPerPage;
 
     return (
         <MainLayout>
@@ -27,8 +27,8 @@ function Gallery(props) {
                     : <div>
                         <AllGalleriesRender
                             galleries={allGalleries.slice(limitStartingNumber, limitEndingNumber)}/>
-                        <div>Page {`${currentPageNumber} of ${numberOfPages}`}</div>
-                        {(allGalleries.length > config.numberOfNewsPerPage)
+                        <div className="page-count">Page {`${currentPageNumber} of ${numberOfPages}`}</div>
+                        {(allGalleries.length > config.numberOfGalleryPerPage)
                             ? <div className="pagination-wrapper">
                                     <div className={`pagination pgn-flex-end`}>
                                         <span>
