@@ -27,10 +27,13 @@
     padding: 1rem;
 }
 
-.mainNav ul li a:hover, .mainNav ul li span:hover {
+.mainNav ul li a:hover {
     background-color: var(--secondary-color);
 }
 
+.mainNav ul li span:hover {
+    cursor: default;
+}
 
 .nav-dropdown-parent {
     position: relative;

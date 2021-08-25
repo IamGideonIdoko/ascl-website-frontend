@@ -22,9 +22,9 @@ function ManagementProfileSingle(props) {
                                     <h5 className="breadcrumb">
                                         <small>
                                             <Link to="/">Home
-                                            </Link>&nbsp;&gt;&gt;&nbsp;
+                                            </Link>&nbsp;»&nbsp;
                                             <Link to="/management-profile">Management Profile
-                                            </Link>&nbsp; &gt;&gt; {exactProfile.position}</small>
+                                            </Link>&nbsp; » {exactProfile.position}</small>
                                     </h5>
 
                                     <div className="proc">

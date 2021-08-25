@@ -11,7 +11,7 @@ function Navbar() {
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/management-profile">Management Profile</Link></li>
             <li className="nav-dropdown-parent">
-                <span>Facilities</span> 
+                <span>Facilities <i className="neu neu-chevron-down"></i></span> 
                 <div className="nav-dropdown">
                     <ul>
                         <li><Link to="/company-overview">Company Overview</Link></li>
@@ -20,7 +20,7 @@ function Navbar() {
                 </div>
             </li>
             <li className="nav-dropdown-parent">
-                <span>Products & Services</span>
+                <span>Products & Services <i className="neu neu-chevron-down"></i></span>
                 <div className="nav-dropdown">
                     <ul>
                         <li><Link to="/products">Products</Link></li>
@@ -30,7 +30,7 @@ function Navbar() {
             </li>
             <li><Link to="/clients">Our Clients</Link></li>
             <li className="nav-dropdown-parent">
-                <span>Media</span> 
+                <span>Media <i className="neu neu-chevron-down"></i></span> 
                 <div className="nav-dropdown">
                     <ul>
                         <li><Link to="/news">News</Link></li>

@@ -43,9 +43,9 @@ function PressReleasesSingle(props) {
                             <h5 className="breadcrumb">
                                 <small>
                                     <Link to="/">Home
-                                    </Link>&nbsp;&gt;&gt;&nbsp;
+                                    </Link>&nbsp;»&nbsp;
                                     <Link to="/press-releases">News
-                                    </Link>&nbsp; &gt;&gt; {exactPage.title}</small>
+                                    </Link>&nbsp; » {exactPage.title}</small>
                             </h5>
                             <h2>{exactPage.title}</h2>
                             <h5 className="page-meta">

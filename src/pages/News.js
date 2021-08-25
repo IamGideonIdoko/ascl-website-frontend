@@ -31,10 +31,11 @@ function News(props) {
                     : <div>
                         <AllPageRender
                             pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)} category="news" />
-                        <div>Page {`${currentPageNumber} of ${numberOfPages}`}</div>
+                        <div className="page-count">Page {`${currentPageNumber} of ${numberOfPages}`}</div>
                         {(allNewsPages.length > config.numberOfNewsPerPage)
                             ? <div className="pagination-wrapper">
                                     <div className={`pagination pgn-flex-end`}>
+                                        <span></span>
                                         <span>
                                             <Link to={`/news/page/${currentPageNumber + 1}`}>Next Page →</Link>
                                         </span>

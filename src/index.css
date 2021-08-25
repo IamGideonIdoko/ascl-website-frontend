@@ -79,6 +79,11 @@ a {
 
 .breadcrumb {
   font-weight: 500 !important;
+  opacity: 0.85;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
 }
 
 .content-max-width {

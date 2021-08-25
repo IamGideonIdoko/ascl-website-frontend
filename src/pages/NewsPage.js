@@ -4,6 +4,7 @@ import {useParams, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {config} from '../config/keys';
 import AllPageRender from '../components/AllPagesRender';
+import '../styles/Page.css';
 
 function NewsPage(props) {
 
@@ -23,9 +24,6 @@ function NewsPage(props) {
 
     const limitEndingNumber = limitStartingNumber + config.numberOfNewsPerPage;
 
-    console.log("News pages", allNewsPages);
-    console.log(config.numberOfNewsPerPage);
-
     return (
         <MainLayout>
             <WithSidebar>
@@ -38,7 +36,7 @@ function NewsPage(props) {
                         : <div>
                             <AllPageRender
                                 pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)} category="news"/>
-                            <div>Page {`${currentPageNumber} of ${numberOfPages}`}</div>
+                            <div className="page-count">Page {`${currentPageNumber} of ${numberOfPages}`}</div>
                             {(allNewsPages.length > config.numberOfNewsPerPage)
                                 ? <div className="pagination-wrapper">
 

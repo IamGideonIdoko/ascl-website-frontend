@@ -9,8 +9,6 @@ function Gallery(props) {
 
     const allGalleries = props.galleries;
 
-    console.log("allGalleries: ", props.galleries);
-
     const numberOfPages = Math.ceil(allGalleries.length / config.numberOfNewsPerPage);
 
     const currentPageNumber = 1;
