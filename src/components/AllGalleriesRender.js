@@ -7,7 +7,7 @@ const AllGalleriesRender = ({galleries}) => {
 
     const galleryOptions = {
         settings: {
-            overlayColor: "rgba(1, 104, 103, 0.5)",
+            overlayColor: "rgba(1, 104, 103, 0.85)",
             autoplaySpeed: 3000,
             transitionSpeed: 1200
         },
@@ -16,9 +16,23 @@ const AllGalleriesRender = ({galleries}) => {
         }
     }
 
-    const handleImgError = e => {
+    function handleImgError(e) {
+        const {id} = this;
+        const skel = document.querySelector(`.skeleton-loader-${id}`);
         e.target.src = NoImage;
-        e.onerror = null
+        e.onerror = null;
+        if (skel) {
+            skel.style.display = "none";
+        }
+
+    }
+
+    function handleImgLoad() {
+        const {id} = this;
+        const skel = document.querySelector(`.skeleton-loader-${id}`);
+        if (skel) {
+            skel.style.display = "none";
+        }
     }
 
     if (galleries.length === 0) {
@@ -30,10 +44,23 @@ const AllGalleriesRender = ({galleries}) => {
             <SRLWrapper options={galleryOptions}>
                 <ul className="gallery-wrapper">{galleries.map((gallery, idx) => (
                         <li key={gallery._id} className="gallery-box">
+                            <div
+                                className={`skeleton-loader gallery-skeleton skeleton-loader-${gallery
+                                ._id
+                                .slice(-3)}`}></div>
                             <img
                                 src={gallery.cover_img}
                                 alt={gallery.caption || 'Not Available'}
-                                onError={handleImgError}/>
+                                onLoad={handleImgLoad.bind({
+                                id: gallery
+                                    ._id
+                                    .slice(-4)
+                            })}
+                                onError={handleImgError.bind({
+                                id: gallery
+                                    ._id
+                                    .slice(-4)
+                            })}/>
                         </li>
                     ))
 }
