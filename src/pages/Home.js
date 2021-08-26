@@ -13,16 +13,13 @@ import industryTools1 from '../images/industry-tools-1.png';
 import industryTools2 from '../images/industry-tools-2.png';
 import industryTools3 from '../images/industry-tools-3.png';
 import { Link } from 'react-router-dom';
-import {Helmet} from 'react-helmet';
+import SEOHeader from '../components/SEOHeader';
 
 
 function Home() {
     return(
         <MainLayout>
-        <Helmet>
-            <title>Homepage</title>
-            <meta name="description" content="Ajaokuta Steel Project is located on 24,000 hectares of sprawling green-field land-mass. The Steel Plant itself is built on 800-hectares of land. The chosen Technology for Steel Production is the time tested Blast-Furnace – Basic Oxygen Furnace route for Steel Production." />
-        </Helmet>
+        <SEOHeader title="Ajaokuta Steel Company Limited - Bedrock of Nigeria's Industrialization." />
         <Carousel 
             autoPlay={true} 
             emulateTouch={true} 
