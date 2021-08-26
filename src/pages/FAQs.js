@@ -2,6 +2,7 @@ import WithSidebar from '../layouts/WithSidebar';
 import MainLayout from './../layouts/MainLayout';
 import {connect} from 'react-redux';
 import AllFaqsRender from '../components/AllFaqsRender';
+import '../styles/Faqs.css';
 
 function Faqs(props) {
 
