@@ -8,16 +8,21 @@ function EngineeringWorksComplex() {
             <WithSidebar>
                 <h1>Engineering Works Complex</h1>
                 <div>
-                The Steel Plant also has a very large Engineering Works complex
-The Engineering workshops of Ajaokuta steel company Limited comprises the following:
+                    <p>The Steel Plant also has a very large Engineering Works complex</p>
+                    <p>The Engineering workshops of Ajaokuta steel company Limited comprises the
+                        following:</p>
 
-•    Foundry and pattern Making shop (FPS)
-•    Forge and Fabrication shop (FFS)
-•    Rubberizing and Vulcanizing shop (R&VS)
-•    Power Equipment Repair shop (PERS)
-•    Machine and Tools shop (M&TS)
+                    <ul>
+                        <li>Foundry and pattern Making shop (FPS)</li>
+                        <li>Forge and Fabrication shop (FFS)</li>
+                        <li>Rubberizing and Vulcanizing shop (R&VS)</li>
+                        <li>Power Equipment Repair shop (PERS)</li>
+                        <li>Machine and Tools shop (M&TS)</li>
+                    </ul>
 
-In each of these shops are wide range of machinery and equipment to carry out a variety of fabrication, repair and maintenance works, manufacture of intricate spare parts and reclamation of spares.
+                    <p>In each of these shops are wide range of machinery and equipment to carry out
+                        a variety of fabrication, repair and maintenance works, manufacture of intricate
+                        spare parts and reclamation of spares.</p>
 
                 </div>
             </WithSidebar>
