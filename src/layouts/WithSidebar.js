@@ -1,13 +1,22 @@
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import '../styles/WithSidebar.css';
 
 /* create WithSidebar Layout component */
 const WithSidebar = (props) => {
 
-    return(
+    const allNewsPages = props.pages
+        ? props
+            .pages
+            .filter(page => page.category === "news")
+        : [];
+
+    console.log(allNewsPages, allNewsPages.slice(0, 1));
+
+    return (
         <div className="with-sidebar">
             <div className="ws-content">
-            { props.children }
+                {props.children}
 
             </div>
             <div className="sidebar">
@@ -19,11 +28,21 @@ const WithSidebar = (props) => {
                         <div className='s-box-body'>
                             <h5>Engineering Works Complex</h5>
                             <ul className="s-facilities-list">
-                                <li><Link to="/engineering-works-complex/equipment-repair-shop">Enquipment Repair Shop</Link></li>
-                                <li><Link to="/engineering-works-complex/forge-and-fabrication-shop">Forge and Fabrication Shop</Link></li>
-                                <li><Link to="/engineering-works-complex/foundary-and-pattern-making-shop">Foundary and Pattern Making Shop</Link></li>
-                                <li><Link to="/engineering-works-complex/machine-and-tools-shop">Machine and Tools Shop</Link></li>
-                                <li><Link to="/engineering-works-complex/rubberizing-and-vulcanizing-shop">Rubberizing and Vulcanizing Shop</Link></li>
+                                <li>
+                                    <Link to="/engineering-works-complex/equipment-repair-shop">Enquipment Repair Shop</Link>
+                                </li>
+                                <li>
+                                    <Link to="/engineering-works-complex/forge-and-fabrication-shop">Forge and Fabrication Shop</Link>
+                                </li>
+                                <li>
+                                    <Link to="/engineering-works-complex/foundary-and-pattern-making-shop">Foundary and Pattern Making Shop</Link>
+                                </li>
+                                <li>
+                                    <Link to="/engineering-works-complex/machine-and-tools-shop">Machine and Tools Shop</Link>
+                                </li>
+                                <li>
+                                    <Link to="/engineering-works-complex/rubberizing-and-vulcanizing-shop">Rubberizing and Vulcanizing Shop</Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -33,6 +52,12 @@ const WithSidebar = (props) => {
                             <h2>News Update</h2>
                         </div>
                         <div className="s-box-body">
+                            <ul className="s-facilities-list">
+                                {allNewsPages.slice(0, 5).map(page => <li>
+                                    <Link to={`/news/${page.slug}`}>{page.title.length > 30 ? `${page.title.slice(0, 30)}...` : page.title}</Link>
+                                </li>)
+                                }
+                            </ul>
 
                         </div>
 
@@ -45,4 +70,6 @@ const WithSidebar = (props) => {
     )
 }
 
-export default WithSidebar;
+const mapStateToProps = (state, ownProps) => ({pages: state.page.pages, isLoaded: state.page.isLoaded});
+
+export default connect(mapStateToProps, null)(WithSidebar);
