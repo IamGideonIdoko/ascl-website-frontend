@@ -8,13 +8,15 @@ function ConsultancyServices() {
             <WithSidebar>
                 <h1>Consultancy Services</h1>
                 <div>
-                We also offer consultancy services in the following areas:
+                    <p>We also offer consultancy services in the following areas:</p>
 
-•    Design and drawing.
-•    Product development.
-•    General Engineering.
-•     Rubber product development.
-•     Plant refurbishing and Turn around Maintenance.
+                    <ul>
+                        <li>Design and drawing.</li>
+                        <li>Product development.</li>
+                        <li>General Engineering.</li>
+                        <li>Rubber product development.</li>
+                        <li>Plant refurbishing and Turn around Maintenance.</li>
+                    </ul>
 
                 </div>
             </WithSidebar>
