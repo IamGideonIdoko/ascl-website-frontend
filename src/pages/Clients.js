@@ -1,5 +1,6 @@
 import MainLayout from './../layouts/MainLayout';
 import WithSidebar from './../layouts/WithSidebar';
+import ASCLClient from './../images/asclclient.jpg';
 
 function Clients() {
 
@@ -8,6 +9,7 @@ function Clients() {
             <WithSidebar>
                 <div className="postBody">
                     <h1>Clients</h1>
+                    <img src={ASCLClient} alt="Our Client"/>
                     <h3>LIST OF OUR PREVIOUS CLIENTS</h3>
                     <p>Engineering Workshops has business relationship in the repair of equipment
                         and manufacture of parts with the following industries:</p>
