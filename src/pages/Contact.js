@@ -8,35 +8,38 @@ function Contact() {
             <WithSidebar>
                 <h1>Contact</h1>
                 <div>
-                Contact Information:
+                    <h3>Contact Information:</h3>
 
-Contacts:
-Engineering Works & Services:-
+                    <h3>Engineering Works & Services:-</h3>
 
- Email: sulei_umar@yahoo.com; umarsulei@ajaokutasteel.com
+                    <p>Email: sulei_umar@yahoo.com; umarsulei@ajaokutasteel.com<br/>
 
-Phone: +2348036048476; +2348053566929  
-                                                            
-Commerce Department: +234834028856
+                        Phone: +2348036048476; +2348053566929
+                    </p>
 
+                    <h3>Commerce Department:
+                    </h3>
+                    <p>+234834028856</p>
 
+                    <h3>Public Affairs & Information:
+                    </h3>
+                    <p>+2438065328250<br/>
+                        E-mail: saliuahmad50@gmail.com<br/>
 
- Public Affairs & Information: +2438065328250
-   E-mail: saliuahmad50@gmail.com
+                        OR<br/>
 
-OR
+                        +2348036707200<br/>
 
-+2348036707200
+                        +2348052174874<br/>
 
-+2348052174874
+                        Email: frankjamgbadi@gmail.com</p>
 
-Email: frankjamgbadi@gmail.com
+                    <h3>Email Address:</h3>
+                    <p>info@ajaokutasteel.com
+                    </p>
 
-Email Address:
-info@ajaokutasteel.com 
-
-Website:
-www.ajaokutasteel.com
+                    <h3>Website:</h3>
+                    <p>www.ajaokutasteel.com</p>
 
                 </div>
             </WithSidebar>
