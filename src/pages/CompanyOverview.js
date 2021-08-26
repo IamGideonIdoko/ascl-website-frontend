@@ -6,8 +6,8 @@ function CompanyOverview() {
     return (
         <MainLayout>
             <WithSidebar>
-                <h1>Company Overview</h1>
-                <div>
+                <div className="postBody">
+                    <h1>Company Overview</h1>
 
                     <p>Ajaokuta Steel Company is located on 24,000 hectares of sprawling green-field
                         land-mass. The Steel Plant itself is built on 800-hectares of land. The chosen

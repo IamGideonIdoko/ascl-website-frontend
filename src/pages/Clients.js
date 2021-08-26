@@ -6,8 +6,8 @@ function Clients() {
     return (
         <MainLayout>
             <WithSidebar>
-                <h1>Clients</h1>
-                <div>
+                <div className="postBody">
+                    <h1>Clients</h1>
                     <h3>LIST OF OUR PREVIOUS CLIENTS</h3>
                     <p>Engineering Workshops has business relationship in the repair of equipment
                         and manufacture of parts with the following industries:</p>

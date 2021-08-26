@@ -6,8 +6,8 @@ function ConsultancyServices() {
     return (
         <MainLayout>
             <WithSidebar>
-                <h1>Consultancy Services</h1>
-                <div>
+                <div className="postBody">
+                    <h1>Consultancy Services</h1>
                     <p>We also offer consultancy services in the following areas:</p>
 
                     <ul>

@@ -6,8 +6,8 @@ function Products() {
     return (
         <MainLayout>
             <WithSidebar>
-                <h1>Products</h1>
-                <div>
+                <div className="postBody">
+                    <h1>Products</h1>
 
                     <table>
                         <thead>

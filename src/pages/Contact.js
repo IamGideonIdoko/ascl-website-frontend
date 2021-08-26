@@ -6,8 +6,8 @@ function Contact() {
     return (
         <MainLayout>
             <WithSidebar>
-                <h1>Contact</h1>
-                <div>
+                <div className="postBody">
+                    <h1>Contact</h1>
                     <h3>Contact Information:</h3>
 
                     <h3>Engineering Works & Services:-</h3>

@@ -6,8 +6,8 @@ function EngineeringWorksComplex() {
     return (
         <MainLayout>
             <WithSidebar>
-                <h1>Engineering Works Complex</h1>
-                <div>
+                <div className="postBody">
+                    <h1>Engineering Works Complex</h1>
                     <p>The Steel Plant also has a very large Engineering Works complex</p>
                     <p>The Engineering workshops of Ajaokuta steel company Limited comprises the
                         following:</p>
