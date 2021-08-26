@@ -8,27 +8,26 @@ function Clients() {
             <WithSidebar>
                 <h1>Clients</h1>
                 <div>
-                    
-LIST OF OUR PREVIOUS CLIENTS
-
-Engineering Workshops has business relationship in the repair of equipment and manufacture of parts with the following industries:
-
-•    Kaduna Refining and Petro-Chemical Company.
-•    Warri Refining and Petrochemical Company.
-•    Port-Harcourt Refining Company.
-•    Delta Steel Company.
-•    Cement Company of Northern Nigeria Sokoto.
-•    Obajana Cement Company.
-•    First Aluminum Company , Port-Harcourt.
-•    Zhong Yang Industry Nigeria Limited. Kogi State.
-•    DICON ,Kaduna
-•    Kogi State University, Ayangba.
-•    National Iron Mining Company, Itakpe
-•    Cadbury Nigeria Limited, Lagos.
-•    West Afrrican Portland Cement Lagos
-•    Nigeria Security Printing and Minting Company. Abuja.
-•    BCC,Gboko Benue State
-
+                    <h3>LIST OF OUR PREVIOUS CLIENTS</h3>
+                    <p>Engineering Workshops has business relationship in the repair of equipment
+                        and manufacture of parts with the following industries:</p>
+                    <ul>
+                        <li>Kaduna Refining and Petro-Chemical Company.</li>
+                        <li>Warri Refining and Petrochemical Company.</li>
+                        <li>Port-Harcourt Refining Company.</li>
+                        <li>Delta Steel Company.</li>
+                        <li>Cement Company of Northern Nigeria Sokoto.</li>
+                        <li>Obajana Cement Company.</li>
+                        <li>First Aluminum Company , Port-Harcourt.</li>
+                        <li>Zhong Yang Industry Nigeria Limited. Kogi State.</li>
+                        <li>DICON ,Kaduna</li>
+                        <li>Kogi State University, Ayangba.</li>
+                        <li>National Iron Mining Company, Itakpe</li>
+                        <li>Cadbury Nigeria Limited, Lagos.</li>
+                        <li>West Afrrican Portland Cement Lagos</li>
+                        <li>Nigeria Security Printing and Minting Company. Abuja.</li>
+                        <li>BCC,Gboko Benue State</li>
+                    </ul>
                 </div>
             </WithSidebar>
         </MainLayout>
