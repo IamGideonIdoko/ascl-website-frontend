@@ -35,7 +35,7 @@ const WithSidebar = (props) => {
                                     <Link to="/engineering-works-complex/forge-and-fabrication-shop">Forge and Fabrication Shop</Link>
                                 </li>
                                 <li>
-                                    <Link to="/engineering-works-complex/foundary-and-pattern-making-shop">Foundary and Pattern Making Shop</Link>
+                                    <Link to="/engineering-works-complex/foundary-and-pattern-making-shop">Foundry and Pattern Making Shop</Link>
                                 </li>
                                 <li>
                                     <Link to="/engineering-works-complex/machine-and-tools-shop">Machine and Tools Shop</Link>
