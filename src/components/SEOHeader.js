@@ -11,8 +11,6 @@ const SEOHeader = ({
     site_url = window.location.href
 }) => {
 
-    console.log('site url: ', window.location.href);
-
     return (
         <Helmet>
             <title>{title}</title>

@@ -6,6 +6,9 @@ import SimpleReactLightbox from 'simple-react-lightbox';
 import 'neuicons';
 
 function App() {
+    window.addEventListener('click', () => {
+        // console.clear();
+    })
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>

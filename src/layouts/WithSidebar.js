@@ -11,8 +11,6 @@ const WithSidebar = (props) => {
             .filter(page => page.category === "news")
         : [];
 
-    console.log(allNewsPages, allNewsPages.slice(0, 1));
-
     return (
         <div className="with-sidebar">
             <div className="ws-content">
@@ -53,7 +51,7 @@ const WithSidebar = (props) => {
                         </div>
                         <div className="s-box-body">
                             <ul className="s-facilities-list">
-                                {allNewsPages.slice(0, 5).map(page => <li>
+                                {allNewsPages.slice(0, 5).map(page => <li key={page._id}>
                                     <Link to={`/news/${page.slug}`}>{page.title.length > 30 ? `${page.title.slice(0, 30)}...` : page.title}</Link>
                                 </li>)
                                 }

@@ -1,12 +1,17 @@
 import MainLayout from './../layouts/MainLayout';
 import WithSidebar from './../layouts/WithSidebar';
 import ASCLClient from './../images/asclclient.jpg';
+import SEOHeader from '../components/SEOHeader';
 
 function Clients() {
 
     return (
         <MainLayout>
             <WithSidebar>
+            <SEOHeader
+                    title="Our Clients - Ajaokuta Steel Company Limited"
+                    description="List of out previous clients. Engineering Workshops has business relationship in the repair of equipment
+                        and manufacture of parts with the following industries" coverimg={ASCLClient} />
                 <div className="postBody">
                     <h1>Clients</h1>
                     <img src={ASCLClient} alt="Our Client"/>

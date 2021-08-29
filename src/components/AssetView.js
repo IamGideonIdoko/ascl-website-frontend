@@ -32,7 +32,6 @@ const AssetView = (props) => {
     }
 
     const handleCopyBtnClick = e => {
-        console.log("copy button clicked");
         if (selectedAssetFile) {
             copy(selectedAssetFile.value)
             Swal.fire({title: "", text: `"Copied "${selectedAssetFile.value}"`, icon: "success", buttons: false});

@@ -1,5 +1,6 @@
 import MainLayout from './../layouts/MainLayout';
 import WithSidebar from '../layouts/WithSidebar';
+import SEOHeader from '../components/SEOHeader';
 import '../styles/About.css';
 
 function About() {
@@ -7,6 +8,7 @@ function About() {
     return (
         <MainLayout>
             <WithSidebar>
+                <SEOHeader title="About - Ajaokuta Steel Company Limited" />
                 <div className="postBody">
                     <h1>About Us</h1>
                     <h3>WHO WE ARE</h3>

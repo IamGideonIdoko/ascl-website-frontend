@@ -2,6 +2,7 @@ import WithSidebar from '../layouts/WithSidebar';
 import MainLayout from './../layouts/MainLayout';
 import {useParams, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import SEOHeader from './../components/SEOHeader';
 
 function ManagementProfileSingle(props) {
 
@@ -14,6 +15,7 @@ function ManagementProfileSingle(props) {
     return (
         <MainLayout>
             <WithSidebar>
+            <SEOHeader title="Management Profile - Ajaokuta Steel Company Limited" description="Find profile of top management staff of Ajaokuta Steel Company Limited" />
                 {!props.isLoaded
                     ? <div>Loading</div>
                     : exactProfile

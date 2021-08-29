@@ -181,8 +181,6 @@ const ManageMgmtProfile = (props) => {
         }
     }
 
-    // console.log("selected  profile: ", selectedProfile);
-
     const handleEditProfileBtn = () => {
         const {position, fullname, profileimg, about, level} = profileInputs;
         if (!position || !fullname || !profileimg || !about || !level) {

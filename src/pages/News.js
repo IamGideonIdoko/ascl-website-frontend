@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {config} from '../config/keys';
 import AllPageRender from '../components/AllPagesRender';
 import {Link} from 'react-router-dom';
+import SEOHeader from '../components/SEOHeader';
 
 function News(props) {
 
@@ -24,13 +25,17 @@ function News(props) {
     return (
         <MainLayout>
             <WithSidebar>
+                <SEOHeader
+                    title="News - Ajaokuta Steel Company Limited"
+                    description="Find all news about the Ajaokuta Steel Company Limited here."/>
                 <h1>News</h1>
                 <p>Find below News from Ajaokuta Steel Company:</p>
                 {!props.isLoaded
                     ? <div>Loading</div>
                     : <div>
                         <AllPageRender
-                            pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)} category="news" />
+                            pages={allNewsPages.slice(limitStartingNumber, limitEndingNumber)}
+                            category="news"/>
                         <div className="page-count">Page {`${currentPageNumber} of ${numberOfPages}`}</div>
                         {(allNewsPages.length > config.numberOfNewsPerPage)
                             ? <div className="pagination-wrapper">

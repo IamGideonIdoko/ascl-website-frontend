@@ -3,6 +3,7 @@ import MainLayout from './../layouts/MainLayout';
 import {connect} from 'react-redux';
 import AllFaqsRender from '../components/AllFaqsRender';
 import '../styles/Faqs.css';
+import SEOHeader from '../components/SEOHeader';
 
 function Faqs(props) {
 
@@ -11,6 +12,9 @@ function Faqs(props) {
     return (
         <MainLayout>
             <WithSidebar>
+                <SEOHeader
+                    title="Frequently Asked Questions - Ajaokuta Steel Company Limited"
+                    description="Find all frequently asked questions (FAQs) about the Ajaokuta Steel Company Limited."/>
                 <h1>Frequently Asked Questions</h1>
                 <p>Find all frequently asked questions about the company below:</p>
                 {!props.isLoaded

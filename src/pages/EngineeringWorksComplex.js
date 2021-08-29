@@ -1,11 +1,15 @@
 import WithSidebar from '../layouts/WithSidebar';
 import MainLayout from './../layouts/MainLayout';
+import SEOHeader from '../components/SEOHeader';
 
 function EngineeringWorksComplex() {
 
     return (
         <MainLayout>
             <WithSidebar>
+                <SEOHeader
+                    title="Engineering Works Complex - Ajaokuta Steel Company Limited"
+                    description="The Steel Plant also has a very large Engineering Works complex. The Engineering workshops of Ajaokuta steel company Limited comprises the following."/>
                 <div className="postBody">
                     <h1>Engineering Works Complex</h1>
                     <p>The Steel Plant also has a very large Engineering Works complex</p>

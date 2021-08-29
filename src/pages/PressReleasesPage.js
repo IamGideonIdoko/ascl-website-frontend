@@ -4,6 +4,7 @@ import {useParams, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {config} from '../config/keys';
 import AllPageRender from '../components/AllPagesRender';
+import SEOHeader from '../components/SEOHeader';
 
 function PressReleasesPage(props) {
 
@@ -26,6 +27,9 @@ function PressReleasesPage(props) {
     return (
         <MainLayout>
             <WithSidebar>
+                <SEOHeader
+                    title="Press Releases - Ajaokuta Steel Company Limited"
+                    description="Find all press releases from Ajaokuta Steel Company Limited here"/>
                 <h1>Press Releases Page</h1>
                 <p>Find below Press Releases from Ajaokuta Steel Company:</p>
                 {!props.isLoaded
@@ -34,7 +38,8 @@ function PressReleasesPage(props) {
                         ? <div>PAGE DOES NOT EXIST</div>
                         : <div>
                             <AllPageRender
-                                pages={allPressReleasesPages.slice(limitStartingNumber, limitEndingNumber)} category="press-release"/>
+                                pages={allPressReleasesPages.slice(limitStartingNumber, limitEndingNumber)}
+                                category="press-release"/>
                             <div>Page {`${currentPageNumber} of ${numberOfPages}`}</div>
                             {(allPressReleasesPages.length > config.numberOfPressReleasesPerPage)
                                 ? <div className="pagination-wrapper">

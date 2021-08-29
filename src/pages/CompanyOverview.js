@@ -1,16 +1,21 @@
 import MainLayout from './../layouts/MainLayout';
 import WithSidebar from './../layouts/WithSidebar';
 import ASCLOverview from './../images/asclcompanyoverview.jpg';
+import SEOHeader from '../components/SEOHeader';
 
 function CompanyOverview() {
 
     return (
         <MainLayout>
             <WithSidebar>
+                <SEOHeader
+                    title="Company Overview - Ajaokuta Steel Company Limited"
+                    description="Ajaokuta Steel Company is located on 24,000 hectares of sprawling green-field
+                        land-mass. The Steel Plant itself is built on 800-hectares of land." coverimg={ASCLOverview} />
                 <div className="postBody">
                     <h1>Company Overview</h1>
 
-                    <img src={ASCLOverview} alt="Company Overview" />
+                    <img src={ASCLOverview} alt="Company Overview"/>
 
                     <p>Ajaokuta Steel Company is located on 24,000 hectares of sprawling green-field
                         land-mass. The Steel Plant itself is built on 800-hectares of land. The chosen

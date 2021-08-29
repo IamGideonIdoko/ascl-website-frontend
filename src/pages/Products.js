@@ -1,11 +1,15 @@
 import WithSidebar from '../layouts/WithSidebar';
 import MainLayout from './../layouts/MainLayout';
+import SEOHeader from '../components/SEOHeader';
 
 function Products() {
 
     return (
         <MainLayout>
             <WithSidebar>
+                <SEOHeader
+                    title="Products - Ajaokuta Steel Company Limited"
+                    description="Checkout the different Products of the company"/>
                 <div className="postBody">
                     <h1>Products</h1>
 

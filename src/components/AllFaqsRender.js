@@ -12,8 +12,6 @@ const AllFaqsRender = ({faqs}) => {
         }
     }
 
-    console.log("activeFaqs", activeFaqs);
-
     if (faqs.length === 0) {
         return (
             <b>No FAQs yet.</b>
