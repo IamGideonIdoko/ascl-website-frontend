@@ -104,3 +104,13 @@
     display: block;
     background-color: var(--secondary-color);
 }
+
+.footer-last-section > div {
+    padding-left: var(--home-padding) !important;
+    padding-right: var(--home-padding);
+}
+
+.footer-last-section > div small {
+    padding: 0;
+    display: inline-block;
+}
