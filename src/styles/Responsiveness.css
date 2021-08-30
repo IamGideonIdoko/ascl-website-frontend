@@ -1,0 +1,92 @@
+@media screen and (max-width: 980px) {
+    /* * NAVBAR */
+    .mainNav {
+        /* position: relative; */
+    }
+
+    .mainNav .mobile-menu {
+        display: flex !important;
+}
+
+
+    .mainNav > div > ul {
+        position: fixed;
+        background-color: rgba(1, 104, 103, 0.92);
+        width: 100%;
+        top: 0;
+        /*opacity: 0.9;
+        */height: 100vh;
+        z-index: 99999;
+        flex-direction: column;
+        justify-content: space-around;
+        overflow-y: scroll;
+        transform: translateY(-100vh);
+        -webkit-transform: translateY(-100vh);
+        -moz-transform: translateY(-100vh);
+        -ms-transform: translateY(-100vh);
+        -o-transform: translateY(-100vh);
+        transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        -webkit-transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        -moz-transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        -ms-transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        -o-transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.mainNav.close-nav > div > ul {
+    
+}
+
+    .mainNav.open-nav > div > ul {
+        display: flex !important;
+        transform: translateY(0vh) !important;
+        -webkit-transform: translateY(0vh) !important;
+        -moz-transform: translateY(0vh) !important;
+        -ms-transform: translateY(0vh) !important;
+        -o-transform: translateY(0vh) !important;
+}
+
+    .mainNav ul li {
+        /*border: 1px solid red;
+        */
+        width: 26rem;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+    .mainNav ul li a {
+        border-radius: 0.6rem !important;
+        -webkit-border-radius: 0.6rem !important;
+        -moz-border-radius: 0.6rem !important;
+        -ms-border-radius: 0.6rem !important;
+        -o-border-radius: 0.6rem !important;
+        font-size: 1.8rem;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+    }
+    
+    .mainNav ul li > span:nth-of-type(1) {
+        font-size: 1.8rem;
+    }
+
+    .nav-dropdown {
+        border-radius: 0.6rem;
+        -webkit-border-radius: 0.6rem;
+        -moz-border-radius: 0.6rem;
+        -ms-border-radius: 0.6rem;
+        -o-border-radius: 0.6rem;
+    }
+
+    .nav-dropdown ul li a {
+        text-align: center;
+    }
+}
+@media screen and (max-width: 700px) {
+    /* * HEADER */
+    .header img {
+        min-width: 80rem !important;
+    }
+
+}

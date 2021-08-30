@@ -6,6 +6,27 @@
     z-index: 4000;
 }
 
+.mainNav .mobile-menu {
+    display: inline-block;
+    position: fixed;
+    z-index: 999999;
+    top: 1.2rem;
+    right: 1.2rem;
+    font-size: 2.5rem;
+    border-radius: 10rem;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    display: none;
+}
+
 .mainNav a {
     color: var(--font-color-light)
 }

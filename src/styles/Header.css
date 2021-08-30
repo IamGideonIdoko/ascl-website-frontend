@@ -3,9 +3,11 @@
     background-position: top;
     text-align: left;
     vertical-align: auto !important;
+    overflow-x: hidden;
 }
 
 .header img {
     z-index: 1;
     display: inline !important;
+    min-width: 100rem;
 }
