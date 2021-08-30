@@ -10,14 +10,14 @@
     display: inline-block;
     position: fixed;
     z-index: 999999;
-    top: 1.2rem;
-    right: 1.2rem;
+    bottom: 1.2rem;
+    left: 1.2rem;
     font-size: 2.5rem;
     border-radius: 10rem;
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    -ms-border-radius:;
-    -o-border-radius:;
+    -webkit-border-radius: 10rem;
+    -moz-border-radius: 10rem;
+    -ms-border-radius: 10rem;
+    -o-border-radius: 10rem;
     width: 4rem;
     height: 4rem;
     display: flex;
@@ -25,6 +25,7 @@
     align-items: center;
     background-color: var(--secondary-color);
     display: none;
+    border: 1px solid white;
 }
 
 .mainNav a {

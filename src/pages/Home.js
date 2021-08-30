@@ -54,7 +54,7 @@ function Home() {
 
             <div className="home-layout">
                 <h1 className="wlc-text">Welcome to Ajaokuta Steel Company Limited</h1>
-                <div className="home-about">
+                <div className="home-about" id="home-about">
                     <div>
                         <h2>About Us</h2>
                     </div>
