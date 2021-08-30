@@ -19,6 +19,7 @@ import PressReleasesPage from './../pages/PressReleasesPage';
 import Products from '../pages/Products';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import MTC from '../pages/MTC';
 import AdminProfile from './../pages/admin/AdminProfile';
 import ManageAccess from '../pages/admin/ManageAccess';
 import ManageFileUpload from '../pages/admin/ManageFileUpload';
@@ -119,6 +120,9 @@ const SiteRouter = (props) => {
                     </Route>
                     <Route exact path="/contact">
                         <Contact/>
+                    </Route>
+                    <Route exact path="/MTC">
+                        <MTC/>
                     </Route>
                     <Route exact path="/engineering-works-complex">
                         <EngineeringWorksComplex/>
