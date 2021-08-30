@@ -21,6 +21,7 @@ function Navbar() {
                     <ul>
                         <li><Link to="/company-overview">Company Overview</Link></li>
                         <li><Link to="/engineering-works-complex">Engineering Works Complex</Link></li>
+                        <li><Link to="/MTC">MTC</Link></li>
                     </ul>
                 </div>
             </li>
