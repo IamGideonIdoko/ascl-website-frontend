@@ -191,3 +191,26 @@
     
     /* * END FOOTER */
 }
+
+@media screen and (max-width: 421px) {
+
+    /* * HOME SECTION */
+    .home-section-two {
+        padding: 0 !important;
+    }
+    .home-section-two > div {
+        width: 300px !important;
+        padding: 0;
+    }
+    /* * END HOME SECTION */   
+}
+
+@media screen and (max-width: 380px) {
+
+    /* * HOME SECTION */
+    .home-section-two > div {
+        width: 250px !important;
+    }
+    /* * END HOME SECTION */
+    
+}

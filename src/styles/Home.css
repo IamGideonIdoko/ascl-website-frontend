@@ -65,10 +65,11 @@
 }
 
 .home-section-two {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     margin: 5rem 0 0;
     padding: calc(var(--home-padding) - 2rem);
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .home-section-two > div {
@@ -76,6 +77,8 @@
     text-align: center;
     box-shadow: var(--shadow);    
     padding: 2rem;
+    width: 340px;
+    max-width: 100% !important;
 }
 
 .home-section-two > div h3 {
@@ -100,6 +103,10 @@
     overflow: hidden;
     border-radius: 10rem;
     margin: 0 auto;
+    -webkit-border-radius: 10rem;
+    -moz-border-radius: 10rem;
+    -ms-border-radius: 10rem;
+    -o-border-radius: 10rem;
 }
 
 .hst-icon img {
@@ -107,4 +114,8 @@
     transform: scale(1.4);
     margin-top: 1.2rem;
     pointer-events: none;
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
 }
