@@ -214,6 +214,10 @@
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
     }
+
+    .ws-content {
+        margin-right: 0 !important;
+    }
 }
 @media screen and (max-width: 700px) {
     :root {
@@ -384,14 +388,26 @@
     /* *END: HEADER */
 
 }
+
+@media screen and (max-width: 345px) {
+    .faqs-list li {
+        width: 28rem;
+    }
+}
+
 @media screen and (max-width: 325px) {
     /* * HEADER */
     .header img {
         min-width: 60rem !important;
 
+
     }
 
     /* *END: HEADER */
+
+    .faqs-list li {
+        width: 25rem;
+    }
 
 }
 @media screen and (max-width: 300px) {
