@@ -28,6 +28,49 @@
     border: 1px solid white;
 }
 
+.mainNav .adm-profile-link span {
+    display: none;
+    font-size: 1.8rem !important;
+}
+
+.mainNav .adm-profile-link {
+    display: inline-block;
+    /*position: fixed;
+    */border: 1px solid red;
+    position: fixed;
+    color: white;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    height: 4rem;
+    font-size: 2.5rem;
+    border-radius: 10rem;
+    -webkit-border-radius: 10rem;
+    -moz-border-radius: 10rem;
+    -ms-border-radius: 10rem;
+    -o-border-radius: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    background-color: var(--secondary-color);
+    border: 1px solid white;
+    z-index: 999999;
+}
+
+.mainNav .adm-profile-link:hover {
+    width: auto;
+    padding: 0 1rem;
+}
+
+.mainNav .adm-profile-link:hover span {
+    display: inline-block;
+}
+
 .mainNav a {
     color: var(--font-color-light)
 }
