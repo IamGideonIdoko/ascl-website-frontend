@@ -11,8 +11,8 @@
 .asset-form-select-wrap {
 	display: -ms-grid;
 	display: grid;
-	-ms-grid-columns: auto 5rem;
-	grid-template-columns: auto 5rem;
+	-ms-grid-columns: calc(100% - 5rem) 5rem;
+	grid-template-columns: calc(100% - 5rem) 5rem;
 	margin: 1rem 0 1rem;
 }
 

@@ -21,7 +21,7 @@ const AdminProfile = (props) => {
                         borderRadius: "0.4rem",
                         background: "var(--primary-color)",
                         color: 'white',
-                        padding: "1rem"
+                        padding: "0.5rem 1.2rem"
                     }}
                         onClick={() => props.logout()}>Logout</button>
                 </div>

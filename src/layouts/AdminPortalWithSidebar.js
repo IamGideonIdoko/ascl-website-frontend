@@ -2,7 +2,9 @@ import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/AdminPortalWithSidebar.css';
 import industryWorker from '../images/industry-worker.jpg';
-import asclLogo from '../images/ascl-logo.png'
+import asclLogo from '../images/ascl-logo.png';
+import {logout} from '../reduxstore/actions/authActions';
+import {connect} from 'react-redux';
 
 /* create WithSidebar Layout component */
 const AdminPortalWithSidebar = (props) => {
@@ -32,7 +34,7 @@ const AdminPortalWithSidebar = (props) => {
                                 <li><Link to="/adm/manage-mgmt-profile">Manage Mgmt. Profile</Link></li>
                                 <li><Link to="/adm/manage-faq">Manage FAQ</Link></li>
                                 <li><Link to="/adm/manage-access">Manage Access</Link></li>
-                                <li><Link to="#">Log out</Link></li>
+                                <li><Link to="#" onClick={() => props.logout()}>Log out</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -49,4 +51,4 @@ const AdminPortalWithSidebar = (props) => {
     )
 }
 
-export default AdminPortalWithSidebar;
+export default connect(null, {logout})(AdminPortalWithSidebar);

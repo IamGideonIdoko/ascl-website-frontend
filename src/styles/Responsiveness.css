@@ -232,6 +232,10 @@
         margin-right: 0 !important;
     }
 
+    .admin-portal-ws-content {
+        padding: 0rem !important;
+    }
+
     .admin-portal-sidebar {
         width: 25rem !important;
         left: -25.5rem;
@@ -251,7 +255,7 @@
         z-index: 4;
         top: 0rem;
         left: 0rem;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.2);
     }
 
 
