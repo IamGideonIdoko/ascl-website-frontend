@@ -12,8 +12,8 @@ function Navbar({isAuthenticated}) {
             <i className={`neu ${navOpen ? 'neu-close-lg' : 'neu-hamburger-menu'}`}></i>
         </button>
 
-        {isAuthenticated && <Link to="/adm/profile" className="adm-profile-link">
-            <span>Admin</span><i className={`neu neu-profile`}></i>
+        {isAuthenticated && <Link to="/adm/profile" className="adm-profile-link" title="Profile">
+            <span>Profile</span><i className={`neu neu-profile`}></i>
         </Link>}
 
         <ul>
