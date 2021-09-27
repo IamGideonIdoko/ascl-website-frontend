@@ -4,17 +4,13 @@
     padding: 2rem var(--home-padding);
 }
 
-.sidebar  {
-    max-width: 100%;
-}
-
-.sidebar > div:nth-child(1) {
-    max-width: 100%;
-}
-
 .ws-content {
     min-height: 40rem;
-    margin-right: 3rem;
+    margin-right: var(--home-padding);
+}
+
+.sidebar {
+    min-height: 40rem;
 }
 
 .s-box {
@@ -29,6 +25,9 @@
     color: var(--primary-color);
 }
 
+.s-box-header h2 {
+
+}
 
 .s-box-body {
     padding: 1rem;
@@ -41,30 +40,15 @@
 
 .s-facilities-list li {
     transition: all 0.3s ease;
-    list-style-position:outside;
-    white-space: nowrap;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    list-style-type: "➫ ";
+    list-style-position: inside;
 }
-
 
 .s-facilities-list li a {
     display: inline-block;
     height: 100%;
     padding: 0.8rem 0;
     transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    text-overflow: ellipsis;
-    width: calc(100% - 2rem);
-    overflow: hidden;
 }
 
 .s-facilities-list li a:hover {

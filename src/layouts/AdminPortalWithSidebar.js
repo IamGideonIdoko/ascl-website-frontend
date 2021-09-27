@@ -1,21 +1,15 @@
-import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/AdminPortalWithSidebar.css';
 import industryWorker from '../images/industry-worker.jpg';
-import asclLogo from '../images/ascl-logo.png';
-import {logout} from '../reduxstore/actions/authActions';
-import {connect} from 'react-redux';
+import asclLogo from '../images/ascl-logo.png'
 
 /* create WithSidebar Layout component */
 const AdminPortalWithSidebar = (props) => {
-    const [openSide, setOpenSide] = useState(false);
 
     return(
         <div className="admin-portal-withsidebar">
-            <div className={`side-nav-overlay ${openSide ? 'openSide' : ''}`} onClick={() => setOpenSide(false)}></div>
-            <div className={`admin-portal-sidebar ${openSide ? 'openSide' : ''}`}>
-                <div className="aps-inner-wrapper">
-                    <button className="ap-sidebar-btn" onClick={() => setOpenSide(prev => !prev)}><i className={`neu ${openSide ? 'neu-close-lg' : 'neu-hamburger-menu'}`}></i></button>
+            <div className="admin-portal-sidebar">
+                <div>
                     <div className="ap-image-box">
                     <img src={industryWorker} alt=""/>
                     <span className="ap-img-watermark">ASCL <br /> C-PANEL</span>
@@ -34,7 +28,7 @@ const AdminPortalWithSidebar = (props) => {
                                 <li><Link to="/adm/manage-mgmt-profile">Manage Mgmt. Profile</Link></li>
                                 <li><Link to="/adm/manage-faq">Manage FAQ</Link></li>
                                 <li><Link to="/adm/manage-access">Manage Access</Link></li>
-                                <li><Link to="#" onClick={() => props.logout()}>Log out</Link></li>
+                                <li><Link to="#">Log out</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -51,4 +45,4 @@ const AdminPortalWithSidebar = (props) => {
     )
 }
 
-export default connect(null, {logout})(AdminPortalWithSidebar);
+export default AdminPortalWithSidebar;

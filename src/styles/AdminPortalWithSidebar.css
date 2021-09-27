@@ -1,44 +1,17 @@
 .admin-portal-withsidebar {
-    display: block;
-    /* grid-template-columns:25rem 1fr ; */
+    display: grid;
+    grid-template-columns:25rem 1fr ;
     padding: 2rem var(--home-padding);
-    position: relative;
-    min-height: 60rem;
 }
 
 .admin-portal-ws-content {
-    /* min-height: 40rem; */
+    min-height: 40rem;
     /* margin-right: var(--home-padding); */
     padding: 0 1rem;
-    margin-left: calc(25rem + 1rem);
-    width: calc(100% - 25rem);
-}
-
-.side-nav-overlay {
-    display: none;
 }
 
 .admin-portal-sidebar {
-    /*min-height: 40rem;
-    */width: 25rem;
-    position: absolute;
-    background: white;
-    transition: all 0.4s cubic-bezier(1, 0, 0, 1);
-    -webkit-transition: all 0.4s cubic-bezier(1, 0, 0, 1);
-    -moz-transition: all 0.4s cubic-bezier(1, 0, 0, 1);
-    -ms-transition: all 0.4s cubic-bezier(1, 0, 0, 1);
-    -o-transition: all 0.4s cubic-bezier(1, 0, 0, 1);
-}
-
-.aps-inner-wrapper {
-    position: relative;
-}
-
-.ap-sidebar-btn {
-    position: absolute;
-    right: 0rem;
-    top: 0rem;
-    display: none;
+    /* min-height: 40rem; */
 }
 
 .aps-box {
@@ -51,6 +24,7 @@
     padding: 1rem 1rem 0;
     background-color: var(--primary-color-light);  
     color: var(--primary-color);
+    border: 1px solid red;
     display: flex;
 }
 
@@ -65,7 +39,7 @@
 
 .aps-facilities-list li {
     transition: all 0.3s ease;
-    list-style-type: "» ";
+    list-style-type: "➫ ";
     list-style-position: inside;
 }
 
