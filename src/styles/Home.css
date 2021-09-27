@@ -8,7 +8,6 @@
 
 .wlc-text {
     text-align: center;
-    padding: 0 var(--home-padding);
 }
 
 /* .wlc-text:after {

@@ -26,19 +26,19 @@ const WithSidebar = (props) => {
                         <div className='s-box-body'>
                             <h5>Engineering Works Complex</h5>
                             <ul className="s-facilities-list">
-                                <li><span>➫</span>
+                                <li>
                                     <Link to="/engineering-works-complex/equipment-repair-shop">Enquipment Repair Shop</Link>
                                 </li>
-                                <li><span>➫</span>
+                                <li>
                                     <Link to="/engineering-works-complex/forge-and-fabrication-shop">Forge and Fabrication Shop</Link>
                                 </li>
-                                <li><span>➫</span>
+                                <li>
                                     <Link to="/engineering-works-complex/foundary-and-pattern-making-shop">Foundry and Pattern Making Shop</Link>
                                 </li>
-                                <li><span>➫</span>
+                                <li>
                                     <Link to="/engineering-works-complex/machine-and-tools-shop">Machine and Tools Shop</Link>
                                 </li>
-                                <li><span>➫</span>
+                                <li>
                                     <Link to="/engineering-works-complex/rubberizing-and-vulcanizing-shop">Rubberizing and Vulcanizing Shop</Link>
                                 </li>
                             </ul>
@@ -51,7 +51,7 @@ const WithSidebar = (props) => {
                         </div>
                         <div className="s-box-body">
                             <ul className="s-facilities-list">
-                                {allNewsPages.slice(0, 5).map(page => <li key={page._id}><span>➫</span>
+                                {allNewsPages.slice(0, 5).map(page => <li key={page._id}>
                                     <Link to={`/news/${page.slug}`}>{page.title.length > 30 ? `${page.title.slice(0, 30)}...` : page.title}</Link>
                                 </li>)
                                 }
