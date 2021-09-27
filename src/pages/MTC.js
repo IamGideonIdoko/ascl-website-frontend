@@ -15,7 +15,7 @@ function MTC() {
                 <br></br>
                 <h4>1. INTRODUCTION</h4>
                 
-                <img src={Metgate}/>
+                <img src={Metgate} alt="Met gate"/>
 
                 <p> The metallurgical training centre MTC of Ajaokuta steel company limited (ASCL) was 
                     established in November 1978 was patterned in an organizational structure after Kharkov 
@@ -25,9 +25,9 @@ function MTC() {
                     allied industries.it was also designed to be able to make some of the industrial spare parts 
                     and equipment in the course of practical works of the trainees.</p>   
                 <h4>2.	TRAINING CAPABILITY</h4> 
-                <img src={Metshop}/>
+                <img src={Metshop} alt="Met shop" />
                 <p> MTC is capable of designing, developing and organizing training for immediate and future needs 
-                    of Steel, Oil& Gas and other allied industries. The centre is committed to producing qualified 
+                    of Steel, Oil & Gas and other allied industries. The centre is committed to producing qualified 
                     and competent operatives,supervisors,technologist and engineers who will be to face the challenges 
                     of the industries.</p>
                 <p>MTC has been carrying out series of training programmes for the entire manpower in ASCL and also the 
@@ -37,7 +37,7 @@ function MTC() {
                     designed capacity for 1,560 trainees on 13 courses in two years.Thus,MTC has capacity for 3,540 
                     candidates on long term training programs simultaneously.</p>   
                 <h4>3.	GENERAL OBJECTIVES OF MTC</h4>    
-                <img src={Metpic2}/> 
+                <img src={Metpic2} alt="Met pic" /> 
                     <li>Provides training in steel technology for various levels of manpower within the industry 
                        and other allied industries to meet job requirements;</li>
                     <li>Reduces reliance on overseas training thereby saving scarce foreign exchange earnings;</li>
