@@ -1,8 +1,9 @@
 import {useState} from 'react';
 import { Link } from 'react-router-dom'
 import '../styles/Navbar.css';
+import {connect} from 'react-redux';
 
-function Navbar() {
+function Navbar({isAuthenticated}) {
     const [navOpen, setNavOpen] = useState(false);
     return (
         <nav className={`mainNav ${navOpen ? 'open-nav' : ''}`}>
@@ -10,6 +11,10 @@ function Navbar() {
         <button className="mobile-menu" onClick={() => setNavOpen(prev => !prev)}>
             <i className={`neu ${navOpen ? 'neu-close-lg' : 'neu-hamburger-menu'}`}></i>
         </button>
+
+        {isAuthenticated && <Link to="/adm/profile" className="adm-profile-link" title="Profile">
+            <span>Profile</span><i className={`neu neu-profile`}></i>
+        </Link>}
 
         <ul>
             <li><Link to="/">Home</Link></li>
@@ -54,4 +59,9 @@ function Navbar() {
     )
 }
 
-export default Navbar;
+
+const mapStateToProps = (state, ownProps) => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, null)(Navbar);

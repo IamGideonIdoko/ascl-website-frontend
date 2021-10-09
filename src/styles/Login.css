@@ -1,6 +1,5 @@
 .login-page {
     height: 100vh;
-    border: 1px solid blue;
     overflow: auto;
 }
 
@@ -11,7 +10,7 @@
     height: 100vh;
     overflow: auto;
     margin-right: var(--login-right-width);
-    padding: 6rem;
+    padding: 6rem 2rem;
 
 }
 
@@ -67,6 +66,11 @@
     grid-template-rows: auto 1fr;
 }
 
+.ll-content > div {
+    display: flex;
+    flex-direction: column;
+}
+
 .login-header {
     display: flex;
     align-items: center;
@@ -86,6 +90,8 @@
 
 .login-form {
     width: 35rem;
+    max-width: 100% !important;
+
 }
 
 .login-form-header span {
