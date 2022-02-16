@@ -1,1 +1,1 @@
-# React Frontend of ASCL Website
+# ASCL Website Frontend built with React.js
