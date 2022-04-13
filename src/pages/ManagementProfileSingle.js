@@ -5,6 +5,10 @@ import {useParams, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import SEOHeader from './../components/SEOHeader';
 
+const createMarkup = (markup) => {
+    return {__html: markup};
+}
+
 function ManagementProfileSingle(props) {
     const [posOpen, setPosOpen] = useState(false);
 
@@ -45,6 +49,9 @@ function ManagementProfileSingle(props) {
                                             </div>
                                             <div className="proc-about">
                                                 <div>{exactProfile.about}</div>
+                                                <div
+                                                    className={`page-body postBody true-page-body`}
+                                                    dangerouslySetInnerHTML={createMarkup(exactProfile.about)}/>
                                             </div>
 
                                         </div>

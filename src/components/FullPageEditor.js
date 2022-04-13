@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import Swal from 'sweetalert2';
 import '../styles/FullPageEditor.css';
 
-const CustomOption = props => {
+export const CustomOption = props => {
 
     const addASCL = () => {
         const {editorState, onChange} = props;

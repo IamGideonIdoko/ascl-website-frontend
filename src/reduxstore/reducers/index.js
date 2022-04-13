@@ -15,7 +15,8 @@ import mgmtProfileReducer from './mgmtProfileReducer';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['auth', 'error', 'asset', 'page', 'access', 'gallery', 'faq', 'mgmtProfile']
+    // whitelist: ['auth', 'error', 'asset', 'page', 'access', 'gallery', 'faq', 'mgmtProfile']
+    whitelist: ['auth', 'error', '', '', 'access', '', 'faq', '']
 }
 
 const rootReducer = combineReducers({

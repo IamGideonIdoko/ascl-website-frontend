@@ -15,6 +15,7 @@ import {
     resetMgmtProfileDeleted,
     resetMgmtProfileUpdated
 } from '../../reduxstore/actions/mgmtProfileActions';
+import MgmtAboutEditor from '../../components/MgmtAboutEditor';
 
 const ManageMgmtProfile = (props) => {
 
@@ -38,6 +39,14 @@ const ManageMgmtProfile = (props) => {
             ...prev,
             [name]: value
         }));
+    }
+
+    const handleAboutChange = (value) => {
+        setProfileInputs((prev) => ({
+            ...prev,
+            about: value
+        }));
+
     }
 
     const handleProfileSelectInputChange = option => {
@@ -275,11 +284,12 @@ const ManageMgmtProfile = (props) => {
 
                         <div className="">
                             <label htmlFor="profileabout">About</label>
-                            <textarea
+                            {/* <textarea
                                 name="about"
                                 id="about"
                                 value={profileInputs.about}
-                                onChange={handleInputChange}></textarea>
+                                onChange={handleInputChange}></textarea> */}
+                            <MgmtAboutEditor onChange={handleAboutChange} value={profileInputs.about} />
                         </div>
                         <div>
                             <button
@@ -384,11 +394,12 @@ const ManageMgmtProfile = (props) => {
 
                                 <div className="">
                                     <label htmlFor="profileabout">About</label>
-                                    <textarea
+                                    {/* <textarea
                                         name="about"
                                         id="about"
                                         value={profileInputs.about}
-                                        onChange={handleInputChange}></textarea>
+                                        onChange={handleInputChange}></textarea> */}
+                                    <MgmtAboutEditor onChange={handleAboutChange} value={profileInputs.about} />
                                 </div>
                                 <div>
                                     <button
