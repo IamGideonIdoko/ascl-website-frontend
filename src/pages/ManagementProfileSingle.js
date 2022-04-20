@@ -48,7 +48,6 @@ function ManagementProfileSingle(props) {
                                                 <img className="" src={exactProfile.photo} alt={exactProfile.name}/>
                                             </div>
                                             <div className="proc-about">
-                                                <div>{exactProfile.about}</div>
                                                 <div
                                                     className={`page-body postBody true-page-body`}
                                                     dangerouslySetInnerHTML={createMarkup(exactProfile.about)}/>

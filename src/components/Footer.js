@@ -38,8 +38,7 @@ function Footer() {
                         <h3>Contact Info</h3>
                         <ul className="contact-info-list">
                             <li><span>Address:</span> <span>Ajaokuta, Kogi State.</span></li>
-                            <li><span>Phone:</span> <span>+2348036048476; +2348053566929 </span></li>
-                            <li><span>Email:</span> <span>saliuahmad50@gmail.com</span></li>
+                            <li><span>Email:</span> <span>info@ajaokutasteel.com.ng</span></li>
                         </ul>
                     </div>
                 </div>
@@ -47,7 +46,7 @@ function Footer() {
             <div className="footer-stripe"></div>
             <div className="footer-last-section">
                 <div className="content-max-width">
-                    <small>© 2021 Ajaokuta Steel Company Limited. All Rights Reserved</small>
+                    <small>© {new Date().getFullYear()} Ajaokuta Steel Company Limited. All Rights Reserved</small>
                 </div>
             </div>
         </header>
